@@ -30,7 +30,7 @@ class AppMenuController extends Controller {
                 SELECT a.priority , a.title , a.data , a.type , a.image , a.background_color
                 FROM AppBundle:AppMenu a
                 WHERE a.enabled = TRUE
-                ORDER BY a.priority ASC
+                ORDER BY a.priority ASC , a.title ASC
                 ');
         $menu = $query->getResult();
         // End Symfony Book
