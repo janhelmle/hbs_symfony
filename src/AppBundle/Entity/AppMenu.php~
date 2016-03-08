@@ -1,0 +1,67 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="appmenu")
+ */
+class AppMenu {
+    // -- Datenbank mct:
+    //      id              -   9
+    //  *   name            -   infocontact
+    //      priority        -   10
+    //      title           -   Info / Contact
+    //      data            -   http://bvg-wp.sportpartnersuche.eu/berliner-verkehrsbetriebe-bvg/
+    //  *   title_de        -   Info / Kontakt
+    //  *   data_de         -   http://bvg-wp.sportpartnersuche.eu/berliner-verkehrsbetriebe-bvg/
+    //      enabled         -   true
+    //  *   image           -   content/images/infocontact.svg
+    //      image_sha256    -   f9afa1b0b92b1c362273f1bebca201bef3f2875f71942313004b9f7c0b568209
+    //  *   type            -   url_view
+
+    /**
+     * @ORM\Column(type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id; // integer
+
+    /**
+     * @ORM\Column(type="integer" , nullable=true)
+     */
+    private $priority; // integer 
+
+    /**
+     * @ORM\Column(type="string", length=100 , nullable=true)
+     */
+    private $title; // Info \/ Kontakt - in mct JSON // title
+
+    /**
+     * @ORM\Column(type="string", length=300 , nullable=true)
+     */
+    private $data; // http:\/\/bvg-wp.sportpartnersuche.eu\/berliner-verkehrsbetriebe-bvg\/ - in mct JSON
+
+    /**
+     * @ORM\Column(type="string", length=300 , nullable=true)
+     */
+    private $image; // content\/images\/infocontact.svg - in mct JSON
+
+    /**
+     * @ORM\Column(type="string", length=300 , nullable=true)
+     */
+    private $type; // url_view - in mct JSON - 
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $enabled;
+
+    /**
+     * @ORM\Column(type="string", length=20 , nullable=true)
+     */
+    private $background_color; // url_view - in mct JSON - 
+
+}
