@@ -26,4 +26,9 @@ parameters:
     #   database_user: root
     #   database_password: Pa$$w0rd
         
-    
+    #   free Mysql:
+    #   database_host: sql7.freemysqlhosting.net
+    #   database_port: 3306
+    #   database_name: sql7109868
+    #   database_user: sql7109868
+    #   database_password: Pa$$w0rd
