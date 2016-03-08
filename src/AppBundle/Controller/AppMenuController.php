@@ -24,7 +24,7 @@ class AppMenuController extends Controller {
         
         $em = $this->getDoctrine()->getManager();
         $query = $em->createQuery('
-                SELECT a.priority , a.display , a.data , a.type , a.image 
+                SELECT a.priority , a.title , a.data , a.type , a.image , a.background_color
                 FROM AppBundle:AppMenu a
                 WHERE a.enabled = TRUE
                 ORDER BY a.priority ASC
