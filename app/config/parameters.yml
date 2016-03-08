@@ -11,3 +11,19 @@ parameters:
     mailer_user: null
     mailer_password: null
     secret: f271f2227c1401dd0151536d95e737d3fb19c367
+    
+    #   server:
+    #   database_host: localhost
+    #   database_port: 3306
+    #   database_name: d0215399
+    #   database_user: d0215399
+    #   database_password: cdD5hpgNTgat5dUB
+    
+    #   local devel:
+    #   database_host: localhost
+    #   database_port: 3306
+    #   database_name: d0215399
+    #   database_user: root
+    #   database_password: Pa$$w0rd
+        
+    
