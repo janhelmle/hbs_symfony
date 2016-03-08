@@ -18,10 +18,13 @@ class AppMenuController extends Controller {
      */
     public function appMenuAction(Request $request) {
 
+        // Symfony Components : The Serializer Component 
         $encoders = array(new XmlEncoder(), new JsonEncoder());
         $normalizers = array(new ObjectNormalizer());
         $serializer = new Serializer($normalizers, $encoders);
-        
+        // End Symfony Components
+
+        // Symfony Book : Databases and Doctrine , S 107
         $em = $this->getDoctrine()->getManager();
         $query = $em->createQuery('
                 SELECT a.priority , a.title , a.data , a.type , a.image , a.background_color
@@ -30,10 +33,15 @@ class AppMenuController extends Controller {
                 ORDER BY a.priority ASC
                 ');
         $menu = $query->getResult();
-        
-        $jsonContent = $serializer->serialize($menu , 'json');
+        // End Symfony Book
+
+        // Symfony Components : The Serializer Component
+        $jsonContent = $serializer->serialize($menu, 'json');
+        // End Symfony Components
         
         $resp = new Response($jsonContent);
+        //$resp = new Response(str_replace("\\", "", $jsonContent));
+        
         $resp->headers->set('Content-Type', 'application/json');
 
         return $resp;
