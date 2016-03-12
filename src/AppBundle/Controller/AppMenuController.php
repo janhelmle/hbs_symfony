@@ -27,10 +27,26 @@ class AppMenuController extends Controller {
         // Symfony Book : Databases and Doctrine , S 107
         $em = $this->getDoctrine()->getManager();
         $query = $em->createQuery('
-                SELECT a.priority , a.title , a.data , a.type , a.image , a.background_color
+                SELECT 
+                
+                a.identification , 
+                a.title_de , 
+                a.title_en , 
+                a.data_url , 
+                a.data_type , 
+                a.image_source ,
+                a.image_background_color ,
+                a.image_background_opacity 
+                
                 FROM AppBundle:AppMenu a
+                
                 WHERE a.enabled = TRUE
-                ORDER BY a.priority ASC , a.title ASC
+                
+                ORDER BY 
+                
+                a.priority ASC , 
+                a.title_en ASC , 
+                a.title_de ASC 
                 ');
         $menu = $query->getResult();
         // End Symfony Book
