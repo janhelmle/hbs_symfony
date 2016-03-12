@@ -19,11 +19,14 @@ class LoadAppMenuData implements FixtureInterface
         $menuRow1->setDataType("url_view");
         $menuRow1->setImageSource("content/images/news.svg");
         $menuRow1->setImageBackgroundColor("#123456");
-        $menuRow1->setImageBackgroundOpacity(00);
+        $menuRow1->setImageBackgroundAlpha("00");
         $menuRow1->setEnabled(1);
             
         $manager->persist($menuRow1);
         $manager->flush();
+        
+        
+        
     }
 }
 

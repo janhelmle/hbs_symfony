@@ -72,11 +72,13 @@ class AppMenu {
     /**
      * @ORM\Column(type="string", length=20 , nullable=true)
      */
-    private $image_background_opacity;
+    private $image_background_alpha;
 
     /**
      * @ORM\Column(type="boolean", nullable=true)
      */
     private $enabled;
+
+    
 
 }
