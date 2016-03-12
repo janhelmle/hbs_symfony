@@ -37,31 +37,46 @@ class AppMenu {
     /**
      * @ORM\Column(type="string", length=100 , nullable=true)
      */
-    private $title; // Info \/ Kontakt - in mct JSON // title
+    private $identification; // Info \/ Kontakt - in mct JSON // title
+
+    /**
+     * @ORM\Column(type="string", length=100 , nullable=true)
+     */
+    private $title_de; // Info \/ Kontakt - in mct JSON // title
+
+    /**
+     * @ORM\Column(type="string", length=100 , nullable=true)
+     */
+    private $title_en; // Info \/ Kontakt - in mct JSON // title
 
     /**
      * @ORM\Column(type="string", length=300 , nullable=true)
      */
-    private $data; // http:\/\/bvg-wp.sportpartnersuche.eu\/berliner-verkehrsbetriebe-bvg\/ - in mct JSON
+    private $data_url; // http:\/\/bvg-wp.sportpartnersuche.eu\/berliner-verkehrsbetriebe-bvg\/ - in mct JSON
 
     /**
      * @ORM\Column(type="string", length=300 , nullable=true)
      */
-    private $image; // content\/images\/infocontact.svg - in mct JSON
+    private $data_type; // url_view - in mct JSON - 
 
     /**
      * @ORM\Column(type="string", length=300 , nullable=true)
      */
-    private $type; // url_view - in mct JSON - 
+    private $image_source; // content\/images\/infocontact.svg - in mct JSON
+
+    /**
+     * @ORM\Column(type="string", length=20 , nullable=true)
+     */
+    private $image_background_color;
+
+    /**
+     * @ORM\Column(type="string", length=20 , nullable=true)
+     */
+    private $image_background_opacity;
 
     /**
      * @ORM\Column(type="boolean", nullable=true)
      */
     private $enabled;
-
-    /**
-     * @ORM\Column(type="string", length=20 , nullable=true)
-     */
-    private $background_color; // url_view - in mct JSON - 
 
 }

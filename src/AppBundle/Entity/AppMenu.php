@@ -37,22 +37,42 @@ class AppMenu {
     /**
      * @ORM\Column(type="string", length=100 , nullable=true)
      */
-    private $title; // Info \/ Kontakt - in mct JSON // title
+    private $identification; // Info \/ Kontakt - in mct JSON // title
+
+    /**
+     * @ORM\Column(type="string", length=100 , nullable=true)
+     */
+    private $title_de; // Info \/ Kontakt - in mct JSON // title
+
+    /**
+     * @ORM\Column(type="string", length=100 , nullable=true)
+     */
+    private $title_en; // Info \/ Kontakt - in mct JSON // title
 
     /**
      * @ORM\Column(type="string", length=300 , nullable=true)
      */
-    private $data; // http:\/\/bvg-wp.sportpartnersuche.eu\/berliner-verkehrsbetriebe-bvg\/ - in mct JSON
+    private $data_url; // http:\/\/bvg-wp.sportpartnersuche.eu\/berliner-verkehrsbetriebe-bvg\/ - in mct JSON
 
     /**
      * @ORM\Column(type="string", length=300 , nullable=true)
      */
-    private $image; // content\/images\/infocontact.svg - in mct JSON
+    private $data_type; // url_view - in mct JSON - 
 
     /**
      * @ORM\Column(type="string", length=300 , nullable=true)
      */
-    private $type; // url_view - in mct JSON - 
+    private $image_source; // content\/images\/infocontact.svg - in mct JSON
+
+    /**
+     * @ORM\Column(type="string", length=20 , nullable=true)
+     */
+    private $image_background_color;
+
+    /**
+     * @ORM\Column(type="string", length=20 , nullable=true)
+     */
+    private $image_background_opacity;
 
     /**
      * @ORM\Column(type="boolean", nullable=true)
@@ -60,18 +80,11 @@ class AppMenu {
     private $enabled;
 
     /**
-     * @ORM\Column(type="string", length=20 , nullable=true)
-     */
-    private $background_color; // url_view - in mct JSON - 
-
-
-    /**
      * Get id
      *
      * @return integer
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -82,8 +95,7 @@ class AppMenu {
      *
      * @return AppMenu
      */
-    public function setPriority($priority)
-    {
+    public function setPriority($priority) {
         $this->priority = $priority;
 
         return $this;
@@ -94,105 +106,184 @@ class AppMenu {
      *
      * @return integer
      */
-    public function getPriority()
-    {
+    public function getPriority() {
         return $this->priority;
     }
 
     /**
-     * Set title
+     * Set identification
      *
-     * @param string $title
+     * @param string $identification
      *
      * @return AppMenu
      */
-    public function setTitle($title)
-    {
-        $this->title = $title;
+    public function setIdentification($identification) {
+        $this->identification = $identification;
 
         return $this;
     }
 
     /**
-     * Get title
+     * Get identification
      *
      * @return string
      */
-    public function getTitle()
-    {
-        return $this->title;
+    public function getIdentification() {
+        return $this->identification;
     }
 
     /**
-     * Set data
+     * Set titleDe
      *
-     * @param string $data
+     * @param string $titleDe
      *
      * @return AppMenu
      */
-    public function setData($data)
-    {
-        $this->data = $data;
+    public function setTitleDe($titleDe) {
+        $this->title_de = $titleDe;
 
         return $this;
     }
 
     /**
-     * Get data
+     * Get titleDe
      *
      * @return string
      */
-    public function getData()
-    {
-        return $this->data;
+    public function getTitleDe() {
+        return $this->title_de;
     }
 
     /**
-     * Set image
+     * Set titleEn
      *
-     * @param string $image
+     * @param string $titleEn
      *
      * @return AppMenu
      */
-    public function setImage($image)
-    {
-        $this->image = $image;
+    public function setTitleEn($titleEn) {
+        $this->title_en = $titleEn;
 
         return $this;
     }
 
     /**
-     * Get image
+     * Get titleEn
      *
      * @return string
      */
-    public function getImage()
-    {
-        return $this->image;
+    public function getTitleEn() {
+        return $this->title_en;
     }
 
     /**
-     * Set type
+     * Set dataUrl
      *
-     * @param string $type
+     * @param string $dataUrl
      *
      * @return AppMenu
      */
-    public function setType($type)
-    {
-        $this->type = $type;
+    public function setDataUrl($dataUrl) {
+        $this->data_url = $dataUrl;
 
         return $this;
     }
 
     /**
-     * Get type
+     * Get dataUrl
      *
      * @return string
      */
-    public function getType()
-    {
-        return $this->type;
+    public function getDataUrl() {
+        return $this->data_url;
+    }
+
+    /**
+     * Set dataType
+     *
+     * @param string $dataType
+     *
+     * @return AppMenu
+     */
+    public function setDataType($dataType) {
+        $this->data_type = $dataType;
+
+        return $this;
+    }
+
+    /**
+     * Get dataType
+     *
+     * @return string
+     */
+    public function getDataType() {
+        return $this->data_type;
+    }
+
+    /**
+     * Set imageSource
+     *
+     * @param string $imageSource
+     *
+     * @return AppMenu
+     */
+    public function setImageSource($imageSource) {
+        $this->image_source = $imageSource;
+
+        return $this;
+    }
+
+    /**
+     * Get imageSource
+     *
+     * @return string
+     */
+    public function getImageSource() {
+        return $this->image_source;
+    }
+
+    /**
+     * Set imageBackgroundColor
+     *
+     * @param string $imageBackgroundColor
+     *
+     * @return AppMenu
+     */
+    public function setImageBackgroundColor($imageBackgroundColor) {
+        $this->image_background_color = $imageBackgroundColor;
+
+        return $this;
+    }
+
+    /**
+     * Get imageBackgroundColor
+     *
+     * @return string
+     */
+    public function getImageBackgroundColor() {
+        return $this->image_background_color;
+    }
+
+    /**
+     * Set imageBackgroundOpacity
+     *
+     * @param string $imageBackgroundOpacity
+     *
+     * @return AppMenu
+     */
+    public function setImageBackgroundOpacity($imageBackgroundOpacity) {
+        $this->image_background_opacity = $imageBackgroundOpacity;
+
+        return $this;
+    }
+
+    /**
+     * Get imageBackgroundOpacity
+     *
+     * @return string
+     */
+    public function getImageBackgroundOpacity() {
+        return $this->image_background_opacity;
     }
 
     /**
@@ -202,8 +293,7 @@ class AppMenu {
      *
      * @return AppMenu
      */
-    public function setEnabled($enabled)
-    {
+    public function setEnabled($enabled) {
         $this->enabled = $enabled;
 
         return $this;
@@ -214,32 +304,8 @@ class AppMenu {
      *
      * @return boolean
      */
-    public function getEnabled()
-    {
+    public function getEnabled() {
         return $this->enabled;
     }
 
-    /**
-     * Set backgroundColor
-     *
-     * @param string $backgroundColor
-     *
-     * @return AppMenu
-     */
-    public function setBackgroundColor($backgroundColor)
-    {
-        $this->background_color = $backgroundColor;
-
-        return $this;
-    }
-
-    /**
-     * Get backgroundColor
-     *
-     * @return string
-     */
-    public function getBackgroundColor()
-    {
-        return $this->background_color;
-    }
 }
