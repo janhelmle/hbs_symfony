@@ -35,9 +35,8 @@ class AppMenuController extends Controller {
                 a.data_url , 
                 a.data_type , 
                 a.image_source ,
-                a.image_background_color ,
-                a.image_background_alpha 
-                
+                a.image_background 
+                 
                 FROM AppBundle:AppMenu a
                 
                 WHERE a.enabled = TRUE

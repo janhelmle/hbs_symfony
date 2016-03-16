@@ -67,12 +67,7 @@ class AppMenu {
     /**
      * @ORM\Column(type="string", length=20 , nullable=true)
      */
-    private $image_background_color;
-
-    /**
-     * @ORM\Column(type="string", length=20 , nullable=true)
-     */
-    private $image_background_alpha;
+    private $image_background;
 
     /**
      * @ORM\Column(type="boolean", nullable=true)
@@ -80,15 +75,12 @@ class AppMenu {
     private $enabled;
 
     
-
-
     /**
      * Get id
      *
      * @return integer
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -99,10 +91,9 @@ class AppMenu {
      *
      * @return AppMenu
      */
-    public function setPriority($priority)
-    {
+    public function setPriority($priority) {
         $this->priority = $priority;
-    
+
         return $this;
     }
 
@@ -111,8 +102,7 @@ class AppMenu {
      *
      * @return integer
      */
-    public function getPriority()
-    {
+    public function getPriority() {
         return $this->priority;
     }
 
@@ -123,10 +113,9 @@ class AppMenu {
      *
      * @return AppMenu
      */
-    public function setIdentification($identification)
-    {
+    public function setIdentification($identification) {
         $this->identification = $identification;
-    
+
         return $this;
     }
 
@@ -135,8 +124,7 @@ class AppMenu {
      *
      * @return string
      */
-    public function getIdentification()
-    {
+    public function getIdentification() {
         return $this->identification;
     }
 
@@ -147,10 +135,9 @@ class AppMenu {
      *
      * @return AppMenu
      */
-    public function setTitleDe($titleDe)
-    {
+    public function setTitleDe($titleDe) {
         $this->title_de = $titleDe;
-    
+
         return $this;
     }
 
@@ -159,8 +146,7 @@ class AppMenu {
      *
      * @return string
      */
-    public function getTitleDe()
-    {
+    public function getTitleDe() {
         return $this->title_de;
     }
 
@@ -171,10 +157,9 @@ class AppMenu {
      *
      * @return AppMenu
      */
-    public function setTitleEn($titleEn)
-    {
+    public function setTitleEn($titleEn) {
         $this->title_en = $titleEn;
-    
+
         return $this;
     }
 
@@ -183,8 +168,7 @@ class AppMenu {
      *
      * @return string
      */
-    public function getTitleEn()
-    {
+    public function getTitleEn() {
         return $this->title_en;
     }
 
@@ -195,10 +179,9 @@ class AppMenu {
      *
      * @return AppMenu
      */
-    public function setDataUrl($dataUrl)
-    {
+    public function setDataUrl($dataUrl) {
         $this->data_url = $dataUrl;
-    
+
         return $this;
     }
 
@@ -207,8 +190,7 @@ class AppMenu {
      *
      * @return string
      */
-    public function getDataUrl()
-    {
+    public function getDataUrl() {
         return $this->data_url;
     }
 
@@ -219,10 +201,9 @@ class AppMenu {
      *
      * @return AppMenu
      */
-    public function setDataType($dataType)
-    {
+    public function setDataType($dataType) {
         $this->data_type = $dataType;
-    
+
         return $this;
     }
 
@@ -231,8 +212,7 @@ class AppMenu {
      *
      * @return string
      */
-    public function getDataType()
-    {
+    public function getDataType() {
         return $this->data_type;
     }
 
@@ -243,10 +223,9 @@ class AppMenu {
      *
      * @return AppMenu
      */
-    public function setImageSource($imageSource)
-    {
+    public function setImageSource($imageSource) {
         $this->image_source = $imageSource;
-    
+
         return $this;
     }
 
@@ -255,57 +234,30 @@ class AppMenu {
      *
      * @return string
      */
-    public function getImageSource()
-    {
+    public function getImageSource() {
         return $this->image_source;
     }
 
     /**
-     * Set imageBackgroundColor
+     * Set imageBackground
      *
-     * @param string $imageBackgroundColor
+     * @param string $imageBackground
      *
      * @return AppMenu
      */
-    public function setImageBackgroundColor($imageBackgroundColor)
-    {
-        $this->image_background_color = $imageBackgroundColor;
-    
+    public function setImageBackground($imageBackground) {
+        $this->image_background = $imageBackground;
+
         return $this;
     }
 
     /**
-     * Get imageBackgroundColor
+     * Get imageBackground
      *
      * @return string
      */
-    public function getImageBackgroundColor()
-    {
-        return $this->image_background_color;
-    }
-
-    /**
-     * Set imageBackgroundAlpha
-     *
-     * @param string $imageBackgroundAlpha
-     *
-     * @return AppMenu
-     */
-    public function setImageBackgroundAlpha($imageBackgroundAlpha)
-    {
-        $this->image_background_alpha = $imageBackgroundAlpha;
-    
-        return $this;
-    }
-
-    /**
-     * Get imageBackgroundAlpha
-     *
-     * @return string
-     */
-    public function getImageBackgroundAlpha()
-    {
-        return $this->image_background_alpha;
+    public function getImageBackground() {
+        return $this->image_background;
     }
 
     /**
@@ -315,10 +267,9 @@ class AppMenu {
      *
      * @return AppMenu
      */
-    public function setEnabled($enabled)
-    {
+    public function setEnabled($enabled) {
         $this->enabled = $enabled;
-    
+
         return $this;
     }
 
@@ -327,8 +278,8 @@ class AppMenu {
      *
      * @return boolean
      */
-    public function getEnabled()
-    {
+    public function getEnabled() {
         return $this->enabled;
     }
+
 }
