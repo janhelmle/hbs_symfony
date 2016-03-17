@@ -21,6 +21,7 @@ class LoadAppMenuData implements FixtureInterface {
         $menuRow0->setEnabled(FALSE);
         $manager->persist($menuRow0);
         $manager->flush();
+        unset($menuRow0);
 
         $menuRow1 = new AppMenu();
         $menuRow1->setPriority(100);
@@ -34,6 +35,7 @@ class LoadAppMenuData implements FixtureInterface {
         $menuRow1->setEnabled(1);
         $manager->persist($menuRow1);
         $manager->flush();
+        unset($menuRow1);
 
         $menuRow2 = new AppMenu();
         $menuRow2->setPriority(110);
@@ -47,6 +49,7 @@ class LoadAppMenuData implements FixtureInterface {
         $menuRow2->setEnabled(1);
         $manager->persist($menuRow2);
         $manager->flush();
+        unset($menuRow2);
 
         $menuRow3 = new AppMenu();
         $menuRow3->setPriority(120);
@@ -60,6 +63,7 @@ class LoadAppMenuData implements FixtureInterface {
         $menuRow3->setEnabled(1);
         $manager->persist($menuRow3);
         $manager->flush();
+        unset($menuRow3);
 
         $menuRow4 = new AppMenu();
         $menuRow4->setPriority(130);
@@ -73,6 +77,7 @@ class LoadAppMenuData implements FixtureInterface {
         $menuRow4->setEnabled(1);
         $manager->persist($menuRow4);
         $manager->flush();
+        unset($menuRow4);
 
         $menuRow5 = new AppMenu();
         $menuRow5->setPriority(140);
@@ -86,6 +91,7 @@ class LoadAppMenuData implements FixtureInterface {
         $menuRow5->setEnabled(1);
         $manager->persist($menuRow5);
         $manager->flush();
+        unset($menuRow5);
 
         $menuRow6 = new AppMenu();
         $menuRow6->setPriority(150);
@@ -99,6 +105,7 @@ class LoadAppMenuData implements FixtureInterface {
         $menuRow6->setEnabled(1);
         $manager->persist($menuRow6);
         $manager->flush();
+        unset($menuRow6);
 
         $menuRow7 = new AppMenu();
         $menuRow7->setPriority(160);
@@ -112,6 +119,7 @@ class LoadAppMenuData implements FixtureInterface {
         $menuRow7->setEnabled(1);
         $manager->persist($menuRow7);
         $manager->flush();
+        unset($menuRow7);
 
         $menuRow8 = new AppMenu();
         $menuRow8->setPriority(170);
@@ -125,6 +133,7 @@ class LoadAppMenuData implements FixtureInterface {
         $menuRow8->setEnabled(1);
         $manager->persist($menuRow8);
         $manager->flush();
+        unset($menuRow8);
 
         $menuRow9 = new AppMenu();
         $menuRow9->setPriority(180);
@@ -138,6 +147,7 @@ class LoadAppMenuData implements FixtureInterface {
         $menuRow9->setEnabled(1);
         $manager->persist($menuRow9);
         $manager->flush();
+        unset($menuRow9);
 
         $menuRow10 = new AppMenu();
         $menuRow10->setPriority(190);
@@ -151,6 +161,7 @@ class LoadAppMenuData implements FixtureInterface {
         $menuRow10->setEnabled(1);
         $manager->persist($menuRow10);
         $manager->flush();
+        unset($menuRow10);
 
         $menuRow11 = new AppMenu();
         $menuRow11->setPriority(200);
@@ -164,6 +175,7 @@ class LoadAppMenuData implements FixtureInterface {
         $menuRow11->setEnabled(1);
         $manager->persist($menuRow11);
         $manager->flush();
+        unset($menuRow11);
 
         $menuRow12 = new AppMenu();
         $menuRow12->setPriority(210);
@@ -177,6 +189,7 @@ class LoadAppMenuData implements FixtureInterface {
         $menuRow12->setEnabled(1);
         $manager->persist($menuRow12);
         $manager->flush();
+        unset($menuRow12);
     }
 
 }
