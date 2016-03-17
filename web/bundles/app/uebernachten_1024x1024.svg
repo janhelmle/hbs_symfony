@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 19.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 1024 1024" style="enable-background:new 0 0 1024 1024;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:none;}
+	.st1{fill:#FFFFFF;}
+	.st2{clip-path:url(#SVGID_2_);fill:#FFFFFF;}
+</style>
+<g id="Ebene_2">
+	<path id="_x31_5_1_" class="st0" d="M1024,768c0,141.4-114.6,256-256,256H256C114.6,1024,0,909.4,0,768V256C0,114.6,114.6,0,256,0
+		h512c141.4,0,256,114.6,256,256V768z"/>
+</g>
+<g id="Ebene_1">
+	<g id="Uebernachten_2_">
+		<path class="st1" d="M812.8,507.1h81v-72.9c0-15.1-12.3-27.5-27.5-27.5H410.3c1.4,3,2.8,6,4.1,9c9.2,21.8,13.9,44.9,13.9,68.8
+			c0,7.6-0.4,15.1-1.4,22.5H812.8z M812.8,507.1"/>
+		<g>
+			<defs>
+				<rect id="SVGID_1_" x="102.4" y="262.7" width="819.2" height="498.6"/>
+			</defs>
+			<clipPath id="SVGID_2_">
+				<use xlink:href="#SVGID_1_"  style="overflow:visible;"/>
+			</clipPath>
+			<path class="st2" d="M251.7,339.4c-3.1,0-6,0.1-9,0.3V507H395c1.2-7.4,1.7-14.8,1.7-22.5c0-28.6-8.3-55.3-22.6-77.7
+				C348.4,366.3,303.2,339.4,251.7,339.4L251.7,339.4z M251.7,339.4"/>
+			<path class="st2" d="M129.3,760.6h54.8c15,0,27-12.1,27-27v-86.2h601.6v86.2c0,15,12.1,27,27,27h54.8c15,0,27-12.1,27-27v-168
+				c0-15-12-27-27-27H211.1V289.7c0-15-12.1-27-27-27h-54.8c-15,0-27,12.1-27,27v443.9C102.3,748.5,114.3,760.6,129.3,760.6
+				L129.3,760.6z M129.3,760.6"/>
+		</g>
+	</g>
+</g>
+</svg>
