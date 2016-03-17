@@ -18,7 +18,7 @@ class LoadAppMenuData implements FixtureInterface {
                 "",
                 "http://bvg-wp.sportpartnersuche.eu/berliner-verkehrsbetriebe-bvg/",
                 "url_view",
-                "content/images/news.svg",
+                "bundles/app/info_1024x1024.pdf",
                 "#rrggbbaa",
                 0
             ],
@@ -29,7 +29,7 @@ class LoadAppMenuData implements FixtureInterface {
                 "",
                 "http://bvg-wp.sportpartnersuche.eu/berliner-verkehrsbetriebe-bvg/",
                 "url_view",
-                "content/images/news.svg",
+                "bundles/app/info_1024x1024.pdf",
                 "#rrggbbaa",
                 1
             ], [
@@ -39,7 +39,7 @@ class LoadAppMenuData implements FixtureInterface {
                 "",
                 "http://bvg-wp.sportpartnersuche.eu/veranstaltungen/",
                 "url_view",
-                "content/images/news.svg",
+                "bundles/app/veranstaltungen_1024x1024.svg",
                 "#rrggbbaa",
                 1
             ], [
@@ -49,7 +49,7 @@ class LoadAppMenuData implements FixtureInterface {
                 "News",
                 "http://bvg-wp.sportpartnersuche.eu/news/",
                 "url_view",
-                "content/images/news.svg",
+                "bundles/app/aktuelles_1024x1024.svg",
                 "#rrggbbaa",
                 1
             ], [
@@ -59,7 +59,7 @@ class LoadAppMenuData implements FixtureInterface {
                 "",
                 "http://bvg-wp.sportpartnersuche.eu/stressbewaeltigung-tipps/",
                 "url_view",
-                "content/images/news.svg",
+                "bundles/app/info_1024x1024.pdf",
                 "#rrggbbaa",
                 1
             ], [
@@ -69,7 +69,7 @@ class LoadAppMenuData implements FixtureInterface {
                 "",
                 "http://bvg-wp.sportpartnersuche.eu/burnout-prophylaxe/",
                 "url_view",
-                "content/images/news.svg",
+                "bundles/app/info_1024x1024.pdf",
                 "#rrggbbaa",
                 1
             ], [
@@ -79,7 +79,7 @@ class LoadAppMenuData implements FixtureInterface {
                 "",
                 "http://bvg-wp.sportpartnersuche.eu/work-life-balance/",
                 "url_view",
-                "content/images/news.svg",
+                "bundles/app/info_1024x1024.pdf",
                 "#rrggbbaa",
                 1
             ], [
@@ -89,7 +89,7 @@ class LoadAppMenuData implements FixtureInterface {
                 "",
                 "http://bvg-wp.sportpartnersuche.eu/gesunde-ernaehrung/",
                 "url_view",
-                "content/images/news.svg",
+                "bundles/app/info_1024x1024.pdf",
                 "#rrggbbaa",
                 1
             ], [
@@ -99,7 +99,7 @@ class LoadAppMenuData implements FixtureInterface {
                 "",
                 "http://bvg-wp.sportpartnersuche.eu/wegweiser-wohlfuehlgewicht/",
                 "url_view",
-                "content/images/news.svg",
+                "bundles/app/info_1024x1024.pdf",
                 "#rrggbbaa",
                 1
             ], [
@@ -109,7 +109,7 @@ class LoadAppMenuData implements FixtureInterface {
                 "",
                 "https://www.facebook.com/weilwirdichlieben/",
                 "url_view",
-                "content/images/news.svg",
+                "bundles/app/info_1024x1024.pdf",
                 "#rrggbbaa",
                 1
             ], [
@@ -119,7 +119,7 @@ class LoadAppMenuData implements FixtureInterface {
                 "",
                 "https://mobile.twitter.com/bvg_ubahn",
                 "url_view",
-                "content/images/news.svg",
+                "bundles/app/info_1024x1024.pdf",
                 "#rrggbbaa",
                 1
             ], [
@@ -129,7 +129,7 @@ class LoadAppMenuData implements FixtureInterface {
                 "",
                 "https://www.youtube.com/channel/UCUWE7apeDoepJixzxyjP9vg",
                 "url_view",
-                "content/images/news.svg",
+                "bundles/app/info_1024x1024.pdf",
                 "#rrggbbaa",
                 1
             ], [
@@ -139,7 +139,7 @@ class LoadAppMenuData implements FixtureInterface {
                 "",
                 "http://bvg-wp.sportpartnersuche.eu/allgemeine-informationen/",
                 "url_view",
-                "content/images/news.svg",
+                "bundles/app/info_1024x1024.pdf",
                 "#rrggbbaa",
                 1
             ]
