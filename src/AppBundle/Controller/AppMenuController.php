@@ -49,7 +49,7 @@ class AppMenuController extends Controller {
                 ');
         $menu = $query->getResult();
         // End Symfony Book
-
+        
         // Symfony Components : The Serializer Component
         $jsonContent = $serializer->serialize($menu, 'json');
         // End Symfony Components
