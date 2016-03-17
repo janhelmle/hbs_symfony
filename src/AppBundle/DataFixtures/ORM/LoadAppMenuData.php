@@ -30,7 +30,7 @@ class LoadAppMenuData implements FixtureInterface {
                 "http://bvg-wp.sportpartnersuche.eu/berliner-verkehrsbetriebe-bvg/",
                 "url_view",
                 "bundles/app/info_1024x1024.pdf",
-                "#rrggbbaa",
+                "#001122ff",
                 1
             ], [
                 110,
@@ -40,7 +40,7 @@ class LoadAppMenuData implements FixtureInterface {
                 "http://bvg-wp.sportpartnersuche.eu/veranstaltungen/",
                 "url_view",
                 "bundles/app/veranstaltungen_1024x1024.svg",
-                "#rrggbbaa",
+                "#00112233",
                 1
             ], [
                 120,
@@ -50,7 +50,7 @@ class LoadAppMenuData implements FixtureInterface {
                 "http://bvg-wp.sportpartnersuche.eu/news/",
                 "url_view",
                 "bundles/app/aktuelles_1024x1024.svg",
-                "#rrggbbaa",
+                "#00112233",
                 1
             ], [
                 130,
@@ -60,7 +60,7 @@ class LoadAppMenuData implements FixtureInterface {
                 "http://bvg-wp.sportpartnersuche.eu/stressbewaeltigung-tipps/",
                 "url_view",
                 "bundles/app/info_1024x1024.pdf",
-                "#rrggbbaa",
+                "#00112233",
                 1
             ], [
                 140,
@@ -70,7 +70,7 @@ class LoadAppMenuData implements FixtureInterface {
                 "http://bvg-wp.sportpartnersuche.eu/burnout-prophylaxe/",
                 "url_view",
                 "bundles/app/info_1024x1024.pdf",
-                "#rrggbbaa",
+                "#00112233",
                 1
             ], [
                 150,
@@ -80,7 +80,7 @@ class LoadAppMenuData implements FixtureInterface {
                 "http://bvg-wp.sportpartnersuche.eu/work-life-balance/",
                 "url_view",
                 "bundles/app/info_1024x1024.pdf",
-                "#rrggbbaa",
+                "#00112233",
                 1
             ], [
                 160,
@@ -90,7 +90,7 @@ class LoadAppMenuData implements FixtureInterface {
                 "http://bvg-wp.sportpartnersuche.eu/gesunde-ernaehrung/",
                 "url_view",
                 "bundles/app/info_1024x1024.pdf",
-                "#rrggbbaa",
+                "#00112233",
                 1
             ], [
                 170,
@@ -100,7 +100,7 @@ class LoadAppMenuData implements FixtureInterface {
                 "http://bvg-wp.sportpartnersuche.eu/wegweiser-wohlfuehlgewicht/",
                 "url_view",
                 "bundles/app/info_1024x1024.pdf",
-                "#rrggbbaa",
+                "#00112233",
                 1
             ], [
                 180,
@@ -110,7 +110,7 @@ class LoadAppMenuData implements FixtureInterface {
                 "https://www.facebook.com/weilwirdichlieben/",
                 "url_view",
                 "bundles/app/info_1024x1024.pdf",
-                "#rrggbbaa",
+                "#00112233",
                 1
             ], [
                 190,
@@ -120,7 +120,7 @@ class LoadAppMenuData implements FixtureInterface {
                 "https://mobile.twitter.com/bvg_ubahn",
                 "url_view",
                 "bundles/app/info_1024x1024.pdf",
-                "#rrggbbaa",
+                "#00112233",
                 1
             ], [
                 200,
@@ -130,7 +130,7 @@ class LoadAppMenuData implements FixtureInterface {
                 "https://www.youtube.com/channel/UCUWE7apeDoepJixzxyjP9vg",
                 "url_view",
                 "bundles/app/info_1024x1024.pdf",
-                "#rrggbbaa",
+                "#00112233",
                 1
             ], [
                 210,
@@ -140,7 +140,7 @@ class LoadAppMenuData implements FixtureInterface {
                 "http://bvg-wp.sportpartnersuche.eu/allgemeine-informationen/",
                 "url_view",
                 "bundles/app/info_1024x1024.pdf",
-                "#rrggbbaa",
+                "#00112233",
                 1
             ]
         ];
