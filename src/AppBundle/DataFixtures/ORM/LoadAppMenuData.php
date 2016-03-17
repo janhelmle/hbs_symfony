@@ -160,6 +160,7 @@ class LoadAppMenuData implements FixtureInterface {
             $manager->flush();
             unset($entity);
         } // end foreach
+        unset($matrix);
     }
 
 }
