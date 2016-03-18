@@ -4,9 +4,9 @@ parameters:
     
     database_host: localhost
     database_port: 3306
-    database_name: d0215399
-    database_user: d0215399
-    database_password: cdD5hpgNTgat5dUB
+    database_name: d02150e9
+    database_user: d02150e9
+    database_password: wvkNDS5fbrrtFtBc
     
     mailer_transport: smtp
     mailer_host: 127.0.0.1
@@ -17,9 +17,9 @@ parameters:
     #   server:
     #   database_host: localhost
     #   database_port: 3306
-    #   database_name: d0215399
-    #   database_user: d0215399
-    #   database_password: cdD5hpgNTgat5dUB
+    #   database_name: d02150e9
+    #   database_user: d02150e9
+    #   database_password: wvkNDS5fbrrtFtBc
     
     #   local devel:
     #   database_host: localhost
