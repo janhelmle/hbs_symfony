@@ -10,7 +10,6 @@ class LoadAppMenuData implements FixtureInterface {
 
     public function load(ObjectManager $manager) {
 
-	// echo(getcwd());
 //        $matrix = [
 //            [
 //                0,
@@ -165,21 +164,30 @@ class LoadAppMenuData implements FixtureInterface {
 	$ini = parse_ini_file('hbs.ini', true);
 
 	foreach ($ini['app_menu']['row'] as $row) {
-	    $rowasarray = explode(',', $row);
-	    $rowasarray = str_replace('"', '', $rowasarray);
+	    
+ 	    $rowasarray = explode(',', $row);
+	    
+	    $rowasarraycleaned = [];
+	      
+	    foreach($rowasarray as $element) {
+		$rowasarraycleaned[] = trim(trim($element),'"');
+	    }
+	    
 	    $entity = new AppMenu();
-	    $entity->setPriority($rowasarray[0]);
-	    $entity->setIdentification($rowasarray[1]);
-	    $entity->setTitleDe($rowasarray[2]);
-	    $entity->setTitleEn($rowasarray[3]);
-	    $entity->setDataUrl($rowasarray[4]);
-	    $entity->setDataType($rowasarray[5]);
-	    $entity->setImageSource($rowasarray[6]);
-	    $entity->setImageBackground($rowasarray[7]);
-	    $entity->setEnabled($rowasarray[8]);
+	    $entity->setPriority($rowasarraycleaned[0]);
+	    $entity->setIdentification($rowasarraycleaned[1]);
+	    $entity->setTitleDe($rowasarraycleaned[2]);
+	    $entity->setTitleEn($rowasarraycleaned[3]);
+	    $entity->setDataUrl($rowasarraycleaned[4]);
+	    $entity->setDataType($rowasarraycleaned[5]);
+	    $entity->setImageSource($rowasarraycleaned[6]);
+	    $entity->setImageBackground($rowasarraycleaned[7]);
+	    $entity->setEnabled($rowasarraycleaned[8]);
 	    $manager->persist($entity);
 	    $manager->flush();
 	    unset($entity);
+	    unset($rowasarraycleaned);
+	    unset($rowasarray);
 	}
 	unset($ini);
     }
