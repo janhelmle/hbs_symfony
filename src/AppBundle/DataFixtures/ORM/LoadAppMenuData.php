@@ -175,7 +175,7 @@ class LoadAppMenuData implements FixtureInterface {
 	    
 	    $entity = new AppMenu();
 	    $entity->setPriority($rowasarraycleaned[0]);
-	    $entity->setIdentification($rowasarraycleaned[1]);
+	    $entity->setIdentifier($rowasarraycleaned[1]);
 	    $entity->setTitleDe($rowasarraycleaned[2]);
 	    $entity->setTitleEn($rowasarraycleaned[3]);
 	    $entity->setDataUrl($rowasarraycleaned[4]);

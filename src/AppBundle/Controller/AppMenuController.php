@@ -29,7 +29,7 @@ class AppMenuController extends Controller {
         $query = $em->createQuery('
                 SELECT 
                 
-                a.identification , 
+                a.identifier , 
                 a.title_de , 
                 a.title_en , 
                 a.data_url , 

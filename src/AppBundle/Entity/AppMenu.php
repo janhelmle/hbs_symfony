@@ -37,7 +37,7 @@ class AppMenu {
     /**
      * @ORM\Column(type="string", length=100 , nullable=true)
      */
-    private $identification; // Info \/ Kontakt - in mct JSON // title
+    private $identifier; // Info \/ Kontakt - in mct JSON // title
 
     /**
      * @ORM\Column(type="string", length=100 , nullable=true)
@@ -75,12 +75,16 @@ class AppMenu {
     private $enabled;
 
     
+    
+
+
     /**
      * Get id
      *
      * @return integer
      */
-    public function getId() {
+    public function getId()
+    {
         return $this->id;
     }
 
@@ -91,9 +95,10 @@ class AppMenu {
      *
      * @return AppMenu
      */
-    public function setPriority($priority) {
+    public function setPriority($priority)
+    {
         $this->priority = $priority;
-
+    
         return $this;
     }
 
@@ -102,30 +107,33 @@ class AppMenu {
      *
      * @return integer
      */
-    public function getPriority() {
+    public function getPriority()
+    {
         return $this->priority;
     }
 
     /**
-     * Set identification
+     * Set identifier
      *
-     * @param string $identification
+     * @param string $identifier
      *
      * @return AppMenu
      */
-    public function setIdentification($identification) {
-        $this->identification = $identification;
-
+    public function setIdentifier($identifier)
+    {
+        $this->identifier = $identifier;
+    
         return $this;
     }
 
     /**
-     * Get identification
+     * Get identifier
      *
      * @return string
      */
-    public function getIdentification() {
-        return $this->identification;
+    public function getIdentifier()
+    {
+        return $this->identifier;
     }
 
     /**
@@ -135,9 +143,10 @@ class AppMenu {
      *
      * @return AppMenu
      */
-    public function setTitleDe($titleDe) {
+    public function setTitleDe($titleDe)
+    {
         $this->title_de = $titleDe;
-
+    
         return $this;
     }
 
@@ -146,7 +155,8 @@ class AppMenu {
      *
      * @return string
      */
-    public function getTitleDe() {
+    public function getTitleDe()
+    {
         return $this->title_de;
     }
 
@@ -157,9 +167,10 @@ class AppMenu {
      *
      * @return AppMenu
      */
-    public function setTitleEn($titleEn) {
+    public function setTitleEn($titleEn)
+    {
         $this->title_en = $titleEn;
-
+    
         return $this;
     }
 
@@ -168,7 +179,8 @@ class AppMenu {
      *
      * @return string
      */
-    public function getTitleEn() {
+    public function getTitleEn()
+    {
         return $this->title_en;
     }
 
@@ -179,9 +191,10 @@ class AppMenu {
      *
      * @return AppMenu
      */
-    public function setDataUrl($dataUrl) {
+    public function setDataUrl($dataUrl)
+    {
         $this->data_url = $dataUrl;
-
+    
         return $this;
     }
 
@@ -190,7 +203,8 @@ class AppMenu {
      *
      * @return string
      */
-    public function getDataUrl() {
+    public function getDataUrl()
+    {
         return $this->data_url;
     }
 
@@ -201,9 +215,10 @@ class AppMenu {
      *
      * @return AppMenu
      */
-    public function setDataType($dataType) {
+    public function setDataType($dataType)
+    {
         $this->data_type = $dataType;
-
+    
         return $this;
     }
 
@@ -212,7 +227,8 @@ class AppMenu {
      *
      * @return string
      */
-    public function getDataType() {
+    public function getDataType()
+    {
         return $this->data_type;
     }
 
@@ -223,9 +239,10 @@ class AppMenu {
      *
      * @return AppMenu
      */
-    public function setImageSource($imageSource) {
+    public function setImageSource($imageSource)
+    {
         $this->image_source = $imageSource;
-
+    
         return $this;
     }
 
@@ -234,7 +251,8 @@ class AppMenu {
      *
      * @return string
      */
-    public function getImageSource() {
+    public function getImageSource()
+    {
         return $this->image_source;
     }
 
@@ -245,9 +263,10 @@ class AppMenu {
      *
      * @return AppMenu
      */
-    public function setImageBackground($imageBackground) {
+    public function setImageBackground($imageBackground)
+    {
         $this->image_background = $imageBackground;
-
+    
         return $this;
     }
 
@@ -256,7 +275,8 @@ class AppMenu {
      *
      * @return string
      */
-    public function getImageBackground() {
+    public function getImageBackground()
+    {
         return $this->image_background;
     }
 
@@ -267,9 +287,10 @@ class AppMenu {
      *
      * @return AppMenu
      */
-    public function setEnabled($enabled) {
+    public function setEnabled($enabled)
+    {
         $this->enabled = $enabled;
-
+    
         return $this;
     }
 
@@ -278,8 +299,8 @@ class AppMenu {
      *
      * @return boolean
      */
-    public function getEnabled() {
+    public function getEnabled()
+    {
         return $this->enabled;
     }
-
 }
