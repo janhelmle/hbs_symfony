@@ -53,11 +53,13 @@ class AppMenuController extends Controller {
         // Symfony Components : The Serializer Component
         $jsonContent = $serializer->serialize($menu, 'json');
         // End Symfony Components
+	
+	$jsonContent = json_decode($jsonContent);
+	$jsonContent = json_encode($jsonContent , 320); // JSON_UNESCAPED_UNICODE + JSON_UNESCAPED_SLASHES
         
-        // $resp = new Response($jsonContent);
-        $resp = new Response(str_replace("\\", "", $jsonContent)); // Backslashes entfernen - Anregung von Jens 06.04.2016
+        $resp = new Response($jsonContent); 
         
-        $resp->headers->set('Content-Type', 'application/json');
+        $resp->headers->set('Content-Type', 'application/json ; charset=utf-8');
 
         return $resp;
     }
