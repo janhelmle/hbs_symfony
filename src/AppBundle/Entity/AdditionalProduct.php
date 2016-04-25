@@ -22,16 +22,15 @@ class AdditionalProduct extends Product {
      */
     private $positionInList;
 
-
     /**
-     * Get id
-     *
-     * @return integer
+     * @ORM\ManyToOne(targetEntity="ProductCategory", inversedBy="additionalProducts")
+     * @ORM\JoinColumn(name="additionalProduct_id", referencedColumnName="id")
      */
-    public function getId()
-    {
-        return $this->id;
-    }
+    private $productcategory;
+
+    
+
+    
 
     /**
      * Set positionInList
@@ -55,5 +54,29 @@ class AdditionalProduct extends Product {
     public function getPositionInList()
     {
         return $this->positionInList;
+    }
+
+    /**
+     * Set productcategory
+     *
+     * @param \AppBundle\Entity\ProductCategory $productcategory
+     *
+     * @return AdditionalProduct
+     */
+    public function setProductcategory(\AppBundle\Entity\ProductCategory $productcategory = null)
+    {
+        $this->productcategory = $productcategory;
+    
+        return $this;
+    }
+
+    /**
+     * Get productcategory
+     *
+     * @return \AppBundle\Entity\ProductCategory
+     */
+    public function getProductcategory()
+    {
+        return $this->productcategory;
     }
 }

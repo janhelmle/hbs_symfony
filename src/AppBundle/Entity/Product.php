@@ -8,7 +8,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 /**
  * @ORM\Entity
  * @ORM\Table(name="product")
- * @ORM\InheritanceType("SINGLE_TABLE")
+ * @ORM\InheritanceType("JOINED")
  * @ORM\DiscriminatorColumn(name="discriminator", type="string")
  * @ORM\DiscriminatorMap({"product" = "Product", "roomType" = "RoomType" , "additionalProduct" = "AdditionalProduct"})
  */
@@ -40,6 +40,11 @@ abstract class Product {
      * @ORM\Column(type="string" , length=100 , nullable=true)
      */
     private $pricingBasis;
+    
+    /**
+     * @ORM\Column(type="string" , length=100 , nullable=true)
+     */
+    private $pricingBasisDisplay;
 
     /**
      * @ORM\OneToMany(targetEntity="Price", mappedBy="product")
@@ -50,6 +55,8 @@ abstract class Product {
         $this->prices = new ArrayCollection();
     }
 
+
+    
 
     /**
      * Get id
@@ -155,6 +162,30 @@ abstract class Product {
     public function getPricingBasis()
     {
         return $this->pricingBasis;
+    }
+
+    /**
+     * Set pricingBasisDisplay
+     *
+     * @param string $pricingBasisDisplay
+     *
+     * @return Product
+     */
+    public function setPricingBasisDisplay($pricingBasisDisplay)
+    {
+        $this->pricingBasisDisplay = $pricingBasisDisplay;
+    
+        return $this;
+    }
+
+    /**
+     * Get pricingBasisDisplay
+     *
+     * @return string
+     */
+    public function getPricingBasisDisplay()
+    {
+        return $this->pricingBasisDisplay;
     }
 
     /**

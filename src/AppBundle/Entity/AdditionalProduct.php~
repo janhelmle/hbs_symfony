@@ -22,4 +22,13 @@ class AdditionalProduct extends Product {
      */
     private $positionInList;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="ProductCategory", inversedBy="additionalProducts")
+     * @ORM\JoinColumn(name="additionalProduct_id", referencedColumnName="id")
+     */
+    private $productcategory;
+
+    
+
+    
 }

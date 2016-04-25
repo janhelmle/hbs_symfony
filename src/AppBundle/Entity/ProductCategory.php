@@ -3,12 +3,13 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="category")
+ * @ORM\Table(name="productcategory")
  */
-class Category {
+class ProductCategory {
 
     /**
      * @ORM\Column(type="integer")
@@ -20,7 +21,12 @@ class Category {
     /**
      * @ORM\Column(type="string", length=100 , nullable=true)
      */
-    private $positionInSubMenu;
+    private $identifier;
+
+    /**
+     * @ORM\Column(type="string", length=100 , nullable=true)
+     */
+    private $display;
 
     /**
      * @ORM\Column(type="string", length=100 , nullable=true)
@@ -30,10 +36,10 @@ class Category {
     /**
      * @ORM\Column(type="string", length=100 , nullable=true)
      */
-    private $display;
+    private $positionInSubMenu;
 
     /**
-     * @ORM\OneToMany(targetEntity="AdditionalProduct", mappedBy="category")
+     * @ORM\OneToMany(targetEntity="AdditionalProduct", mappedBy="productcategory")
      */
     private $additionalProducts;
 
@@ -42,6 +48,7 @@ class Category {
         $this->additionalProducts = new ArrayCollection();
     }
 
+    
 
     /**
      * Get id
@@ -54,27 +61,51 @@ class Category {
     }
 
     /**
-     * Set positionInSubMenu
+     * Set identifier
      *
-     * @param string $positionInSubMenu
+     * @param string $identifier
      *
      * @return Category
      */
-    public function setPositionInSubMenu($positionInSubMenu)
+    public function setIdentifier($identifier)
     {
-        $this->positionInSubMenu = $positionInSubMenu;
+        $this->identifier = $identifier;
     
         return $this;
     }
 
     /**
-     * Get positionInSubMenu
+     * Get identifier
      *
      * @return string
      */
-    public function getPositionInSubMenu()
+    public function getIdentifier()
     {
-        return $this->positionInSubMenu;
+        return $this->identifier;
+    }
+
+    /**
+     * Set display
+     *
+     * @param string $display
+     *
+     * @return Category
+     */
+    public function setDisplay($display)
+    {
+        $this->display = $display;
+    
+        return $this;
+    }
+
+    /**
+     * Get display
+     *
+     * @return string
+     */
+    public function getDisplay()
+    {
+        return $this->display;
     }
 
     /**
@@ -102,27 +133,27 @@ class Category {
     }
 
     /**
-     * Set display
+     * Set positionInSubMenu
      *
-     * @param string $display
+     * @param string $positionInSubMenu
      *
      * @return Category
      */
-    public function setDisplay($display)
+    public function setPositionInSubMenu($positionInSubMenu)
     {
-        $this->display = $display;
+        $this->positionInSubMenu = $positionInSubMenu;
     
         return $this;
     }
 
     /**
-     * Get display
+     * Get positionInSubMenu
      *
      * @return string
      */
-    public function getDisplay()
+    public function getPositionInSubMenu()
     {
-        return $this->display;
+        return $this->positionInSubMenu;
     }
 
     /**
