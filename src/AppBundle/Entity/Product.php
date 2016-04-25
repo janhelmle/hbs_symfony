@@ -50,4 +50,144 @@ abstract class Product {
         $this->prices = new ArrayCollection();
     }
 
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set identifier
+     *
+     * @param string $identifier
+     *
+     * @return Product
+     */
+    public function setIdentifier($identifier)
+    {
+        $this->identifier = $identifier;
+    
+        return $this;
+    }
+
+    /**
+     * Get identifier
+     *
+     * @return string
+     */
+    public function getIdentifier()
+    {
+        return $this->identifier;
+    }
+
+    /**
+     * Set displayShort
+     *
+     * @param string $displayShort
+     *
+     * @return Product
+     */
+    public function setDisplayShort($displayShort)
+    {
+        $this->displayShort = $displayShort;
+    
+        return $this;
+    }
+
+    /**
+     * Get displayShort
+     *
+     * @return string
+     */
+    public function getDisplayShort()
+    {
+        return $this->displayShort;
+    }
+
+    /**
+     * Set displayLong
+     *
+     * @param string $displayLong
+     *
+     * @return Product
+     */
+    public function setDisplayLong($displayLong)
+    {
+        $this->displayLong = $displayLong;
+    
+        return $this;
+    }
+
+    /**
+     * Get displayLong
+     *
+     * @return string
+     */
+    public function getDisplayLong()
+    {
+        return $this->displayLong;
+    }
+
+    /**
+     * Set pricingBasis
+     *
+     * @param string $pricingBasis
+     *
+     * @return Product
+     */
+    public function setPricingBasis($pricingBasis)
+    {
+        $this->pricingBasis = $pricingBasis;
+    
+        return $this;
+    }
+
+    /**
+     * Get pricingBasis
+     *
+     * @return string
+     */
+    public function getPricingBasis()
+    {
+        return $this->pricingBasis;
+    }
+
+    /**
+     * Add price
+     *
+     * @param \AppBundle\Entity\Price $price
+     *
+     * @return Product
+     */
+    public function addPrice(\AppBundle\Entity\Price $price)
+    {
+        $this->prices[] = $price;
+    
+        return $this;
+    }
+
+    /**
+     * Remove price
+     *
+     * @param \AppBundle\Entity\Price $price
+     */
+    public function removePrice(\AppBundle\Entity\Price $price)
+    {
+        $this->prices->removeElement($price);
+    }
+
+    /**
+     * Get prices
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPrices()
+    {
+        return $this->prices;
+    }
 }

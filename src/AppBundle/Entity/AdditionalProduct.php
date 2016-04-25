@@ -22,4 +22,38 @@ class AdditionalProduct extends Product {
      */
     private $positionInList;
 
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set positionInList
+     *
+     * @param string $positionInList
+     *
+     * @return AdditionalProduct
+     */
+    public function setPositionInList($positionInList)
+    {
+        $this->positionInList = $positionInList;
+    
+        return $this;
+    }
+
+    /**
+     * Get positionInList
+     *
+     * @return string
+     */
+    public function getPositionInList()
+    {
+        return $this->positionInList;
+    }
 }

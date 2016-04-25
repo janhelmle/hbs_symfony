@@ -33,4 +33,86 @@ class Availability {
      */
     private $roomType;
 
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set date
+     *
+     * @param string $date
+     *
+     * @return Availability
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+    
+        return $this;
+    }
+
+    /**
+     * Get date
+     *
+     * @return string
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
+
+    /**
+     * Set quantity
+     *
+     * @param string $quantity
+     *
+     * @return Availability
+     */
+    public function setQuantity($quantity)
+    {
+        $this->quantity = $quantity;
+    
+        return $this;
+    }
+
+    /**
+     * Get quantity
+     *
+     * @return string
+     */
+    public function getQuantity()
+    {
+        return $this->quantity;
+    }
+
+    /**
+     * Set roomType
+     *
+     * @param \AppBundle\Entity\RoomType $roomType
+     *
+     * @return Availability
+     */
+    public function setRoomType(\AppBundle\Entity\RoomType $roomType = null)
+    {
+        $this->roomType = $roomType;
+    
+        return $this;
+    }
+
+    /**
+     * Get roomType
+     *
+     * @return \AppBundle\Entity\RoomType
+     */
+    public function getRoomType()
+    {
+        return $this->roomType;
+    }
 }

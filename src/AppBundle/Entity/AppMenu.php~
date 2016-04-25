@@ -37,7 +37,7 @@ class AppMenu {
     /**
      * @ORM\Column(type="string", length=100 , nullable=true)
      */
-    private $identification; // Info \/ Kontakt - in mct JSON // title
+    private $identifier; // Info \/ Kontakt - in mct JSON // title
 
     /**
      * @ORM\Column(type="string", length=100 , nullable=true)
@@ -75,4 +75,232 @@ class AppMenu {
     private $enabled;
 
     
+    
+
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set priority
+     *
+     * @param integer $priority
+     *
+     * @return AppMenu
+     */
+    public function setPriority($priority)
+    {
+        $this->priority = $priority;
+    
+        return $this;
+    }
+
+    /**
+     * Get priority
+     *
+     * @return integer
+     */
+    public function getPriority()
+    {
+        return $this->priority;
+    }
+
+    /**
+     * Set identifier
+     *
+     * @param string $identifier
+     *
+     * @return AppMenu
+     */
+    public function setIdentifier($identifier)
+    {
+        $this->identifier = $identifier;
+    
+        return $this;
+    }
+
+    /**
+     * Get identifier
+     *
+     * @return string
+     */
+    public function getIdentifier()
+    {
+        return $this->identifier;
+    }
+
+    /**
+     * Set titleDe
+     *
+     * @param string $titleDe
+     *
+     * @return AppMenu
+     */
+    public function setTitleDe($titleDe)
+    {
+        $this->title_de = $titleDe;
+    
+        return $this;
+    }
+
+    /**
+     * Get titleDe
+     *
+     * @return string
+     */
+    public function getTitleDe()
+    {
+        return $this->title_de;
+    }
+
+    /**
+     * Set titleEn
+     *
+     * @param string $titleEn
+     *
+     * @return AppMenu
+     */
+    public function setTitleEn($titleEn)
+    {
+        $this->title_en = $titleEn;
+    
+        return $this;
+    }
+
+    /**
+     * Get titleEn
+     *
+     * @return string
+     */
+    public function getTitleEn()
+    {
+        return $this->title_en;
+    }
+
+    /**
+     * Set dataUrl
+     *
+     * @param string $dataUrl
+     *
+     * @return AppMenu
+     */
+    public function setDataUrl($dataUrl)
+    {
+        $this->data_url = $dataUrl;
+    
+        return $this;
+    }
+
+    /**
+     * Get dataUrl
+     *
+     * @return string
+     */
+    public function getDataUrl()
+    {
+        return $this->data_url;
+    }
+
+    /**
+     * Set dataType
+     *
+     * @param string $dataType
+     *
+     * @return AppMenu
+     */
+    public function setDataType($dataType)
+    {
+        $this->data_type = $dataType;
+    
+        return $this;
+    }
+
+    /**
+     * Get dataType
+     *
+     * @return string
+     */
+    public function getDataType()
+    {
+        return $this->data_type;
+    }
+
+    /**
+     * Set imageSource
+     *
+     * @param string $imageSource
+     *
+     * @return AppMenu
+     */
+    public function setImageSource($imageSource)
+    {
+        $this->image_source = $imageSource;
+    
+        return $this;
+    }
+
+    /**
+     * Get imageSource
+     *
+     * @return string
+     */
+    public function getImageSource()
+    {
+        return $this->image_source;
+    }
+
+    /**
+     * Set imageBackground
+     *
+     * @param string $imageBackground
+     *
+     * @return AppMenu
+     */
+    public function setImageBackground($imageBackground)
+    {
+        $this->image_background = $imageBackground;
+    
+        return $this;
+    }
+
+    /**
+     * Get imageBackground
+     *
+     * @return string
+     */
+    public function getImageBackground()
+    {
+        return $this->image_background;
+    }
+
+    /**
+     * Set enabled
+     *
+     * @param boolean $enabled
+     *
+     * @return AppMenu
+     */
+    public function setEnabled($enabled)
+    {
+        $this->enabled = $enabled;
+    
+        return $this;
+    }
+
+    /**
+     * Get enabled
+     *
+     * @return boolean
+     */
+    public function getEnabled()
+    {
+        return $this->enabled;
+    }
 }
