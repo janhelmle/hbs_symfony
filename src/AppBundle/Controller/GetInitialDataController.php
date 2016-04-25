@@ -11,10 +11,10 @@ use AppBundle\Entity\RoomType;
 use AppBundle\Entity\AdditionalProduct;
 use AppBundle\Entity\ProductCategory;
 
-class LoadController extends Controller {
+class GetInitialDataController extends Controller {
 
     /**
-     * @Route("/load", name="load")
+     * @Route("/api/v0/getinitialdata", name="getinitialdata")
      */
     public function loadAction(Request $request) {
 
