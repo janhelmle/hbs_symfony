@@ -16,20 +16,20 @@ class RoomType extends Product {
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id; // integer
+    private $id;
 
     /**
-     * @ORM\Column(type="string", length=100 , nullable=true)
+     * @ORM\Column(type="smallint", nullable=true)
      */
     private $capacity;
 
     /**
-     * @ORM\Column(type="string", length=100 , nullable=true)
+     * @ORM\Column(type="smallint" , nullable=true)
      */
     private $quantityOfPersons;
 
     /**
-     * @ORM\Column(type="string", length=100 , nullable=true)
+     * @ORM\Column(type="smallint" , nullable=true)
      */
     private $positionInSubMenu;
 
@@ -57,7 +57,7 @@ class RoomType extends Product {
     /**
      * Set capacity
      *
-     * @param string $capacity
+     * @param integer $capacity
      *
      * @return RoomType
      */
@@ -71,7 +71,7 @@ class RoomType extends Product {
     /**
      * Get capacity
      *
-     * @return string
+     * @return integer
      */
     public function getCapacity()
     {
@@ -81,7 +81,7 @@ class RoomType extends Product {
     /**
      * Set quantityOfPersons
      *
-     * @param string $quantityOfPersons
+     * @param integer $quantityOfPersons
      *
      * @return RoomType
      */
@@ -95,7 +95,7 @@ class RoomType extends Product {
     /**
      * Get quantityOfPersons
      *
-     * @return string
+     * @return integer
      */
     public function getQuantityOfPersons()
     {
@@ -105,7 +105,7 @@ class RoomType extends Product {
     /**
      * Set positionInSubMenu
      *
-     * @param string $positionInSubMenu
+     * @param integer $positionInSubMenu
      *
      * @return RoomType
      */
@@ -119,7 +119,7 @@ class RoomType extends Product {
     /**
      * Get positionInSubMenu
      *
-     * @return string
+     * @return integer
      */
     public function getPositionInSubMenu()
     {

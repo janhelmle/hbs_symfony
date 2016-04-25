@@ -34,7 +34,7 @@ class ProductCategory {
     private $cardinality;
 
     /**
-     * @ORM\Column(type="string", length=100 , nullable=true)
+     * @ORM\Column(type="smallint" , nullable=true)
      */
     private $positionInSubMenu;
 
@@ -48,7 +48,6 @@ class ProductCategory {
         $this->additionalProducts = new ArrayCollection();
     }
 
-    
 
     /**
      * Get id
@@ -65,7 +64,7 @@ class ProductCategory {
      *
      * @param string $identifier
      *
-     * @return Category
+     * @return ProductCategory
      */
     public function setIdentifier($identifier)
     {
@@ -89,7 +88,7 @@ class ProductCategory {
      *
      * @param string $display
      *
-     * @return Category
+     * @return ProductCategory
      */
     public function setDisplay($display)
     {
@@ -113,7 +112,7 @@ class ProductCategory {
      *
      * @param string $cardinality
      *
-     * @return Category
+     * @return ProductCategory
      */
     public function setCardinality($cardinality)
     {
@@ -135,9 +134,9 @@ class ProductCategory {
     /**
      * Set positionInSubMenu
      *
-     * @param string $positionInSubMenu
+     * @param integer $positionInSubMenu
      *
-     * @return Category
+     * @return ProductCategory
      */
     public function setPositionInSubMenu($positionInSubMenu)
     {
@@ -149,7 +148,7 @@ class ProductCategory {
     /**
      * Get positionInSubMenu
      *
-     * @return string
+     * @return integer
      */
     public function getPositionInSubMenu()
     {
@@ -161,7 +160,7 @@ class ProductCategory {
      *
      * @param \AppBundle\Entity\AdditionalProduct $additionalProduct
      *
-     * @return Category
+     * @return ProductCategory
      */
     public function addAdditionalProduct(\AppBundle\Entity\AdditionalProduct $additionalProduct)
     {

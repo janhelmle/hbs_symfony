@@ -18,12 +18,12 @@ class Price {
     private $id; // integer
 
     /**
-     * @ORM\Column(type="string", length=100 , nullable=true)
+     * @ORM\Column(type="datetime" , nullable=true)
      */
     private $date;
 
     /**
-     * @ORM\Column(type="string", length=100 , nullable=true)
+     * @ORM\Column(type="decimal", scale=2 ,  nullable=true)
      */
     private $price;
 
@@ -47,7 +47,7 @@ class Price {
     /**
      * Set date
      *
-     * @param string $date
+     * @param \DateTime $date
      *
      * @return Price
      */
@@ -61,7 +61,7 @@ class Price {
     /**
      * Get date
      *
-     * @return string
+     * @return \DateTime
      */
     public function getDate()
     {

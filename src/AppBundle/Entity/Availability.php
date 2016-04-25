@@ -15,21 +15,21 @@ class Availability {
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id; // integer
+    private $id;
 
     /**
-     * @ORM\Column(type="string", length=100 , nullable=true)
+     * @ORM\Column(type="datetime" , nullable=true)
      */
     private $date;
 
     /**
-     * @ORM\Column(type="string", length=100 , nullable=true)
+     * @ORM\Column(type="smallint" , nullable=true)
      */
     private $quantity;
 
     /**
      * @ORM\ManyToOne(targetEntity="RoomType", inversedBy="availabilities")
-     * @ORM\JoinColumn(name="availability_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="roomtype_id", referencedColumnName="id")
      */
     private $roomType;
 
@@ -47,7 +47,7 @@ class Availability {
     /**
      * Set date
      *
-     * @param string $date
+     * @param \DateTime $date
      *
      * @return Availability
      */
@@ -61,7 +61,7 @@ class Availability {
     /**
      * Get date
      *
-     * @return string
+     * @return \DateTime
      */
     public function getDate()
     {
@@ -71,7 +71,7 @@ class Availability {
     /**
      * Set quantity
      *
-     * @param string $quantity
+     * @param integer $quantity
      *
      * @return Availability
      */
@@ -85,7 +85,7 @@ class Availability {
     /**
      * Get quantity
      *
-     * @return string
+     * @return integer
      */
     public function getQuantity()
     {

@@ -18,24 +18,31 @@ class AdditionalProduct extends Product {
     private $id; // integer
 
     /**
-     * @ORM\Column(type="string", length=100 , nullable=true)
+     * @ORM\Column(type="smallint" , nullable=true)
      */
     private $positionInList;
 
     /**
      * @ORM\ManyToOne(targetEntity="ProductCategory", inversedBy="additionalProducts")
-     * @ORM\JoinColumn(name="additionalProduct_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="productcategory_id", referencedColumnName="id")
      */
     private $productcategory;
 
-    
 
-    
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 
     /**
      * Set positionInList
      *
-     * @param string $positionInList
+     * @param integer $positionInList
      *
      * @return AdditionalProduct
      */
@@ -49,7 +56,7 @@ class AdditionalProduct extends Product {
     /**
      * Get positionInList
      *
-     * @return string
+     * @return integer
      */
     public function getPositionInList()
     {

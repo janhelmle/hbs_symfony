@@ -40,7 +40,7 @@ abstract class Product {
      * @ORM\Column(type="string" , length=100 , nullable=true)
      */
     private $pricingBasis;
-    
+
     /**
      * @ORM\Column(type="string" , length=100 , nullable=true)
      */
@@ -55,8 +55,6 @@ abstract class Product {
         $this->prices = new ArrayCollection();
     }
 
-
-    
 
     /**
      * Get id
