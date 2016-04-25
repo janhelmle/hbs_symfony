@@ -6,8 +6,10 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-
+use AppBundle\Entity\Product;
 use AppBundle\Entity\RoomType;
+use AppBundle\Entity\AdditionalProduct;
+use AppBundle\Entity\ProductCategory;
 
 class LoadController extends Controller {
 
@@ -16,23 +18,37 @@ class LoadController extends Controller {
      */
     public function loadAction(Request $request) {
 
-	$em = $this->getDoctrine()->getManager();
-        
-        $rt1 = new RoomType();
-        $rt1->setIdentifier("singleroom");
-        $rt1->setDisplayLong("Einzelzimmer");
-        $rt1->setDisplayShort("Einzel");
-        $rt1->setCapacity("5");
-        $rt1->setPositionInSubMenu("1");
-        $rt1->setPricingBasis("pernight");
-        $rt1->setPricingBasisDisplay("/Nacht");
-        $rt1->setQuantityOfPersons("1");
-        
-        
-        
-        // $em->persist($product);
+        $em = $this->getDoctrine()->getManager();
 
-	return new Response("<body></body>");
+        $query = $em->createQuery('
+                SELECT 
+                
+                p.identifier , 
+                p.displayShort , 
+                p.displayLong , 
+                p.pricingBasisDisplay , 
+                p.capacity , 
+                p.quantityOfPersons ,
+                p.positionInSubMenu 
+                 
+                FROM AppBundle:RoomType p
+                
+                ');
+
+        $products = $query->getResult();
+
+        // dump($products);
+
+        $products = array(
+            'roomtypes' => $products
+        );
+
+        $jsonout = json_encode($products, 320);
+
+        $resp = new Response($jsonout);
+        $resp->headers->set('Content-Type', 'application/json ; charset=utf-8');
+
+        return $resp;
     }
 
 }
