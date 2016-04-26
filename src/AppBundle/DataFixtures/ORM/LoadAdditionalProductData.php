@@ -56,7 +56,7 @@ class LoadAdditionalProductData extends AbstractFixture implements OrderedFixtur
         $ap5->setIdentifier("champagnebreakfast");
         $ap5->setDisplayLong("Sektfrühstück");
         $ap5->setPricingBasis("person,night");
-        $ap5->setPricingBasisDisplay("person,night");
+        $ap5->setPricingBasisDisplay("/Pers. u. Nacht");
         $ap5->setPositionInList(1);
         $ap5->setProductcategory($this->getReference('Specials'));
         $manager->persist($ap5);
