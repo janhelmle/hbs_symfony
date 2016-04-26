@@ -13,7 +13,7 @@ class LoadAvailabilityData extends AbstractFixture implements OrderedFixtureInte
 
         $av1 = new Availability();
         $av1->setDate(new \DateTime("2016-01-01"));
-        $av1->setQuantity(4);
+        $av1->setQuantity(5);
         $av1->setRoomType($this->getReference('singleroom'));
         $manager->persist($av1);
         $manager->flush();
@@ -29,7 +29,7 @@ class LoadAvailabilityData extends AbstractFixture implements OrderedFixtureInte
 
         $av3 = new Availability();
         $av3->setDate(new \DateTime("2016-01-01"));
-        $av3->setQuantity(4);
+        $av3->setQuantity(3);
         $av3->setRoomType($this->getReference('twinroom'));
         $manager->persist($av3);
         $manager->flush();
@@ -37,7 +37,7 @@ class LoadAvailabilityData extends AbstractFixture implements OrderedFixtureInte
 
         $av4 = new Availability();
         $av4->setDate(new \DateTime("2016-01-01"));
-        $av4->setQuantity(4);
+        $av4->setQuantity(2);
         $av4->setRoomType($this->getReference('tripleroom'));
         $manager->persist($av4);
         $manager->flush();
@@ -45,7 +45,7 @@ class LoadAvailabilityData extends AbstractFixture implements OrderedFixtureInte
 
         $av5 = new Availability();
         $av5->setDate(new \DateTime("2016-01-01"));
-        $av5->setQuantity(4);
+        $av5->setQuantity(1);
         $av5->setRoomType($this->getReference('familyroom'));
         $manager->persist($av5);
         $manager->flush();
@@ -53,7 +53,7 @@ class LoadAvailabilityData extends AbstractFixture implements OrderedFixtureInte
 
         $av6 = new Availability();
         $av6->setDate(new \DateTime("2016-01-01"));
-        $av6->setQuantity(4);
+        $av6->setQuantity(0);
         $av6->setRoomType($this->getReference('apartmentsingle'));
         $manager->persist($av6);
         $manager->flush();
@@ -61,7 +61,7 @@ class LoadAvailabilityData extends AbstractFixture implements OrderedFixtureInte
 
         $av7 = new Availability();
         $av7->setDate(new \DateTime("2016-01-01"));
-        $av7->setQuantity(4);
+        $av7->setQuantity(5);
         $av7->setRoomType($this->getReference('apartmentdouble'));
         $manager->persist($av7);
         $manager->flush();

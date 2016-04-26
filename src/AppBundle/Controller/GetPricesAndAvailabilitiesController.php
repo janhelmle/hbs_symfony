@@ -23,24 +23,47 @@ class GetPricesAndAvailabilitiesController extends Controller {
         $query = $em->createQuery('
                 SELECT 
                 
-                p.identifier
+                    prod.identifier ,
+                    pri.price 
                 
-                FROM AppBundle:Product p
+                FROM AppBundle:Price pri
+                
+                JOIN pri.product prod
+                
+                WHERE prod INSTANCE OF \AppBundle\Entity\AdditionalProduct
                 
                 ');
 
-        $products = $query->getResult();
+        $additionalproducts = $query->getResult();
+        
 
-        dump($products);
+        $query = $em->createQuery('
+            
+                SELECT 
+                
+                    rt.identifier ,
+                    av.quantity ,
+                    pr.price
+                
+                FROM AppBundle:RoomType rt
+                
+                JOIN rt.availabilities av
+                
+                JOIN rt.prices pr                
+                
+                
+                
+                
+                ');
+        
+        $roomtypes = $query->getResult();
+        
+        $out = array_merge($roomtypes , $additionalproducts);
+        
+        // dump($roomtypes);
 
-
-
-
-
-
-
-        $resp = new Response("<body></body>");
-        // $resp->headers->set('Content-Type', 'application/json ; charset=utf-8');
+        $resp = new Response(json_encode($out));
+        $resp->headers->set('Content-Type', 'application/json ; charset=utf-8');
 
         return $resp;
     }
