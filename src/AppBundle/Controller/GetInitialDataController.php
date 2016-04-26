@@ -16,7 +16,7 @@ class GetInitialDataController extends Controller {
     /**
      * @Route("/api/v0/getinitialdata", name="getinitialdata")
      */
-    public function loadAction(Request $request) {
+    public function getInitialDataAction(Request $request) {
 
         $em = $this->getDoctrine()->getManager();
 
@@ -28,7 +28,7 @@ class GetInitialDataController extends Controller {
                 p.displayLong , 
                 p.pricingBasisDisplay , 
                 p.capacity , 
-                p.quantityOfPersons ,
+                
                 p.positionInSubMenu 
                  
                 FROM AppBundle:RoomType p
