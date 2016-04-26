@@ -2,11 +2,13 @@
 
 namespace AppBundle\DataFixtures\ORM;
 
-use Doctrine\Common\DataFixtures\FixtureInterface;
+use Doctrine\Common\DataFixtures\AbstractFixture;
+use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
+
 use AppBundle\Entity\RoomType;
 
-class LoadRoomTypeData implements FixtureInterface {
+class LoadRoomTypeData extends AbstractFixture implements OrderedFixtureInterface {
 
     public function load(ObjectManager $manager) {
 
@@ -19,6 +21,7 @@ class LoadRoomTypeData implements FixtureInterface {
         $rt1->setCapacity(5);
         $rt1->setQuantityOfPersons(1);
         $rt1->setPositionInSubMenu(1);
+        $this->addReference('singleroom', $rt1);
         $manager->persist($rt1);
         $manager->flush();
         unset($rt1);
@@ -32,6 +35,7 @@ class LoadRoomTypeData implements FixtureInterface {
         $rt2->setCapacity(5);
         $rt2->setQuantityOfPersons(2);
         $rt2->setPositionInSubMenu(2);
+        $this->addReference('doubleroom', $rt2);
         $manager->persist($rt2);
         $manager->flush();
         unset($rt2);
@@ -45,6 +49,7 @@ class LoadRoomTypeData implements FixtureInterface {
         $rt3->setCapacity(5);
         $rt3->setQuantityOfPersons(2);
         $rt3->setPositionInSubMenu(3);
+        $this->addReference('twinroom', $rt3);
         $manager->persist($rt3);
         $manager->flush();
         unset($rt3);
@@ -58,6 +63,7 @@ class LoadRoomTypeData implements FixtureInterface {
         $rt4->setCapacity(5);
         $rt4->setQuantityOfPersons(3);
         $rt4->setPositionInSubMenu(4);
+        $this->addReference('tripleroom', $rt4);
         $manager->persist($rt4);
         $manager->flush();
         unset($rt4);
@@ -71,6 +77,7 @@ class LoadRoomTypeData implements FixtureInterface {
         $rt5->setCapacity(5);
         $rt5->setQuantityOfPersons(4);
         $rt5->setPositionInSubMenu(5);
+        $this->addReference('familyroom', $rt5);
         $manager->persist($rt5);
         $manager->flush();
         unset($rt5);
@@ -84,6 +91,7 @@ class LoadRoomTypeData implements FixtureInterface {
         $rt6->setCapacity(5);
         $rt6->setQuantityOfPersons(1);
         $rt6->setPositionInSubMenu(6);
+        $this->addReference('apartmentsingle', $rt6);
         $manager->persist($rt6);
         $manager->flush();
         unset($rt6);
@@ -97,9 +105,16 @@ class LoadRoomTypeData implements FixtureInterface {
         $rt7->setCapacity(5);
         $rt7->setQuantityOfPersons(2);
         $rt7->setPositionInSubMenu(7);
+        $this->addReference('apartmentdouble', $rt7);
         $manager->persist($rt7);
         $manager->flush();
         unset($rt7);
+    }
+
+    public function getOrder() {
+        // the order in which fixtures will be loaded
+        // the lower the number, the sooner that this fixture is loaded
+        return 5;
     }
 
 }

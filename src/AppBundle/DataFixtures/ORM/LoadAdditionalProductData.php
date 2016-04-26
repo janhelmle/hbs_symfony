@@ -18,6 +18,7 @@ class LoadAdditionalProductData extends AbstractFixture implements OrderedFixtur
         $ap1->setPricingBasis("person,night");
         $ap1->setPricingBasisDisplay("/Pers. u. Nacht");
         $ap1->setPositionInList(1);
+        $this->addReference('halfpension', $ap1);
         $ap1->setProductcategory($this->getReference('Verpflegung'));
         $manager->persist($ap1);
         $manager->flush();
@@ -28,6 +29,7 @@ class LoadAdditionalProductData extends AbstractFixture implements OrderedFixtur
         $ap2->setPricingBasis("person,night");
         $ap2->setPricingBasisDisplay("/Pers. u. Nacht");
         $ap2->setPositionInList(2);
+        $this->addReference('fullpension', $ap2);
         $ap2->setProductcategory($this->getReference('Verpflegung'));
         $manager->persist($ap2);
         $manager->flush();
@@ -38,6 +40,7 @@ class LoadAdditionalProductData extends AbstractFixture implements OrderedFixtur
         $ap3->setPricingBasis("person,night");
         $ap3->setPricingBasisDisplay("/Pers. u. Nacht");
         $ap3->setPositionInList(3);
+        $this->addReference('breakfast', $ap3);
         $ap3->setProductcategory($this->getReference('Verpflegung'));
         $manager->persist($ap3);
         $manager->flush();
@@ -48,6 +51,7 @@ class LoadAdditionalProductData extends AbstractFixture implements OrderedFixtur
         $ap4->setPricingBasis("");
         $ap4->setPricingBasisDisplay("");
         $ap4->setPositionInList(4);
+        $this->addReference('noboarding', $ap4);
         $ap4->setProductcategory($this->getReference('Verpflegung'));
         $manager->persist($ap4);
         $manager->flush();
@@ -58,6 +62,7 @@ class LoadAdditionalProductData extends AbstractFixture implements OrderedFixtur
         $ap5->setPricingBasis("person,night");
         $ap5->setPricingBasisDisplay("/Pers. u. Nacht");
         $ap5->setPositionInList(1);
+        $this->addReference('champagnebreakfast', $ap5);
         $ap5->setProductcategory($this->getReference('Specials'));
         $manager->persist($ap5);
         $manager->flush();
@@ -68,6 +73,7 @@ class LoadAdditionalProductData extends AbstractFixture implements OrderedFixtur
         $ap6->setPricingBasis("");
         $ap6->setPricingBasisDisplay("");
         $ap6->setPositionInList(2);
+        $this->addReference('rosesinrooms', $ap6);
         $ap6->setProductcategory($this->getReference('Specials'));
         $manager->persist($ap6);
         $manager->flush();
@@ -78,6 +84,7 @@ class LoadAdditionalProductData extends AbstractFixture implements OrderedFixtur
         $ap7->setPricingBasis("person");
         $ap7->setPricingBasisDisplay("/Person");
         $ap7->setPositionInList(3);
+        $this->addReference('raftingtour', $ap7);
         $ap7->setProductcategory($this->getReference('Specials'));
         $manager->persist($ap7);
         $manager->flush();
