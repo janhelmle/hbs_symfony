@@ -45,7 +45,7 @@ class LoadAdditionalProductData extends AbstractFixture implements OrderedFixtur
         $ap4 = new AdditionalProduct();
         $ap4->setIdentifier("noboarding");
         $ap4->setDisplayLong("Ohne Verpflegung");
-        $ap4->setPricingBasis("person,night");
+        $ap4->setPricingBasis("");
         $ap4->setPricingBasisDisplay("");
         $ap4->setPositionInList(4);
         $ap4->setProductcategory($this->getReference('Verpflegung'));
@@ -86,7 +86,7 @@ class LoadAdditionalProductData extends AbstractFixture implements OrderedFixtur
     public function getOrder() {
         // the order in which fixtures will be loaded
         // the lower the number, the sooner that this fixture is loaded
-        return 2;
+        return 3;
     }
 
 }
