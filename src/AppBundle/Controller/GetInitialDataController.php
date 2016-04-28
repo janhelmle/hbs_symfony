@@ -18,77 +18,75 @@ class GetInitialDataController extends Controller {
      */
     public function getInitialDataAction(Request $request) {
 
-        $em = $this->getDoctrine()->getManager();
+	$em = $this->getDoctrine()->getManager();
 
-        $query = $em->createQuery('
+	$query = $em->createQuery('
                 SELECT 
                 
                 p.identifier , 
                 p.displayShort , 
                 p.displayLong , 
                 p.pricingBasisDisplay , 
-                p.capacity , 
-                
-                p.positionInSubMenu 
+                p.capacity 
                  
                 FROM AppBundle:RoomType p
+		
+		ORDER BY p.positionInSubMenu ASC
                 
                 ');
 
-        $roomtypes = $query->getResult();
-        
-        $query = $em->createQuery("
+	$roomtypes = $query->getResult();
+
+	$query = $em->createQuery("
                 SELECT 
                 
                 a.identifier , 
                 a.displayShort , 
                 a.displayLong , 
-                a.pricingBasisDisplay , 
-                a.positionInList
+                a.pricingBasisDisplay  
                 
-                
-                 
                 FROM AppBundle:AdditionalProduct a
                 JOIN a.productcategory p
                 WHERE p.identifier = 'boarding'
+		
+		ORDER BY a.positionInList ASC
                 
                 ");
 
-        $boarding = $query->getResult();
-        
-        $query = $em->createQuery("
+	$boarding = $query->getResult();
+
+	$query = $em->createQuery("
                 SELECT 
                 
                 a.identifier , 
                 a.displayShort , 
                 a.displayLong , 
-                a.pricingBasisDisplay , 
-                a.positionInList
+                a.pricingBasisDisplay
                 
-                
-                 
                 FROM AppBundle:AdditionalProduct a
                 JOIN a.productcategory p
                 WHERE p.identifier = 'specials'
+		
+		ORDER BY a.positionInList ASC
                 
                 ");
 
-        $specials = $query->getResult();
-        
-        
+	$specials = $query->getResult();
 
-        $products = array(
-            'roomtypes' => $roomtypes ,
-            'boarding' => $boarding ,
-            'specials' => $specials
-        );
 
-        $productsJSON = json_encode($products, 320);
 
-        $resp = new Response($productsJSON);
-        $resp->headers->set('Content-Type', 'application/json ; charset=utf-8');
+	$products = array(
+	    'roomtypes' => $roomtypes,
+	    'boarding' => $boarding,
+	    'specials' => $specials
+	);
 
-        return $resp;
+	$productsJSON = json_encode($products, 320);
+
+	$resp = new Response($productsJSON);
+	$resp->headers->set('Content-Type', 'application/json ; charset=utf-8');
+
+	return $resp;
     }
 
 }

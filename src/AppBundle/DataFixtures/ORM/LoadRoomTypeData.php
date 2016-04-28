@@ -32,7 +32,7 @@ class LoadRoomTypeData extends AbstractFixture implements OrderedFixtureInterfac
         $rt2->setDisplayLong("Doppelzimmer");
         $rt2->setPricingBasis("night");
         $rt2->setPricingBasisDisplay("/Nacht");
-        $rt2->setCapacity(5);
+        $rt2->setCapacity(6);
         $rt2->setQuantityOfPersons(2);
         $rt2->setPositionInSubMenu(2);
         $this->addReference('doubleroom', $rt2);
@@ -46,7 +46,7 @@ class LoadRoomTypeData extends AbstractFixture implements OrderedFixtureInterfac
         $rt3->setDisplayLong("Zweibettzimmer");
         $rt3->setPricingBasis("night");
         $rt3->setPricingBasisDisplay("/Nacht");
-        $rt3->setCapacity(5);
+        $rt3->setCapacity(7);
         $rt3->setQuantityOfPersons(2);
         $rt3->setPositionInSubMenu(3);
         $this->addReference('twinroom', $rt3);
@@ -60,7 +60,7 @@ class LoadRoomTypeData extends AbstractFixture implements OrderedFixtureInterfac
         $rt4->setDisplayLong("Dreibettzimmer");
         $rt4->setPricingBasis("night");
         $rt4->setPricingBasisDisplay("/Nacht");
-        $rt4->setCapacity(5);
+        $rt4->setCapacity(8);
         $rt4->setQuantityOfPersons(3);
         $rt4->setPositionInSubMenu(4);
         $this->addReference('tripleroom', $rt4);
@@ -74,7 +74,7 @@ class LoadRoomTypeData extends AbstractFixture implements OrderedFixtureInterfac
         $rt5->setDisplayLong("Familien-/Vierbettzimmer");
         $rt5->setPricingBasis("night");
         $rt5->setPricingBasisDisplay("/Nacht");
-        $rt5->setCapacity(5);
+        $rt5->setCapacity(4);
         $rt5->setQuantityOfPersons(4);
         $rt5->setPositionInSubMenu(5);
         $this->addReference('familyroom', $rt5);
@@ -88,7 +88,7 @@ class LoadRoomTypeData extends AbstractFixture implements OrderedFixtureInterfac
         $rt6->setDisplayLong("Apartment als Einzelzimmer");
         $rt6->setPricingBasis("night");
         $rt6->setPricingBasisDisplay("/Nacht");
-        $rt6->setCapacity(5);
+        $rt6->setCapacity(3);
         $rt6->setQuantityOfPersons(1);
         $rt6->setPositionInSubMenu(6);
         $this->addReference('apartmentsingle', $rt6);
@@ -102,7 +102,7 @@ class LoadRoomTypeData extends AbstractFixture implements OrderedFixtureInterfac
         $rt7->setDisplayLong("Apartment als Doppelzimmer");
         $rt7->setPricingBasis("night");
         $rt7->setPricingBasisDisplay("/Nacht");
-        $rt7->setCapacity(5);
+        $rt7->setCapacity(2);
         $rt7->setQuantityOfPersons(2);
         $rt7->setPositionInSubMenu(7);
         $this->addReference('apartmentdouble', $rt7);
