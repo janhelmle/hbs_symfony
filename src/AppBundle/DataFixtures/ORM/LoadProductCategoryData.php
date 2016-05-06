@@ -13,7 +13,7 @@ class LoadProductCategoryData extends AbstractFixture implements OrderedFixtureI
     public function load(ObjectManager $manager) {
 
         $pg1 = new ProductCategory();
-        $pg1->setIdentifier("boarding");
+        $pg1->setIdentifier("boardings");
         $pg1->setDisplay("Verpflegung");
         $pg1->setPositionInSubMenu(1);
         $pg1->setCardinality("1");

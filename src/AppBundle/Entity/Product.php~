@@ -26,15 +26,12 @@ abstract class Product {
      */
     private $identifier;
 
-    /**
-     * @ORM\Column(type="string" , length=100 , nullable=true)
-     */
-    private $displayShort;
+    
 
     /**
      * @ORM\Column(type="string" , length=100 , nullable=true)
      */
-    private $displayLong;
+    private $textList; // fuer list
 
     /**
      * @ORM\Column(type="string" , length=100 , nullable=true)
@@ -44,7 +41,7 @@ abstract class Product {
     /**
      * @ORM\Column(type="string" , length=100 , nullable=true)
      */
-    private $pricingBasisDisplay;
+    private $pricingBasisText;
 
     /**
      * @ORM\OneToMany(targetEntity="Price", mappedBy="product")
@@ -55,4 +52,146 @@ abstract class Product {
         $this->prices = new ArrayCollection();
     }
 
+
+    
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set identifier
+     *
+     * @param string $identifier
+     *
+     * @return Product
+     */
+    public function setIdentifier($identifier)
+    {
+        $this->identifier = $identifier;
+    
+        return $this;
+    }
+
+    /**
+     * Get identifier
+     *
+     * @return string
+     */
+    public function getIdentifier()
+    {
+        return $this->identifier;
+    }
+
+    /**
+     * Set textList
+     *
+     * @param string $textList
+     *
+     * @return Product
+     */
+    public function setTextList($textList)
+    {
+        $this->textList = $textList;
+    
+        return $this;
+    }
+
+    /**
+     * Get textList
+     *
+     * @return string
+     */
+    public function getTextList()
+    {
+        return $this->textList;
+    }
+
+    /**
+     * Set pricingBasis
+     *
+     * @param string $pricingBasis
+     *
+     * @return Product
+     */
+    public function setPricingBasis($pricingBasis)
+    {
+        $this->pricingBasis = $pricingBasis;
+    
+        return $this;
+    }
+
+    /**
+     * Get pricingBasis
+     *
+     * @return string
+     */
+    public function getPricingBasis()
+    {
+        return $this->pricingBasis;
+    }
+
+    /**
+     * Set pricingBasisText
+     *
+     * @param string $pricingBasisText
+     *
+     * @return Product
+     */
+    public function setPricingBasisText($pricingBasisText)
+    {
+        $this->pricingBasisText = $pricingBasisText;
+    
+        return $this;
+    }
+
+    /**
+     * Get pricingBasisText
+     *
+     * @return string
+     */
+    public function getPricingBasisText()
+    {
+        return $this->pricingBasisText;
+    }
+
+    /**
+     * Add price
+     *
+     * @param \AppBundle\Entity\Price $price
+     *
+     * @return Product
+     */
+    public function addPrice(\AppBundle\Entity\Price $price)
+    {
+        $this->prices[] = $price;
+    
+        return $this;
+    }
+
+    /**
+     * Remove price
+     *
+     * @param \AppBundle\Entity\Price $price
+     */
+    public function removePrice(\AppBundle\Entity\Price $price)
+    {
+        $this->prices->removeElement($price);
+    }
+
+    /**
+     * Get prices
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPrices()
+    {
+        return $this->prices;
+    }
 }

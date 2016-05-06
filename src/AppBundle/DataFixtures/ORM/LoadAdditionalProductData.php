@@ -14,9 +14,9 @@ class LoadAdditionalProductData extends AbstractFixture implements OrderedFixtur
         
         $ap1 = new AdditionalProduct();
         $ap1->setIdentifier("halfpension");
-        $ap1->setDisplayLong("Halbpension (mit Frühstück)");
+        $ap1->setTextList("Halbpension (mit Frühstück)");
         $ap1->setPricingBasis("person,night");
-        $ap1->setPricingBasisDisplay("/Pers. u. Nacht");
+        $ap1->setPricingBasisText("/Pers. u. Nacht");
         $ap1->setPositionInList(1);
         $this->addReference('halfpension', $ap1);
         $ap1->setProductcategory($this->getReference('Verpflegung'));
@@ -25,9 +25,9 @@ class LoadAdditionalProductData extends AbstractFixture implements OrderedFixtur
 
         $ap2 = new AdditionalProduct();
         $ap2->setIdentifier("fullpension");
-        $ap2->setDisplayLong("Vollpension (3 Mahlzeiten)");
+        $ap2->setTextList("Vollpension (3 Mahlzeiten)");
         $ap2->setPricingBasis("person,night");
-        $ap2->setPricingBasisDisplay("/Pers. u. Nacht");
+        $ap2->setPricingBasisText("/Pers. u. Nacht");
         $ap2->setPositionInList(2);
         $this->addReference('fullpension', $ap2);
         $ap2->setProductcategory($this->getReference('Verpflegung'));
@@ -36,9 +36,9 @@ class LoadAdditionalProductData extends AbstractFixture implements OrderedFixtur
 
         $ap3 = new AdditionalProduct();
         $ap3->setIdentifier("breakfast");
-        $ap3->setDisplayLong("Nur Frühstück");
+        $ap3->setTextList("Nur Frühstück");
         $ap3->setPricingBasis("person,night");
-        $ap3->setPricingBasisDisplay("/Pers. u. Nacht");
+        $ap3->setPricingBasisText("/Pers. u. Nacht");
         $ap3->setPositionInList(3);
         $this->addReference('breakfast', $ap3);
         $ap3->setProductcategory($this->getReference('Verpflegung'));
@@ -47,9 +47,9 @@ class LoadAdditionalProductData extends AbstractFixture implements OrderedFixtur
 
         $ap4 = new AdditionalProduct();
         $ap4->setIdentifier("noboarding");
-        $ap4->setDisplayLong("Ohne Verpflegung");
+        $ap4->setTextList("Ohne Verpflegung");
         $ap4->setPricingBasis("");
-        $ap4->setPricingBasisDisplay("");
+        $ap4->setPricingBasisText("");
         $ap4->setPositionInList(4);
         $this->addReference('noboarding', $ap4);
         $ap4->setProductcategory($this->getReference('Verpflegung'));
@@ -58,9 +58,9 @@ class LoadAdditionalProductData extends AbstractFixture implements OrderedFixtur
 
         $ap5 = new AdditionalProduct();
         $ap5->setIdentifier("champagnebreakfast");
-        $ap5->setDisplayLong("Sektfrühstück");
+        $ap5->setTextList("Sektfrühstück");
         $ap5->setPricingBasis("person,night");
-        $ap5->setPricingBasisDisplay("/Pers. u. Nacht");
+        $ap5->setPricingBasisText("/Pers. u. Nacht");
         $ap5->setPositionInList(1);
         $this->addReference('champagnebreakfast', $ap5);
         $ap5->setProductcategory($this->getReference('Specials'));
@@ -69,9 +69,9 @@ class LoadAdditionalProductData extends AbstractFixture implements OrderedFixtur
 
         $ap6 = new AdditionalProduct();
         $ap6->setIdentifier("rosesinrooms");
-        $ap6->setDisplayLong("Rosen auf das Zimmer");
+        $ap6->setTextList("Rosen auf das Zimmer");
         $ap6->setPricingBasis("");
-        $ap6->setPricingBasisDisplay("");
+        $ap6->setPricingBasisText("");
         $ap6->setPositionInList(2);
         $this->addReference('rosesinrooms', $ap6);
         $ap6->setProductcategory($this->getReference('Specials'));
@@ -80,9 +80,9 @@ class LoadAdditionalProductData extends AbstractFixture implements OrderedFixtur
 
         $ap7 = new AdditionalProduct();
         $ap7->setIdentifier("raftingtour");
-        $ap7->setDisplayLong("Rafting-Tour");
+        $ap7->setTextList("Rafting-Tour");
         $ap7->setPricingBasis("person");
-        $ap7->setPricingBasisDisplay("/Person");
+        $ap7->setPricingBasisText("/Person");
         $ap7->setPositionInList(3);
         $this->addReference('raftingtour', $ap7);
         $ap7->setProductcategory($this->getReference('Specials'));

@@ -26,15 +26,12 @@ abstract class Product {
      */
     private $identifier;
 
-    /**
-     * @ORM\Column(type="string" , length=100 , nullable=true)
-     */
-    private $displayShort;
+    
 
     /**
      * @ORM\Column(type="string" , length=100 , nullable=true)
      */
-    private $displayLong;
+    private $textList; // fuer list
 
     /**
      * @ORM\Column(type="string" , length=100 , nullable=true)
@@ -44,7 +41,7 @@ abstract class Product {
     /**
      * @ORM\Column(type="string" , length=100 , nullable=true)
      */
-    private $pricingBasisDisplay;
+    private $pricingBasisText;
 
     /**
      * @ORM\OneToMany(targetEntity="Price", mappedBy="product")
@@ -55,6 +52,8 @@ abstract class Product {
         $this->prices = new ArrayCollection();
     }
 
+
+    
 
     /**
      * Get id
@@ -91,51 +90,27 @@ abstract class Product {
     }
 
     /**
-     * Set displayShort
+     * Set textList
      *
-     * @param string $displayShort
+     * @param string $textList
      *
      * @return Product
      */
-    public function setDisplayShort($displayShort)
+    public function setTextList($textList)
     {
-        $this->displayShort = $displayShort;
+        $this->textList = $textList;
     
         return $this;
     }
 
     /**
-     * Get displayShort
+     * Get textList
      *
      * @return string
      */
-    public function getDisplayShort()
+    public function getTextList()
     {
-        return $this->displayShort;
-    }
-
-    /**
-     * Set displayLong
-     *
-     * @param string $displayLong
-     *
-     * @return Product
-     */
-    public function setDisplayLong($displayLong)
-    {
-        $this->displayLong = $displayLong;
-    
-        return $this;
-    }
-
-    /**
-     * Get displayLong
-     *
-     * @return string
-     */
-    public function getDisplayLong()
-    {
-        return $this->displayLong;
+        return $this->textList;
     }
 
     /**
@@ -163,27 +138,27 @@ abstract class Product {
     }
 
     /**
-     * Set pricingBasisDisplay
+     * Set pricingBasisText
      *
-     * @param string $pricingBasisDisplay
+     * @param string $pricingBasisText
      *
      * @return Product
      */
-    public function setPricingBasisDisplay($pricingBasisDisplay)
+    public function setPricingBasisText($pricingBasisText)
     {
-        $this->pricingBasisDisplay = $pricingBasisDisplay;
+        $this->pricingBasisText = $pricingBasisText;
     
         return $this;
     }
 
     /**
-     * Get pricingBasisDisplay
+     * Get pricingBasisText
      *
      * @return string
      */
-    public function getPricingBasisDisplay()
+    public function getPricingBasisText()
     {
-        return $this->pricingBasisDisplay;
+        return $this->pricingBasisText;
     }
 
     /**

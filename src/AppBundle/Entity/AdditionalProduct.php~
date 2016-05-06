@@ -28,4 +28,62 @@ class AdditionalProduct extends Product {
      */
     private $productcategory;
 
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set positionInList
+     *
+     * @param integer $positionInList
+     *
+     * @return AdditionalProduct
+     */
+    public function setPositionInList($positionInList)
+    {
+        $this->positionInList = $positionInList;
+    
+        return $this;
+    }
+
+    /**
+     * Get positionInList
+     *
+     * @return integer
+     */
+    public function getPositionInList()
+    {
+        return $this->positionInList;
+    }
+
+    /**
+     * Set productcategory
+     *
+     * @param \AppBundle\Entity\ProductCategory $productcategory
+     *
+     * @return AdditionalProduct
+     */
+    public function setProductcategory(\AppBundle\Entity\ProductCategory $productcategory = null)
+    {
+        $this->productcategory = $productcategory;
+    
+        return $this;
+    }
+
+    /**
+     * Get productcategory
+     *
+     * @return \AppBundle\Entity\ProductCategory
+     */
+    public function getProductcategory()
+    {
+        return $this->productcategory;
+    }
 }

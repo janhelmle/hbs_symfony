@@ -38,10 +38,17 @@ class RoomType extends Product {
      */
     private $availabilities;
 
+    /**
+     * @ORM\Column(type="string" , length=100 , nullable=true)
+     */
+    private $textSubmenu; // fuer submenu
+
     public function __construct() {
         parent::__construct();
         $this->availabilities = new ArrayCollection();
     }
+
+    
 
 
     /**
@@ -124,6 +131,30 @@ class RoomType extends Product {
     public function getPositionInSubMenu()
     {
         return $this->positionInSubMenu;
+    }
+
+    /**
+     * Set textSubmenu
+     *
+     * @param string $textSubmenu
+     *
+     * @return RoomType
+     */
+    public function setTextSubmenu($textSubmenu)
+    {
+        $this->textSubmenu = $textSubmenu;
+    
+        return $this;
+    }
+
+    /**
+     * Get textSubmenu
+     *
+     * @return string
+     */
+    public function getTextSubmenu()
+    {
+        return $this->textSubmenu;
     }
 
     /**

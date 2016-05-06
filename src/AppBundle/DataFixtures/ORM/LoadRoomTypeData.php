@@ -14,10 +14,10 @@ class LoadRoomTypeData extends AbstractFixture implements OrderedFixtureInterfac
 
         $rt1 = new RoomType();
         $rt1->setIdentifier("singleroom");
-        $rt1->setDisplayShort("Einzel");
-        $rt1->setDisplayLong("Einzelzimmer");
+        $rt1->setTextSubmenu("Einzel");
+        $rt1->setTextList("Einzelzimmer");
         $rt1->setPricingBasis("night");
-        $rt1->setPricingBasisDisplay("/Nacht");
+        $rt1->setPricingBasisText("/Nacht");
         $rt1->setCapacity(5);
         $rt1->setQuantityOfPersons(1);
         $rt1->setPositionInSubMenu(1);
@@ -28,10 +28,10 @@ class LoadRoomTypeData extends AbstractFixture implements OrderedFixtureInterfac
 
         $rt2 = new RoomType();
         $rt2->setIdentifier("doubleroom");
-        $rt2->setDisplayShort("Doppel");
-        $rt2->setDisplayLong("Doppelzimmer");
+        $rt2->setTextSubmenu("Doppel");
+        $rt2->setTextList("Doppelzimmer");
         $rt2->setPricingBasis("night");
-        $rt2->setPricingBasisDisplay("/Nacht");
+        $rt2->setPricingBasisText("/Nacht");
         $rt2->setCapacity(6);
         $rt2->setQuantityOfPersons(2);
         $rt2->setPositionInSubMenu(2);
@@ -42,10 +42,10 @@ class LoadRoomTypeData extends AbstractFixture implements OrderedFixtureInterfac
 
         $rt3 = new RoomType();
         $rt3->setIdentifier("twinroom");
-        $rt3->setDisplayShort("Zweibett");
-        $rt3->setDisplayLong("Zweibettzimmer");
+        $rt3->setTextSubmenu("Zweibett");
+        $rt3->setTextList("Zweibettzimmer");
         $rt3->setPricingBasis("night");
-        $rt3->setPricingBasisDisplay("/Nacht");
+        $rt3->setPricingBasisText("/Nacht");
         $rt3->setCapacity(7);
         $rt3->setQuantityOfPersons(2);
         $rt3->setPositionInSubMenu(3);
@@ -56,10 +56,10 @@ class LoadRoomTypeData extends AbstractFixture implements OrderedFixtureInterfac
 
         $rt4 = new RoomType();
         $rt4->setIdentifier("tripleroom");
-        $rt4->setDisplayShort("Dreibett");
-        $rt4->setDisplayLong("Dreibettzimmer");
+        $rt4->setTextSubmenu("Dreibett");
+        $rt4->setTextList("Dreibettzimmer");
         $rt4->setPricingBasis("night");
-        $rt4->setPricingBasisDisplay("/Nacht");
+        $rt4->setPricingBasisText("/Nacht");
         $rt4->setCapacity(8);
         $rt4->setQuantityOfPersons(3);
         $rt4->setPositionInSubMenu(4);
@@ -70,10 +70,10 @@ class LoadRoomTypeData extends AbstractFixture implements OrderedFixtureInterfac
 
         $rt5 = new RoomType();
         $rt5->setIdentifier("familyroom");
-        $rt5->setDisplayShort("Familie");
-        $rt5->setDisplayLong("Familien-/Vierbettzimmer");
+        $rt5->setTextSubmenu("Familie");
+        $rt5->setTextList("Familien-/Vierbettzimmer");
         $rt5->setPricingBasis("night");
-        $rt5->setPricingBasisDisplay("/Nacht");
+        $rt5->setPricingBasisText("/Nacht");
         $rt5->setCapacity(4);
         $rt5->setQuantityOfPersons(4);
         $rt5->setPositionInSubMenu(5);
@@ -84,10 +84,10 @@ class LoadRoomTypeData extends AbstractFixture implements OrderedFixtureInterfac
 
         $rt6 = new RoomType();
         $rt6->setIdentifier("apartmentsingle");
-        $rt6->setDisplayShort("Apartm. EZ");
-        $rt6->setDisplayLong("Apartment als Einzelzimmer");
+        $rt6->setTextSubmenu("Apartm. EZ");
+        $rt6->setTextList("Apartment als Einzelzimmer");
         $rt6->setPricingBasis("night");
-        $rt6->setPricingBasisDisplay("/Nacht");
+        $rt6->setPricingBasisText("/Nacht");
         $rt6->setCapacity(3);
         $rt6->setQuantityOfPersons(1);
         $rt6->setPositionInSubMenu(6);
@@ -98,10 +98,10 @@ class LoadRoomTypeData extends AbstractFixture implements OrderedFixtureInterfac
 
         $rt7 = new RoomType();
         $rt7->setIdentifier("apartmentdouble");
-        $rt7->setDisplayShort("Apartm. DZ");
-        $rt7->setDisplayLong("Apartment als Doppelzimmer");
+        $rt7->setTextSubmenu("Apartm. DZ");
+        $rt7->setTextList("Apartment als Doppelzimmer");
         $rt7->setPricingBasis("night");
-        $rt7->setPricingBasisDisplay("/Nacht");
+        $rt7->setPricingBasisText("/Nacht");
         $rt7->setCapacity(2);
         $rt7->setQuantityOfPersons(2);
         $rt7->setPositionInSubMenu(7);

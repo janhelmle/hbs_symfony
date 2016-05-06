@@ -24,9 +24,9 @@ class GetInitialDataController extends Controller {
                 SELECT 
                 
                 p.identifier , 
-                p.displayShort , 
-                p.displayLong , 
-                p.pricingBasisDisplay , 
+                p.textSubmenu , 
+                p.textList , 
+                p.pricingBasisText , 
                 p.capacity 
                  
                 FROM AppBundle:RoomType p
@@ -41,13 +41,13 @@ class GetInitialDataController extends Controller {
                 SELECT 
                 
                 a.identifier , 
-                a.displayShort , 
-                a.displayLong , 
-                a.pricingBasisDisplay  
+                
+                a.textList , 
+                a.pricingBasisText  
                 
                 FROM AppBundle:AdditionalProduct a
                 JOIN a.productcategory p
-                WHERE p.identifier = 'boarding'
+                WHERE p.identifier = 'boardings'
 		
 		ORDER BY a.positionInList ASC
                 
@@ -59,9 +59,9 @@ class GetInitialDataController extends Controller {
                 SELECT 
                 
                 a.identifier , 
-                a.displayShort , 
-                a.displayLong , 
-                a.pricingBasisDisplay
+                
+                a.textList , 
+                a.pricingBasisText
                 
                 FROM AppBundle:AdditionalProduct a
                 JOIN a.productcategory p
