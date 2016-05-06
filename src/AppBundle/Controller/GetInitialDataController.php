@@ -53,7 +53,7 @@ class GetInitialDataController extends Controller {
                 
                 ");
 
-	$boarding = $query->getResult();
+	$boardings = $query->getResult();
 
 	$query = $em->createQuery("
                 SELECT 
@@ -77,7 +77,7 @@ class GetInitialDataController extends Controller {
 
 	$products = array(
 	    'roomtypes' => $roomtypes,
-	    'boarding' => $boarding,
+	    'boardings' => $boardings,
 	    'specials' => $specials
 	);
 
