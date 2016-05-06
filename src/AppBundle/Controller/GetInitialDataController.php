@@ -18,9 +18,9 @@ class GetInitialDataController extends Controller {
      */
     public function getInitialDataAction(Request $request) {
 
-	$em = $this->getDoctrine()->getManager();
+        $em = $this->getDoctrine()->getManager();
 
-	$query = $em->createQuery('
+        $query = $em->createQuery('
                 SELECT 
                 
                 p.identifier , 
@@ -31,13 +31,15 @@ class GetInitialDataController extends Controller {
                  
                 FROM AppBundle:RoomType p
 		
-		ORDER BY p.positionInSubMenu ASC
+                WHERE p.capacity > 0
+                
+                ORDER BY p.positionInSubMenu ASC
                 
                 ');
 
-	$roomtypes = $query->getResult();
+        $roomtypes = $query->getResult();
 
-	$query = $em->createQuery("
+        $query = $em->createQuery("
                 SELECT 
                 
                 a.identifier , 
@@ -53,9 +55,9 @@ class GetInitialDataController extends Controller {
                 
                 ");
 
-	$boardings = $query->getResult();
+        $boardings = $query->getResult();
 
-	$query = $em->createQuery("
+        $query = $em->createQuery("
                 SELECT 
                 
                 a.identifier , 
@@ -71,22 +73,22 @@ class GetInitialDataController extends Controller {
                 
                 ");
 
-	$specials = $query->getResult();
+        $specials = $query->getResult();
 
 
 
-	$products = array(
-	    'roomtypes' => $roomtypes,
-	    'boardings' => $boardings,
-	    'specials' => $specials
-	);
+        $products = array(
+            'roomtypes' => $roomtypes,
+            'boardings' => $boardings,
+            'specials' => $specials
+        );
 
-	$productsJSON = json_encode($products, 320);
+        $productsJSON = json_encode($products, 320);
 
-	$resp = new Response($productsJSON);
-	$resp->headers->set('Content-Type', 'application/json ; charset=utf-8');
+        $resp = new Response($productsJSON);
+        $resp->headers->set('Content-Type', 'application/json ; charset=utf-8');
 
-	return $resp;
+        return $resp;
     }
 
 }
