@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use JsonSerializable;
 
 /**
  * @ORM\Entity
@@ -32,16 +33,18 @@ class RoomType extends Product {
      * @ORM\Column(type="smallint" , nullable=true)
      */
     private $positionInSubMenu;
+    
+    /**
+     * @ORM\Column(type="string" , length=100 , nullable=true)
+     */
+    private $textSubMenu; // fuer submenu
 
     /**
      * @ORM\OneToMany(targetEntity="Availability", mappedBy="roomType")
      */
     private $availabilities;
 
-    /**
-     * @ORM\Column(type="string" , length=100 , nullable=true)
-     */
-    private $textSubmenu; // fuer submenu
+    
 
     public function __construct() {
         parent::__construct();
@@ -49,17 +52,6 @@ class RoomType extends Product {
     }
 
     
-
-
-    /**
-     * Get id
-     *
-     * @return integer
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
 
     /**
      * Set capacity
@@ -134,27 +126,27 @@ class RoomType extends Product {
     }
 
     /**
-     * Set textSubmenu
+     * Set textSubMenu
      *
-     * @param string $textSubmenu
+     * @param string $textSubMenu
      *
      * @return RoomType
      */
-    public function setTextSubmenu($textSubmenu)
+    public function setTextSubMenu($textSubMenu)
     {
-        $this->textSubmenu = $textSubmenu;
+        $this->textSubMenu = $textSubMenu;
     
         return $this;
     }
 
     /**
-     * Get textSubmenu
+     * Get textSubMenu
      *
      * @return string
      */
-    public function getTextSubmenu()
+    public function getTextSubMenu()
     {
-        return $this->textSubmenu;
+        return $this->textSubMenu;
     }
 
     /**
