@@ -14,7 +14,7 @@ class LoadProductCategoryData extends AbstractFixture implements OrderedFixtureI
 
         $pg1 = new ProductCategory();
         $pg1->setIdentifier("boardings");
-        $pg1->setDisplay("Verpflegung");
+        $pg1->setSubMenuText("Verpflegung");
         $pg1->setPositionInSubMenu(1);
         $pg1->setCardinality("1");
         $manager->persist($pg1);
@@ -24,7 +24,7 @@ class LoadProductCategoryData extends AbstractFixture implements OrderedFixtureI
 
         $pg2 = new ProductCategory();
         $pg2->setIdentifier("specials");
-        $pg2->setDisplay("Specials (optional)");
+        $pg2->setSubMenuText("Specials (optional)");
         $pg2->setPositionInSubMenu(2);
         $pg2->setCardinality("n");
         $manager->persist($pg2);

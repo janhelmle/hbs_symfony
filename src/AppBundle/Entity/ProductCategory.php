@@ -26,7 +26,7 @@ class ProductCategory {
     /**
      * @ORM\Column(type="string", length=100 , nullable=true)
      */
-    private $display;
+    private $subMenuText;
 
     /**
      * @ORM\Column(type="string", length=100 , nullable=true)
@@ -84,27 +84,27 @@ class ProductCategory {
     }
 
     /**
-     * Set display
+     * Set subMenuText
      *
-     * @param string $display
+     * @param string $subMenuText
      *
      * @return ProductCategory
      */
-    public function setDisplay($display)
+    public function setSubMenuText($subMenuText)
     {
-        $this->display = $display;
+        $this->subMenuText = $subMenuText;
     
         return $this;
     }
 
     /**
-     * Get display
+     * Get subMenuText
      *
      * @return string
      */
-    public function getDisplay()
+    public function getSubMenuText()
     {
-        return $this->display;
+        return $this->subMenuText;
     }
 
     /**
