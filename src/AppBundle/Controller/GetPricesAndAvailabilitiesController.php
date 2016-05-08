@@ -51,7 +51,7 @@ class GetPricesAndAvailabilitiesController extends Controller {
                 
                 JOIN rt.prices pr 
                 
-                WHERE av.quantity > 1
+                WHERE av.quantity > 0
                 
                 ');
         
