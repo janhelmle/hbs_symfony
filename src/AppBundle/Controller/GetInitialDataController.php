@@ -45,7 +45,7 @@ class GetInitialDataController extends Controller {
         $dto->typeofrooms = new stdClass();
         foreach ($roomtypesQueryResult as $rt) {
             $dto->typeofrooms->{$rt->getidentifier()} = new stdClass();
-            $dto->typeofrooms->{$rt->getidentifier()}->textSubMenu = $rt->getTextSubMenu();
+            $dto->typeofrooms->{$rt->getidentifier()}->subMenuText = $rt->getSubMenuText();
             $dto->typeofrooms->{$rt->getidentifier()}->listText = $rt->getListText();
             $dto->typeofrooms->{$rt->getidentifier()}->pricingBasisText = $rt->getPricingBasisText();
             $dto->typeofrooms->{$rt->getidentifier()}->capacity = $rt->getCapacity();
@@ -53,7 +53,7 @@ class GetInitialDataController extends Controller {
 
 
 //        $dto->typeofrooms->{$roomtypesQueryResult[0]->getidentifier()} = new stdClass();
-//        $dto->typeofrooms->{$roomtypesQueryResult[0]->getidentifier()}->textSubMenu = $roomtypesQueryResult[0]->getTextSubMenu();
+//        $dto->typeofrooms->{$roomtypesQueryResult[0]->getidentifier()}->subMenuText = $roomtypesQueryResult[0]->getSubMenuText();
 //        $dto->typeofrooms->{$roomtypesQueryResult[0]->getidentifier()}->listText = $roomtypesQueryResult[0]->getListText();
 //        $dto->typeofrooms->{$roomtypesQueryResult[0]->getidentifier()}->pricingBasisText = $roomtypesQueryResult[0]->getPricingBasisText();
 //        $dto->typeofrooms->{$roomtypesQueryResult[0]->getidentifier()}->capacity = $roomtypesQueryResult[0]->getCapacity();
@@ -63,7 +63,7 @@ class GetInitialDataController extends Controller {
 //            array_push($test, [
 //            $rt->getIdentifier() => [
 //                'capacity' => $rt->getCapacity(),
-//                'textSubMenu' => $rt->getTextSubMenu()
+//                'subMenuText' => $rt->getSubMenuText()
 //                ]
 //            ]
 //            );
@@ -72,13 +72,13 @@ class GetInitialDataController extends Controller {
 //        array_push($test, [
 //            $roomtypesQueryResult[0]->getIdentifier() => [
 //                'capacity' => $roomtypesQueryResult[0]->getCapacity() ,
-//                'textSubMenu' => $roomtypesQueryResult[0]->getTextSubMenu()
+//                'subMenuText' => $roomtypesQueryResult[0]->getSubMenuText()
 //            ]
 //        ]);
 //        $test[1]=[
 //            $roomtypesQueryResult[1]->getIdentifier() => [
 //                'capacity' => $roomtypesQueryResult[1]->getCapacity() ,
-//                'textSubMenu' => $roomtypesQueryResult[1]->getTextSubMenu()
+//                'subMenuText' => $roomtypesQueryResult[1]->getSubMenuText()
 //            ]
 //        ];
         // echo(json_encode($test));
@@ -92,13 +92,13 @@ class GetInitialDataController extends Controller {
 //        
 //        dump($test);
 //        r.identifier ,
-//                r.textSubmenu ,
+//                r.subMenuText ,
 //                r.listText ,
 //                r.capacity ,
 //                r.pricingBasisText
 //        $test = array(
 //            $roomtypesQueryResult[0]['identifier'] => array(
-//                "textSubmenu"       => $roomtypesQueryResult[0]['textSubmenu'] ,
+//                "subMenuText"       => $roomtypesQueryResult[0]['subMenuText'] ,
 //                "listText"          => $roomtypesQueryResult[0]['listText'] , 
 //                "capacity"          => $roomtypesQueryResult[0]['capacity'] ,
 //                "pricingBasisText"  => $roomtypesQueryResult[0]['pricingBasisText'] ,
@@ -174,7 +174,7 @@ class GetInitialDataController extends Controller {
                 SELECT 
                 
                 p.identifier , 
-                p.textSubMenu , 
+                p.subMenuText , 
                 p.listText , 
                 p.pricingBasisText , 
                 p.capacity 

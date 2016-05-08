@@ -33,25 +33,22 @@ class RoomType extends Product {
      * @ORM\Column(type="smallint" , nullable=true)
      */
     private $positionInSubMenu;
-    
+
     /**
      * @ORM\Column(type="string" , length=100 , nullable=true)
      */
-    private $textSubMenu; // fuer submenu
+    private $subMenuText; // fuer submenu
 
     /**
      * @ORM\OneToMany(targetEntity="Availability", mappedBy="roomType")
      */
     private $availabilities;
 
-    
-
     public function __construct() {
         parent::__construct();
         $this->availabilities = new ArrayCollection();
     }
 
-   
 
     /**
      * Get id
@@ -136,27 +133,27 @@ class RoomType extends Product {
     }
 
     /**
-     * Set textSubMenu
+     * Set subMenuText
      *
-     * @param string $textSubMenu
+     * @param string $subMenuText
      *
      * @return RoomType
      */
-    public function setTextSubMenu($textSubMenu)
+    public function setSubMenuText($subMenuText)
     {
-        $this->textSubMenu = $textSubMenu;
+        $this->subMenuText = $subMenuText;
     
         return $this;
     }
 
     /**
-     * Get textSubMenu
+     * Get subMenuText
      *
      * @return string
      */
-    public function getTextSubMenu()
+    public function getSubMenuText()
     {
-        return $this->textSubMenu;
+        return $this->subMenuText;
     }
 
     /**

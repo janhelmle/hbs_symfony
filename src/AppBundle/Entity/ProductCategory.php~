@@ -48,5 +48,4 @@ class ProductCategory {
         $this->additionalProducts = new ArrayCollection();
     }
 
-
 }

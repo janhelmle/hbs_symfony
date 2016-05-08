@@ -28,5 +28,4 @@ class AdditionalProduct extends Product {
      */
     private $productcategory;
 
-
 }

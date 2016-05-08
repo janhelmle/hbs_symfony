@@ -26,8 +26,6 @@ abstract class Product {
      */
     private $identifier;
 
-    
-
     /**
      * @ORM\Column(type="string" , length=100 , nullable=true)
      */
@@ -52,8 +50,6 @@ abstract class Product {
         $this->prices = new ArrayCollection();
     }
 
-
-    
 
     /**
      * Get id

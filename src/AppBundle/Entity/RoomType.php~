@@ -33,23 +33,20 @@ class RoomType extends Product {
      * @ORM\Column(type="smallint" , nullable=true)
      */
     private $positionInSubMenu;
-    
+
     /**
      * @ORM\Column(type="string" , length=100 , nullable=true)
      */
-    private $textSubMenu; // fuer submenu
+    private $subMenuText; // fuer submenu
 
     /**
      * @ORM\OneToMany(targetEntity="Availability", mappedBy="roomType")
      */
     private $availabilities;
 
-    
-
     public function __construct() {
         parent::__construct();
         $this->availabilities = new ArrayCollection();
     }
 
-   
 }

@@ -14,7 +14,7 @@ class LoadRoomTypeData extends AbstractFixture implements OrderedFixtureInterfac
 
         $rt1 = new RoomType();
         $rt1->setIdentifier("singleroom");
-        $rt1->setTextSubMenu("Einzel");
+        $rt1->setSubMenuText("Einzel");
         $rt1->setListText("Einzelzimmer");
         $rt1->setPricingBasis("night");
         $rt1->setPricingBasisText("/Nacht");
@@ -28,7 +28,7 @@ class LoadRoomTypeData extends AbstractFixture implements OrderedFixtureInterfac
 
         $rt2 = new RoomType();
         $rt2->setIdentifier("doubleroom");
-        $rt2->setTextSubMenu("Doppel");
+        $rt2->setSubMenuText("Doppel");
         $rt2->setListText("Doppelzimmer");
         $rt2->setPricingBasis("night");
         $rt2->setPricingBasisText("/Nacht");
@@ -42,7 +42,7 @@ class LoadRoomTypeData extends AbstractFixture implements OrderedFixtureInterfac
 
         $rt3 = new RoomType();
         $rt3->setIdentifier("twinroom");
-        $rt3->setTextSubMenu("Zweibett");
+        $rt3->setSubMenuText("Zweibett");
         $rt3->setListText("Zweibettzimmer");
         $rt3->setPricingBasis("night");
         $rt3->setPricingBasisText("/Nacht");
@@ -56,7 +56,7 @@ class LoadRoomTypeData extends AbstractFixture implements OrderedFixtureInterfac
 
         $rt4 = new RoomType();
         $rt4->setIdentifier("tripleroom");
-        $rt4->setTextSubMenu("Dreibett");
+        $rt4->setSubMenuText("Dreibett");
         $rt4->setListText("Dreibettzimmer");
         $rt4->setPricingBasis("night");
         $rt4->setPricingBasisText("/Nacht");
@@ -70,7 +70,7 @@ class LoadRoomTypeData extends AbstractFixture implements OrderedFixtureInterfac
 
         $rt5 = new RoomType();
         $rt5->setIdentifier("familyroom");
-        $rt5->setTextSubMenu("Familie");
+        $rt5->setSubMenuText("Familie");
         $rt5->setListText("Familien-/Vierbettzimmer");
         $rt5->setPricingBasis("night");
         $rt5->setPricingBasisText("/Nacht");
@@ -84,7 +84,7 @@ class LoadRoomTypeData extends AbstractFixture implements OrderedFixtureInterfac
 
         $rt6 = new RoomType();
         $rt6->setIdentifier("apartmentsingle");
-        $rt6->setTextSubMenu("Apartm. EZ");
+        $rt6->setSubMenuText("Apartm. EZ");
         $rt6->setListText("Apartment als Einzelzimmer");
         $rt6->setPricingBasis("night");
         $rt6->setPricingBasisText("/Nacht");
@@ -98,7 +98,7 @@ class LoadRoomTypeData extends AbstractFixture implements OrderedFixtureInterfac
 
         $rt7 = new RoomType();
         $rt7->setIdentifier("apartmentdouble");
-        $rt7->setTextSubMenu("Apartm. DZ");
+        $rt7->setSubMenuText("Apartm. DZ");
         $rt7->setListText("Apartment als Doppelzimmer");
         $rt7->setPricingBasis("night");
         $rt7->setPricingBasisText("/Nacht");

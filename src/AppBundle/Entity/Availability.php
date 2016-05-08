@@ -34,8 +34,6 @@ class Availability {
     private $roomType;
 
 
-    
-
     /**
      * Get id
      *
