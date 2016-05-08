@@ -31,7 +31,7 @@ abstract class Product {
     /**
      * @ORM\Column(type="string" , length=100 , nullable=true)
      */
-    private $textList; // fuer list
+    private $listText; // fuer list
 
     /**
      * @ORM\Column(type="string" , length=100 , nullable=true)
@@ -90,27 +90,27 @@ abstract class Product {
     }
 
     /**
-     * Set textList
+     * Set listText
      *
-     * @param string $textList
+     * @param string $listText
      *
      * @return Product
      */
-    public function setTextList($textList)
+    public function setListText($listText)
     {
-        $this->textList = $textList;
+        $this->listText = $listText;
     
         return $this;
     }
 
     /**
-     * Get textList
+     * Get listText
      *
      * @return string
      */
-    public function getTextList()
+    public function getListText()
     {
-        return $this->textList;
+        return $this->listText;
     }
 
     /**

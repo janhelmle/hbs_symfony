@@ -29,6 +29,7 @@ class AdditionalProduct extends Product {
     private $productcategory;
 
 
+
     /**
      * Get id
      *

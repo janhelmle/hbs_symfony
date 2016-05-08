@@ -51,7 +51,17 @@ class RoomType extends Product {
         $this->availabilities = new ArrayCollection();
     }
 
-    
+   
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 
     /**
      * Set capacity

@@ -46,7 +46,7 @@ class GetInitialDataController extends Controller {
         foreach ($roomtypesQueryResult as $rt) {
             $dto->typeofrooms->{$rt->getidentifier()} = new stdClass();
             $dto->typeofrooms->{$rt->getidentifier()}->textSubMenu = $rt->getTextSubMenu();
-            $dto->typeofrooms->{$rt->getidentifier()}->textList = $rt->getTextList();
+            $dto->typeofrooms->{$rt->getidentifier()}->listText = $rt->getListText();
             $dto->typeofrooms->{$rt->getidentifier()}->pricingBasisText = $rt->getPricingBasisText();
             $dto->typeofrooms->{$rt->getidentifier()}->capacity = $rt->getCapacity();
         }
@@ -54,7 +54,7 @@ class GetInitialDataController extends Controller {
 
 //        $dto->typeofrooms->{$roomtypesQueryResult[0]->getidentifier()} = new stdClass();
 //        $dto->typeofrooms->{$roomtypesQueryResult[0]->getidentifier()}->textSubMenu = $roomtypesQueryResult[0]->getTextSubMenu();
-//        $dto->typeofrooms->{$roomtypesQueryResult[0]->getidentifier()}->textList = $roomtypesQueryResult[0]->getTextList();
+//        $dto->typeofrooms->{$roomtypesQueryResult[0]->getidentifier()}->listText = $roomtypesQueryResult[0]->getListText();
 //        $dto->typeofrooms->{$roomtypesQueryResult[0]->getidentifier()}->pricingBasisText = $roomtypesQueryResult[0]->getPricingBasisText();
 //        $dto->typeofrooms->{$roomtypesQueryResult[0]->getidentifier()}->capacity = $roomtypesQueryResult[0]->getCapacity();
 //        $test = array();
@@ -93,13 +93,13 @@ class GetInitialDataController extends Controller {
 //        dump($test);
 //        r.identifier ,
 //                r.textSubmenu ,
-//                r.textList ,
+//                r.listText ,
 //                r.capacity ,
 //                r.pricingBasisText
 //        $test = array(
 //            $roomtypesQueryResult[0]['identifier'] => array(
 //                "textSubmenu"       => $roomtypesQueryResult[0]['textSubmenu'] ,
-//                "textList"          => $roomtypesQueryResult[0]['textList'] , 
+//                "listText"          => $roomtypesQueryResult[0]['listText'] , 
 //                "capacity"          => $roomtypesQueryResult[0]['capacity'] ,
 //                "pricingBasisText"  => $roomtypesQueryResult[0]['pricingBasisText'] ,
 //            )
@@ -125,7 +125,7 @@ class GetInitialDataController extends Controller {
         $dto->boardings = new stdClass();
         foreach ($boardings as $b) {
             $dto->boardings->{$b->getidentifier()} = new stdClass();
-            $dto->boardings->{$b->getidentifier()}->textList = $b->getTextList();
+            $dto->boardings->{$b->getidentifier()}->listText = $b->getListText();
             $dto->boardings->{$b->getidentifier()}->pricingBasisText = $b->getpricingBasisText();
         }
 
@@ -149,7 +149,7 @@ class GetInitialDataController extends Controller {
         $dto->specials = new stdClass();
         foreach ($specials as $s) {
             $dto->specials->{$s->getidentifier()} = new stdClass();
-            $dto->specials->{$s->getidentifier()}->textList = $s->getTextList();
+            $dto->specials->{$s->getidentifier()}->listText = $s->getListText();
             $dto->specials->{$s->getidentifier()}->pricingBasisText = $s->getpricingBasisText();
         }
 
@@ -175,7 +175,7 @@ class GetInitialDataController extends Controller {
                 
                 p.identifier , 
                 p.textSubMenu , 
-                p.textList , 
+                p.listText , 
                 p.pricingBasisText , 
                 p.capacity 
                  
@@ -192,7 +192,7 @@ class GetInitialDataController extends Controller {
                 
                 a.identifier , 
                 
-                a.textList , 
+                a.listText , 
                 a.pricingBasisText  
                 
                 FROM AppBundle:AdditionalProduct a
@@ -210,7 +210,7 @@ class GetInitialDataController extends Controller {
                 
                 a.identifier , 
                 
-                a.textList , 
+                a.listText , 
                 a.pricingBasisText
                 
                 FROM AppBundle:AdditionalProduct a

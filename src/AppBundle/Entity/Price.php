@@ -34,6 +34,7 @@ class Price {
     private $product;
 
 
+
     /**
      * Get id
      *

@@ -14,7 +14,7 @@ class LoadAdditionalProductData extends AbstractFixture implements OrderedFixtur
         
         $ap1 = new AdditionalProduct();
         $ap1->setIdentifier("halfpension");
-        $ap1->setTextList("Halbpension (mit Frühstück)");
+        $ap1->setListText("Halbpension (mit Frühstück)");
         $ap1->setPricingBasis("person,night");
         $ap1->setPricingBasisText("/Pers. u. Nacht");
         $ap1->setPositionInList(1);
@@ -25,7 +25,7 @@ class LoadAdditionalProductData extends AbstractFixture implements OrderedFixtur
 
         $ap2 = new AdditionalProduct();
         $ap2->setIdentifier("fullpension");
-        $ap2->setTextList("Vollpension (3 Mahlzeiten)");
+        $ap2->setListText("Vollpension (3 Mahlzeiten)");
         $ap2->setPricingBasis("person,night");
         $ap2->setPricingBasisText("/Pers. u. Nacht");
         $ap2->setPositionInList(2);
@@ -36,7 +36,7 @@ class LoadAdditionalProductData extends AbstractFixture implements OrderedFixtur
 
         $ap3 = new AdditionalProduct();
         $ap3->setIdentifier("breakfast");
-        $ap3->setTextList("Nur Frühstück");
+        $ap3->setListText("Nur Frühstück");
         $ap3->setPricingBasis("person,night");
         $ap3->setPricingBasisText("/Pers. u. Nacht");
         $ap3->setPositionInList(3);
@@ -47,7 +47,7 @@ class LoadAdditionalProductData extends AbstractFixture implements OrderedFixtur
 
         $ap4 = new AdditionalProduct();
         $ap4->setIdentifier("noboarding");
-        $ap4->setTextList("Ohne Verpflegung");
+        $ap4->setListText("Ohne Verpflegung");
         $ap4->setPricingBasis("");
         $ap4->setPricingBasisText("");
         $ap4->setPositionInList(4);
@@ -58,7 +58,7 @@ class LoadAdditionalProductData extends AbstractFixture implements OrderedFixtur
 
         $ap5 = new AdditionalProduct();
         $ap5->setIdentifier("champagnebreakfast");
-        $ap5->setTextList("Sektfrühstück");
+        $ap5->setListText("Sektfrühstück");
         $ap5->setPricingBasis("person,night");
         $ap5->setPricingBasisText("/Pers. u. Nacht");
         $ap5->setPositionInList(1);
@@ -69,7 +69,7 @@ class LoadAdditionalProductData extends AbstractFixture implements OrderedFixtur
 
         $ap6 = new AdditionalProduct();
         $ap6->setIdentifier("rosesinrooms");
-        $ap6->setTextList("Rosen auf das Zimmer");
+        $ap6->setListText("Rosen auf das Zimmer");
         $ap6->setPricingBasis("");
         $ap6->setPricingBasisText("");
         $ap6->setPositionInList(2);
@@ -80,7 +80,7 @@ class LoadAdditionalProductData extends AbstractFixture implements OrderedFixtur
 
         $ap7 = new AdditionalProduct();
         $ap7->setIdentifier("raftingtour");
-        $ap7->setTextList("Rafting-Tour");
+        $ap7->setListText("Rafting-Tour");
         $ap7->setPricingBasis("person");
         $ap7->setPricingBasisText("/Person");
         $ap7->setPositionInList(3);
