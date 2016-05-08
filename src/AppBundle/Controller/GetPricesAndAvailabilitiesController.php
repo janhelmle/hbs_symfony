@@ -24,7 +24,7 @@ class GetPricesAndAvailabilitiesController extends Controller {
                 SELECT 
                 
                     prod.identifier ,
-                    pri.value 
+                    pri.value AS price
                 
                 FROM AppBundle:Price pri
                 
@@ -50,6 +50,8 @@ class GetPricesAndAvailabilitiesController extends Controller {
                 JOIN rt.availabilities av
                 
                 JOIN rt.prices pr 
+                
+                WHERE av.quantity > 1
                 
                 ');
         
