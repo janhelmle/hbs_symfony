@@ -38,7 +38,7 @@ class GetInitialDataController extends Controller {
 
         $roomtypesQueryResult = $query->getResult();
 
-        // dump($roomtypesQueryResult[0]->getPrices()[0]->getPrice());
+
 
         $dto = new stdClass();
 

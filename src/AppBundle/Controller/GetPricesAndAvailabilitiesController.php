@@ -24,7 +24,7 @@ class GetPricesAndAvailabilitiesController extends Controller {
                 SELECT 
                 
                     prod.identifier ,
-                    pri.price 
+                    pri.value 
                 
                 FROM AppBundle:Price pri
                 
@@ -43,7 +43,7 @@ class GetPricesAndAvailabilitiesController extends Controller {
                 
                     rt.identifier ,
                     av.quantity ,
-                    pr.price
+                    pr.value AS price
                 
                 FROM AppBundle:RoomType rt
                 
@@ -60,7 +60,7 @@ class GetPricesAndAvailabilitiesController extends Controller {
         
         $out = array_merge($roomtypes , $additionalproducts);
         
-        // dump($roomtypes);
+
 
         $resp = new Response(json_encode($out));
         $resp->headers->set('Content-Type', 'application/json ; charset=utf-8');

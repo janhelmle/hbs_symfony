@@ -25,7 +25,7 @@ class Price {
     /**
      * @ORM\Column(type="decimal", scale=2 ,  nullable=true)
      */
-    private $price;
+    private $value;
 
     /**
      * @ORM\ManyToOne(targetEntity="Product", inversedBy="prices")
@@ -69,27 +69,27 @@ class Price {
     }
 
     /**
-     * Set price
+     * Set value
      *
-     * @param string $price
+     * @param string $value
      *
      * @return Price
      */
-    public function setPrice($price)
+    public function setValue($value)
     {
-        $this->price = $price;
+        $this->value = $value;
     
         return $this;
     }
 
     /**
-     * Get price
+     * Get value
      *
      * @return string
      */
-    public function getPrice()
+    public function getValue()
     {
-        return $this->price;
+        return $this->value;
     }
 
     /**
