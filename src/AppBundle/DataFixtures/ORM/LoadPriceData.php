@@ -29,7 +29,7 @@ class LoadPriceData extends AbstractFixture implements OrderedFixtureInterface {
         
         $pr3 = new Price();
         $pr3->setDate(new \DateTime("2016-01-01"));
-        $pr3->setPrice(120.00);
+        $pr3->setPrice(130.00);
         $pr3->setProduct($this->getReference('twinroom'));
         $manager->persist($pr3);
         $manager->flush();
@@ -37,7 +37,7 @@ class LoadPriceData extends AbstractFixture implements OrderedFixtureInterface {
         
         $pr4 = new Price();
         $pr4->setDate(new \DateTime("2016-01-01"));
-        $pr4->setPrice(130.00);
+        $pr4->setPrice(140.00);
         $pr4->setProduct($this->getReference('tripleroom'));
         $manager->persist($pr4);
         $manager->flush();
@@ -45,7 +45,7 @@ class LoadPriceData extends AbstractFixture implements OrderedFixtureInterface {
         
         $pr5 = new Price();
         $pr5->setDate(new \DateTime("2016-01-01"));
-        $pr5->setPrice(140.00);
+        $pr5->setPrice(150.00);
         $pr5->setProduct($this->getReference('familyroom'));
         $manager->persist($pr5);
         $manager->flush();
@@ -53,7 +53,7 @@ class LoadPriceData extends AbstractFixture implements OrderedFixtureInterface {
         
         $pr6 = new Price();
         $pr6->setDate(new \DateTime("2016-01-01"));
-        $pr6->setPrice(150.00);
+        $pr6->setPrice(160.00);
         $pr6->setProduct($this->getReference('apartmentsingle'));
         $manager->persist($pr6);
         $manager->flush();
@@ -61,7 +61,7 @@ class LoadPriceData extends AbstractFixture implements OrderedFixtureInterface {
         
         $pr7 = new Price();
         $pr7->setDate(new \DateTime("2016-01-01"));
-        $pr7->setPrice(160.00);
+        $pr7->setPrice(170.00);
         $pr7->setProduct($this->getReference('apartmentdouble'));
         $manager->persist($pr7);
         $manager->flush();
