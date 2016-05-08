@@ -49,10 +49,7 @@ class GetPricesAndAvailabilitiesController extends Controller {
                 
                 JOIN rt.availabilities av
                 
-                JOIN rt.prices pr                
-                
-                
-                
+                JOIN rt.prices pr 
                 
                 ');
         
@@ -60,7 +57,6 @@ class GetPricesAndAvailabilitiesController extends Controller {
         
         $out = array_merge($roomtypes , $additionalproducts);
         
-
 
         $resp = new Response(json_encode($out));
         $resp->headers->set('Content-Type', 'application/json ; charset=utf-8');
