@@ -7,10 +7,10 @@ use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="productcategory")
+ * @ORM\Table(name="additionalproductcategory")
  */
-class ProductCategory {
-
+class AdditionalProductCategory
+{
     /**
      * @ORM\Column(type="integer")
      * @ORM\Id
@@ -39,7 +39,7 @@ class ProductCategory {
     private $positionInSubMenu;
 
     /**
-     * @ORM\OneToMany(targetEntity="AdditionalProduct", mappedBy="productcategory")
+     * @ORM\OneToMany(targetEntity="AdditionalProduct", mappedBy="additionalproductcategory")
      */
     private $additionalProducts;
 
@@ -64,7 +64,7 @@ class ProductCategory {
      *
      * @param string $identifier
      *
-     * @return ProductCategory
+     * @return AdditionalProductCategory
      */
     public function setIdentifier($identifier)
     {
@@ -88,7 +88,7 @@ class ProductCategory {
      *
      * @param string $subMenuText
      *
-     * @return ProductCategory
+     * @return AdditionalProductCategory
      */
     public function setSubMenuText($subMenuText)
     {
@@ -112,7 +112,7 @@ class ProductCategory {
      *
      * @param string $cardinality
      *
-     * @return ProductCategory
+     * @return AdditionalProductCategory
      */
     public function setCardinality($cardinality)
     {
@@ -136,7 +136,7 @@ class ProductCategory {
      *
      * @param integer $positionInSubMenu
      *
-     * @return ProductCategory
+     * @return AdditionalProductCategory
      */
     public function setPositionInSubMenu($positionInSubMenu)
     {
@@ -160,7 +160,7 @@ class ProductCategory {
      *
      * @param \AppBundle\Entity\AdditionalProduct $additionalProduct
      *
-     * @return ProductCategory
+     * @return AdditionalProductCategory
      */
     public function addAdditionalProduct(\AppBundle\Entity\AdditionalProduct $additionalProduct)
     {

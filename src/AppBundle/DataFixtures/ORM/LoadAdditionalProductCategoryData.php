@@ -6,13 +6,13 @@ use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
-use AppBundle\Entity\ProductCategory;
+use AppBundle\Entity\AdditionalProductCategory;
 
-class LoadProductCategoryData extends AbstractFixture implements OrderedFixtureInterface {
+class LoadAdditionalProductCategoryData extends AbstractFixture implements OrderedFixtureInterface {
 
     public function load(ObjectManager $manager) {
 
-        $pg1 = new ProductCategory();
+        $pg1 = new AdditionalProductCategory();
         $pg1->setIdentifier("boardings");
         $pg1->setSubMenuText("Verpflegung");
         $pg1->setPositionInSubMenu(1);
@@ -22,7 +22,7 @@ class LoadProductCategoryData extends AbstractFixture implements OrderedFixtureI
         $this->addReference('Verpflegung', $pg1);
         unset($pg1);
 
-        $pg2 = new ProductCategory();
+        $pg2 = new AdditionalProductCategory();
         $pg2->setIdentifier("specials");
         $pg2->setSubMenuText("Specials (optional)");
         $pg2->setPositionInSubMenu(2);

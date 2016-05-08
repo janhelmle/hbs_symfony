@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\Response;
 use AppBundle\Entity\Product;
 use AppBundle\Entity\RoomType;
 use AppBundle\Entity\AdditionalProduct;
-use AppBundle\Entity\ProductCategory;
+use AppBundle\Entity\AdditionalProductCategory;
 
 class GetPricesAndAvailabilitiesController extends Controller {
 

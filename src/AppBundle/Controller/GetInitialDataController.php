@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\Response;
 use AppBundle\Entity\Product;
 use AppBundle\Entity\RoomType;
 use AppBundle\Entity\AdditionalProduct;
-use AppBundle\Entity\ProductCategory;
+use AppBundle\Entity\AdditionalProductCategory;
 use stdClass;
 
 class GetInitialDataController extends Controller {
@@ -56,7 +56,7 @@ class GetInitialDataController extends Controller {
                 b 
                 
                 FROM AppBundle:AdditionalProduct b
-                JOIN b.productcategory pc
+                JOIN b.additionalproductcategory pc
                 WHERE pc.identifier = 'boardings'
 		
 		ORDER BY b.positionInList ASC
@@ -79,7 +79,7 @@ class GetInitialDataController extends Controller {
                 s
                 
                 FROM AppBundle:AdditionalProduct s
-                JOIN s.productcategory pc
+                JOIN s.additionalproductcategory pc
                 WHERE pc.identifier = 'specials'
 		
 		ORDER BY s.positionInList ASC
@@ -136,7 +136,7 @@ class GetInitialDataController extends Controller {
                 a.pricingBasisText  
                 
                 FROM AppBundle:AdditionalProduct a
-                JOIN a.productcategory p
+                JOIN a.additionalproductcategory p
                 WHERE p.identifier = 'boardings'
 		
 		ORDER BY a.positionInList ASC
@@ -154,7 +154,7 @@ class GetInitialDataController extends Controller {
                 a.pricingBasisText
                 
                 FROM AppBundle:AdditionalProduct a
-                JOIN a.productcategory p
+                JOIN a.additionalproductcategory p
                 WHERE p.identifier = 'specials'
 		
 		ORDER BY a.positionInList ASC
