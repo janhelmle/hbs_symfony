@@ -28,8 +28,6 @@ class GetInitialDataController extends Controller {
 
                 FROM AppBundle:RoomType r
                 
-                
-		
                 WHERE r.capacity > 0
                 
                 ORDER BY r.positionInSubMenu ASC
@@ -53,19 +51,20 @@ class GetInitialDataController extends Controller {
         $query = $em->createQuery("
                 SELECT 
                 
-                b 
+                ap
                 
-                FROM AppBundle:AdditionalProduct b
-                JOIN b.additionalproductcategory pc
-                WHERE pc.identifier = 'boardings'
+                FROM AppBundle:AdditionalProduct ap
+                JOIN ap.additionalproductcategory apc
+                WHERE apc.identifier = 'boardings'
 		
-		ORDER BY b.positionInList ASC
+		ORDER BY ap.positionInList ASC
                 
                 ");
 
         $boardings = $query->getResult();
-
+        
         $dto->boardings = new stdClass();
+        $dto->boardings->subMenuText = $boardings[0]->getAdditionalProductCategory()->getSubMenuText();
         foreach ($boardings as $b) {
             $dto->boardings->{$b->getidentifier()} = new stdClass();
             $dto->boardings->{$b->getidentifier()}->listText = $b->getListText();
@@ -76,18 +75,20 @@ class GetInitialDataController extends Controller {
         $query = $em->createQuery("
                 SELECT 
                 
-                s
+                ap
                 
-                FROM AppBundle:AdditionalProduct s
-                JOIN s.additionalproductcategory pc
-                WHERE pc.identifier = 'specials'
+                FROM AppBundle:AdditionalProduct ap
+                JOIN ap.additionalproductcategory apc
+                WHERE apc.identifier = 'specials'
 		
-		ORDER BY s.positionInList ASC
+		ORDER BY ap.positionInList ASC
                 
                 ");
 
         $specials = $query->getResult();
+        
         $dto->specials = new stdClass();
+        $dto->specials->subMenuText = $specials[0]->getAdditionalProductCategory()->getSubMenuText();
         foreach ($specials as $s) {
             $dto->specials->{$s->getidentifier()} = new stdClass();
             $dto->specials->{$s->getidentifier()}->listText = $s->getListText();
@@ -102,6 +103,7 @@ class GetInitialDataController extends Controller {
 
         return $resp;
     }
+    
     
     /**
      * @Route("/api/v0/getinitialdata", name="getinitialdata_v_0")
@@ -177,6 +179,5 @@ class GetInitialDataController extends Controller {
 
 	return $resp;
     }
-
-
+    
 }
