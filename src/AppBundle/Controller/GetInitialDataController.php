@@ -36,7 +36,6 @@ class GetInitialDataController extends Controller {
 
         $roomtypesQueryResult = $query->getResult();
 
-        
         $dto = new stdClass();
 
         $dto->typeofrooms = new stdClass();
