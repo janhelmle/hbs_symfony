@@ -53,7 +53,7 @@ class LoadAvailabilityData extends AbstractFixture implements OrderedFixtureInte
 
         $av6 = new Availability();
         $av6->setDate(new \DateTime("2016-01-01"));
-        $av6->setQuantity(0);
+        $av6->setQuantity(1);
         $av6->setRoomType($this->getReference('apartmentsingle'));
         $manager->persist($av6);
         $manager->flush();
