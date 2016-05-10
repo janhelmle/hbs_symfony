@@ -34,12 +34,12 @@ class GetInitialDataController extends Controller {
                 
                 ');
 
-        $roomtypesQueryResult = $query->getResult();
+        $roomTypesQueryResult = $query->getResult();
 
         $dto = new stdClass();
 
         $dto->roomTypes = new stdClass();
-        foreach ($roomtypesQueryResult as $rt) {
+        foreach ($roomTypesQueryResult as $rt) {
             $dto->roomTypes->{$rt->getidentifier()} = new stdClass();
             $dto->roomTypes->{$rt->getidentifier()}->subMenuText = $rt->getSubMenuText();
             $dto->roomTypes->{$rt->getidentifier()}->listText = $rt->getListText();
