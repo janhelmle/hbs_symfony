@@ -24,7 +24,7 @@ class GetPricesAndAvailabilitiesController extends Controller {
 
         $checkInDate = $request->headers->get('checkInDate'); // 2016.04.26, 12:00
         $checkOutDate = $request->headers->get('checkOutDate'); // 2016.04.27, 12:00
-
+        
         $checkInDateTime = DateTime::createFromFormat('Y.m.d, H:i', $checkInDate);
         $checkOutDateTime = DateTime::createFromFormat('Y.m.d, H:i', $checkOutDate);
         
@@ -49,7 +49,7 @@ class GetPricesAndAvailabilitiesController extends Controller {
 
 
             $resp = new Response(
-                    "ERROR: checkInDate >= checkOutDate"
+                    "ERROR: checkInDate >= checkOutDate. Please try again with the correct settings."
             );
             $resp->setStatusCode(Response::HTTP_BAD_REQUEST);
             $resp->headers->set('Content-Type', 'Content-Type: text/html; charset=utf-8');
