@@ -38,13 +38,13 @@ class GetInitialDataController extends Controller {
 
         $dto = new stdClass();
 
-        $dto->typeofrooms = new stdClass();
+        $dto->roomTypes = new stdClass();
         foreach ($roomtypesQueryResult as $rt) {
-            $dto->typeofrooms->{$rt->getidentifier()} = new stdClass();
-            $dto->typeofrooms->{$rt->getidentifier()}->subMenuText = $rt->getSubMenuText();
-            $dto->typeofrooms->{$rt->getidentifier()}->listText = $rt->getListText();
-            $dto->typeofrooms->{$rt->getidentifier()}->pricingBasisText = $rt->getPricingBasisText();
-            $dto->typeofrooms->{$rt->getidentifier()}->capacity = $rt->getCapacity();
+            $dto->roomTypes->{$rt->getidentifier()} = new stdClass();
+            $dto->roomTypes->{$rt->getidentifier()}->subMenuText = $rt->getSubMenuText();
+            $dto->roomTypes->{$rt->getidentifier()}->listText = $rt->getListText();
+            $dto->roomTypes->{$rt->getidentifier()}->pricingBasisText = $rt->getPricingBasisText();
+            $dto->roomTypes->{$rt->getidentifier()}->capacity = $rt->getCapacity();
         }
 
         $query = $em->createQuery("

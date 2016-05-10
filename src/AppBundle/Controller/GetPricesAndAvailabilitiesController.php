@@ -19,6 +19,8 @@ class GetPricesAndAvailabilitiesController extends Controller {
      * @Route("/api/v0.1/getpricesandavailabilities", name="getpricesandavailabilities_v_0.1")
      */
     public function getPricesAndAvailabilitiesAction_v_01(Request $request) {
+        
+        $em = $this->getDoctrine()->getManager();
 
         $checkInDate = $request->headers->get('checkInDate'); // 2016.04.26, 12:00
         $checkOutDate = $request->headers->get('checkOutDate'); // 2016.04.27, 12:00
@@ -49,7 +51,6 @@ class GetPricesAndAvailabilitiesController extends Controller {
         $dto->checkInDate = $checkInDate;
         $dto->checkOutDate = $checkOutDate;
 
-        $em = $this->getDoctrine()->getManager();
 
         $query = $em->createQuery('
             
@@ -67,7 +68,7 @@ class GetPricesAndAvailabilitiesController extends Controller {
             $i->identifier = $rt->getIdentifier();
             $i->price = $rt->getPrices()[0]->getValue();
             $i->quantity = $rt->getAvailabilities()[0]->getQuantity();
-            $dto->roomtypes[] = $i;
+            $dto->roomTypes[] = $i;
         }
         
         $query = $em->createQuery("
