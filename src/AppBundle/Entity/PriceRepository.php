@@ -68,7 +68,7 @@ class PriceRepository extends \Doctrine\ORM\EntityRepository { // returns price 
         
         $avg = round($sum/$days , 2) ; // auf 2 Nachkommastellen gerundet
         
-        return $avg;
+        return $avg; // arithmetischer Mittelwert
     }
 
 }
