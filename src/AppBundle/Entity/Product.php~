@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="AppBundle\Entity\ProductRepository")
  * @ORM\Table(name="product")
  * @ORM\InheritanceType("JOINED")
  * @ORM\DiscriminatorColumn(name="discriminator", type="string")
@@ -49,8 +49,7 @@ abstract class Product {
     public function __construct() {
         $this->prices = new ArrayCollection();
     }
-
-
+    
     /**
      * Get id
      *

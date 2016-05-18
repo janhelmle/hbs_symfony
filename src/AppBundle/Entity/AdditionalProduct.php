@@ -78,4 +78,14 @@ class AdditionalProduct extends Product {
     {
         return $this->additionalproductcategory;
     }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 }
