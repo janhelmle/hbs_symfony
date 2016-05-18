@@ -27,18 +27,15 @@ class DefaultController extends Controller {
 
         $roomTypesQueryResult = $query->getResult();
 
-        // dump($roomTypesQueryResult[0]);
+        $pr = $em->getRepository('AppBundle:Price')
+                ->findLatestPricePerProductAndDate($roomTypesQueryResult[0], new \DateTime('2016-01-15'));
 
         $pr = $em->getRepository('AppBundle:Price')
-                ->findLatestPricePerProductAndDate($roomTypesQueryResult[0] , new \DateTime('2016-01-15'));
-        
-        // dump($pr);
+                ->calculatePriceAveragePerProductAndDateInterval($roomTypesQueryResult[0], new \DateTime('2016-01-10'), new \DateTime('2016-01-16'));
 
-        $pr = $em->getRepository('AppBundle:Price')
-                ->calculateTotalAmountPerProductAndDateInterval($roomTypesQueryResult[0] , new \DateTime('2016-01-10') , new \DateTime('2016-01-16') );
+        dump($pr);
         
         $resp = new Response('<body></body>');
-
 
         return $resp;
     }

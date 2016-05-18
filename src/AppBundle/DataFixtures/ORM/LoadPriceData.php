@@ -20,12 +20,20 @@ class LoadPriceData extends AbstractFixture implements OrderedFixtureInterface {
         unset($pr1);
         
         $pr1a = new Price();
-        $pr1a->setDate(new \DateTime("2016-02-01"));
-        $pr1a->setValue(90.00);
+        $pr1a->setDate(new \DateTime("2016-01-15"));
+        $pr1a->setValue(120.00);
         $pr1a->setProduct($this->getReference('singleroom'));
         $manager->persist($pr1a);
         $manager->flush();
         unset($pr1a);
+        
+        $pr1b = new Price();
+        $pr1b->setDate(new \DateTime("2016-02-01"));
+        $pr1b->setValue(130.00);
+        $pr1b->setProduct($this->getReference('singleroom'));
+        $manager->persist($pr1b);
+        $manager->flush();
+        unset($pr1b);
         
         $pr2 = new Price();
         $pr2->setDate(new \DateTime("2016-01-01"));

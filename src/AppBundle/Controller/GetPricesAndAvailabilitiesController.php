@@ -76,7 +76,7 @@ class GetPricesAndAvailabilitiesController extends Controller {
         foreach($roomTypes as $rt) {
             $i = new stdClass();
             $i->identifier = $rt->getIdentifier();
-            $i->price = $rt->getPrices()[0]->getValue();
+            $i->price = $rt->getPrices()[0]->getValue(); ///// here
             $i->quantity = $rt->getAvailabilities()[0]->getQuantity();
             $dto->roomTypes[] = $i;
         }

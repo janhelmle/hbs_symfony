@@ -49,5 +49,26 @@ class PriceRepository extends \Doctrine\ORM\EntityRepository { // returns price 
         
         return $sum;
     }
+    
+    public function calculatePriceAveragePerProductAndDateInterval(Product $prod, DateTime $checkIn, DateTime $checkOut) { // returns double
+
+        $em = $this->getEntityManager();
+
+        $sum = 0;
+        $days = 0;
+        $avg = 0;
+
+        $interval = new DateInterval('P1D'); // 1 Tag
+        $daterange = new DatePeriod($checkIn, $interval, $checkOut); 
+
+        foreach ($daterange as $date) {
+            $days += 1;
+            $sum += $em->getRepository('AppBundle:Price')->findLatestPricePerProductAndDate($prod, $date)->getValue();
+        }
+        
+        $avg = round($sum/$days , 2) ; // auf 2 Nachkommastellen gerundet
+        
+        return $avg;
+    }
 
 }
