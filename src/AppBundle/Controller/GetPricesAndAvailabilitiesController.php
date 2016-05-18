@@ -76,7 +76,9 @@ class GetPricesAndAvailabilitiesController extends Controller {
         foreach($roomTypes as $rt) {
             $i = new stdClass();
             $i->identifier = $rt->getIdentifier();
-            $i->price = $rt->getPrices()[0]->getValue(); ///// here
+            // $i->price = $rt->getPrices()[0]->getValue(); 
+            $i->price = $em->getRepository('AppBundle:Price')
+                ->calculatePriceAveragePerProductAndDateInterval($rt, $checkInDateTime , $checkOutDateTime );
             $i->quantity = $rt->getAvailabilities()[0]->getQuantity();
             $dto->roomTypes[] = $i;
         }
@@ -99,7 +101,9 @@ class GetPricesAndAvailabilitiesController extends Controller {
         foreach($additionalProducts as $ap) {
             $i = new stdClass();
             $i->identifier = $ap->getIdentifier();
-            $i->price = $ap->getPrices()[0]->getValue();
+            // $i->price = $ap->getPrices()[0]->getValue();
+            $i->price = $em->getRepository('AppBundle:Price')
+                ->calculatePriceAveragePerProductAndDateInterval($ap, $checkInDateTime , $checkOutDateTime );
             $dto->boardings[] = $i;
         }
         
@@ -121,7 +125,9 @@ class GetPricesAndAvailabilitiesController extends Controller {
         foreach($additionalProducts as $ap) {
             $i = new stdClass();
             $i->identifier = $ap->getIdentifier();
-            $i->price = $ap->getPrices()[0]->getValue();
+            // $i->price = $ap->getPrices()[0]->getValue();
+            $i->price = $em->getRepository('AppBundle:Price')
+                ->calculatePriceAveragePerProductAndDateInterval($ap, $checkInDateTime , $checkOutDateTime );
             $dto->specials[] = $i;
         }
         
