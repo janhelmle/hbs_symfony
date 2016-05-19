@@ -29,6 +29,56 @@ class Cart {
     private $checkOutDate;
 
     /**
+     * @ORM\Column(type="string" , length=100 , nullable=true)
+     */
+    private $userFirstName;
+
+    /**
+     * @ORM\Column(type="string" , length=100 , nullable=true)
+     */
+    private $userLastName;
+
+    /**
+     * @ORM\Column(type="string" , length=100 , nullable=true)
+     */
+    private $userBirthDate;
+
+    /**
+     * @ORM\Column(type="string" , length=100 , nullable=true)
+     */
+    private $userAddress;
+
+    /**
+     * @ORM\Column(type="string" , length=100 , nullable=true)
+     */
+    private $userPLZ;
+    
+    /**
+     * @ORM\Column(type="string" , length=100 , nullable=true)
+     */
+    private $userFirstNameAlternate;
+    
+    /**
+     * @ORM\Column(type="string" , length=100 , nullable=true)
+     */
+    private $userLastNameAlternate;
+    
+    /**
+     * @ORM\Column(type="string" , length=100 , nullable=true)
+     */
+    private $userBirthDateAlternate;
+    
+    /**
+     * @ORM\Column(type="string" , length=100 , nullable=true)
+     */
+    private $userAddressAlternate;
+    
+    /**
+     * @ORM\Column(type="string" , length=100 , nullable=true)
+     */
+    private $userPLZAlternate;
+    
+    /**
      * @ORM\OneToMany(targetEntity="Item", mappedBy="cart")
      */
     private $items; // ArrayCollection
@@ -36,16 +86,13 @@ class Cart {
     public function __construct() {
         $this->items = new ArrayCollection();
     }
-    
-
 
     /**
      * Get id
      *
      * @return integer
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -56,10 +103,9 @@ class Cart {
      *
      * @return Cart
      */
-    public function setCheckInDate($checkInDate)
-    {
+    public function setCheckInDate($checkInDate) {
         $this->checkInDate = $checkInDate;
-    
+
         return $this;
     }
 
@@ -68,8 +114,7 @@ class Cart {
      *
      * @return \DateTime
      */
-    public function getCheckInDate()
-    {
+    public function getCheckInDate() {
         return $this->checkInDate;
     }
 
@@ -80,10 +125,9 @@ class Cart {
      *
      * @return Cart
      */
-    public function setCheckOutDate($checkOutDate)
-    {
+    public function setCheckOutDate($checkOutDate) {
         $this->checkOutDate = $checkOutDate;
-    
+
         return $this;
     }
 
@@ -92,8 +136,7 @@ class Cart {
      *
      * @return \DateTime
      */
-    public function getCheckOutDate()
-    {
+    public function getCheckOutDate() {
         return $this->checkOutDate;
     }
 
@@ -104,10 +147,9 @@ class Cart {
      *
      * @return Cart
      */
-    public function addItem(\AppBundle\Entity\Item $item)
-    {
+    public function addItem(\AppBundle\Entity\Item $item) {
         $this->items[] = $item;
-    
+
         return $this;
     }
 
@@ -116,8 +158,7 @@ class Cart {
      *
      * @param \AppBundle\Entity\Item $item
      */
-    public function removeItem(\AppBundle\Entity\Item $item)
-    {
+    public function removeItem(\AppBundle\Entity\Item $item) {
         $this->items->removeElement($item);
     }
 
@@ -126,8 +167,248 @@ class Cart {
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getItems()
-    {
+    public function getItems() {
         return $this->items;
+    }
+
+
+    /**
+     * Set userFirstName
+     *
+     * @param string $userFirstName
+     *
+     * @return Cart
+     */
+    public function setUserFirstName($userFirstName)
+    {
+        $this->userFirstName = $userFirstName;
+    
+        return $this;
+    }
+
+    /**
+     * Get userFirstName
+     *
+     * @return string
+     */
+    public function getUserFirstName()
+    {
+        return $this->userFirstName;
+    }
+
+    /**
+     * Set userLastName
+     *
+     * @param string $userLastName
+     *
+     * @return Cart
+     */
+    public function setUserLastName($userLastName)
+    {
+        $this->userLastName = $userLastName;
+    
+        return $this;
+    }
+
+    /**
+     * Get userLastName
+     *
+     * @return string
+     */
+    public function getUserLastName()
+    {
+        return $this->userLastName;
+    }
+
+    /**
+     * Set userBirthDate
+     *
+     * @param string $userBirthDate
+     *
+     * @return Cart
+     */
+    public function setUserBirthDate($userBirthDate)
+    {
+        $this->userBirthDate = $userBirthDate;
+    
+        return $this;
+    }
+
+    /**
+     * Get userBirthDate
+     *
+     * @return string
+     */
+    public function getUserBirthDate()
+    {
+        return $this->userBirthDate;
+    }
+
+    /**
+     * Set userAddress
+     *
+     * @param string $userAddress
+     *
+     * @return Cart
+     */
+    public function setUserAddress($userAddress)
+    {
+        $this->userAddress = $userAddress;
+    
+        return $this;
+    }
+
+    /**
+     * Get userAddress
+     *
+     * @return string
+     */
+    public function getUserAddress()
+    {
+        return $this->userAddress;
+    }
+
+    /**
+     * Set userPLZ
+     *
+     * @param string $userPLZ
+     *
+     * @return Cart
+     */
+    public function setUserPLZ($userPLZ)
+    {
+        $this->userPLZ = $userPLZ;
+    
+        return $this;
+    }
+
+    /**
+     * Get userPLZ
+     *
+     * @return string
+     */
+    public function getUserPLZ()
+    {
+        return $this->userPLZ;
+    }
+
+    /**
+     * Set userFirstNameAlternate
+     *
+     * @param string $userFirstNameAlternate
+     *
+     * @return Cart
+     */
+    public function setUserFirstNameAlternate($userFirstNameAlternate)
+    {
+        $this->userFirstNameAlternate = $userFirstNameAlternate;
+    
+        return $this;
+    }
+
+    /**
+     * Get userFirstNameAlternate
+     *
+     * @return string
+     */
+    public function getUserFirstNameAlternate()
+    {
+        return $this->userFirstNameAlternate;
+    }
+
+    /**
+     * Set userLastNameAlternate
+     *
+     * @param string $userLastNameAlternate
+     *
+     * @return Cart
+     */
+    public function setUserLastNameAlternate($userLastNameAlternate)
+    {
+        $this->userLastNameAlternate = $userLastNameAlternate;
+    
+        return $this;
+    }
+
+    /**
+     * Get userLastNameAlternate
+     *
+     * @return string
+     */
+    public function getUserLastNameAlternate()
+    {
+        return $this->userLastNameAlternate;
+    }
+
+    /**
+     * Set userBirthDateAlternate
+     *
+     * @param string $userBirthDateAlternate
+     *
+     * @return Cart
+     */
+    public function setUserBirthDateAlternate($userBirthDateAlternate)
+    {
+        $this->userBirthDateAlternate = $userBirthDateAlternate;
+    
+        return $this;
+    }
+
+    /**
+     * Get userBirthDateAlternate
+     *
+     * @return string
+     */
+    public function getUserBirthDateAlternate()
+    {
+        return $this->userBirthDateAlternate;
+    }
+
+    /**
+     * Set userAddressAlternate
+     *
+     * @param string $userAddressAlternate
+     *
+     * @return Cart
+     */
+    public function setUserAddressAlternate($userAddressAlternate)
+    {
+        $this->userAddressAlternate = $userAddressAlternate;
+    
+        return $this;
+    }
+
+    /**
+     * Get userAddressAlternate
+     *
+     * @return string
+     */
+    public function getUserAddressAlternate()
+    {
+        return $this->userAddressAlternate;
+    }
+
+    /**
+     * Set userPLZAlternate
+     *
+     * @param string $userPLZAlternate
+     *
+     * @return Cart
+     */
+    public function setUserPLZAlternate($userPLZAlternate)
+    {
+        $this->userPLZAlternate = $userPLZAlternate;
+    
+        return $this;
+    }
+
+    /**
+     * Get userPLZAlternate
+     *
+     * @return string
+     */
+    public function getUserPLZAlternate()
+    {
+        return $this->userPLZAlternate;
     }
 }
