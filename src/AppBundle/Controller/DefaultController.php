@@ -14,6 +14,7 @@ use Symfony\Component\Serializer\Normalizer\PropertyNormalizer;
 use Symfony\Component\Serializer\Serializer;
 use JMS\Serializer\SerializerBuilder;
 use AppBundle\Entity\Cart;
+use AppBundle\Entity\Item;
 use AppBundle;
 
 class DefaultController extends Controller {
@@ -63,14 +64,21 @@ class DefaultController extends Controller {
 
         $input_sanitized = str_replace(array("\n", "\t", "\r"), '', $input);
 
+        $json_decoded = json_decode($input_sanitized, false); // false -> object , true -> array
         
-
-        $json_decoded = json_decode($input_sanitized, false);
-        //$json_decoded = json_decode(json_encode($json_decoded),true);
         dump($json_decoded);
         
-        $test = new Cart();
-        dump(get_class($json_decoded));
+        $c1 = new Cart();
+        $c1->setCheckInDate($json_decoded->checkInDate);
+        $c1->setCheckOutDate($json_decoded->checkOutDate);
+        foreach ($json_decoded->items as $item) {
+            $i = new Item();
+            $i->s
+        } ;
+        
+        dump($c1);
+        // $c1->setCheckInDate($json_decoded);
+        // dump(get_class($json_decoded));
 
 //        echo "<br> checkInDate: " . $json_decoded["checkInDate"];
 //        echo "<br> checkOutDate: " . $json_decoded["checkOutDate"];

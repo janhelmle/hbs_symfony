@@ -9,7 +9,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  * @ORM\Entity
  * @ORM\Table(name="item")
  */
-abstract class Item {
+class Item {
 
     /**
      * @ORM\Column(type="integer")
