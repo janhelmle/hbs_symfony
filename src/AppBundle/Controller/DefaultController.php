@@ -24,17 +24,12 @@ class DefaultController extends Controller {
      */
     public function indexAction(Request $request) {
 
-        $encoders = array(new XmlEncoder(), new JsonEncoder());
-        $normalizers = array(new ObjectNormalizer());
-
-        $serializer = new Serializer($normalizers, $encoders);
-
         $em = $this->getDoctrine()->getManager();
 
         $input = '
             {
-	"checkInDate": "2016.08.07, 12:00",
-	"checkOutDate": "2016.09.02, 12:00",
+	"checkInDate": "2016.01.10, 12:00",
+	"checkOutDate": "2016.01.16, 12:00",
 	"items": [{
 		"roomTypeIdentifier": "singleroom",
 		"roomTypeQuantity": 1,
@@ -60,9 +55,8 @@ class DefaultController extends Controller {
         $input_sanitized = str_replace(array("\n", "\t", "\r"), '', $input); // remove newlines , tabs , carriage return
 
         $json_decoded = json_decode($input_sanitized, false); // false -> object , true -> array
-        
         // dump($json_decoded);
-        
+
         $c = new Cart();
         $c->setCheckInDate($json_decoded->checkInDate);
         $c->setCheckOutDate($json_decoded->checkOutDate);
@@ -73,26 +67,11 @@ class DefaultController extends Controller {
             $i->setBoardingIdentifier($item->boardingIdentifier);
             $i->setSpecialIdentifier($item->specialsIdentifier);
             $c->addItem($i);
-        } ;
+        };
+
+        $totalPrice = $em->getRepository('AppBundle:Cart')->calculateTotalPrice($c);
         
-        dump($c);
-        // $c1->setCheckInDate($json_decoded);
-        // dump(get_class($json_decoded));
-
-//        echo "<br> checkInDate: " . $json_decoded["checkInDate"];
-//        echo "<br> checkOutDate: " . $json_decoded["checkOutDate"];
-//        echo "<br> rooms...: " . $json_decoded["items"][0]["roomTypeIdentifier"];
-//
-//        $rooms = $json_decoded["items"];
-
-
-//        foreach($json_decoded['rooms'] as $k => $v) {
-//            dump($k);
-//        }
-        //dump(get_object_vars($json_decoded->rooms));
-//        $em->persist($deserialized);
-//        $em->flush();
-
+        // dump($totalPrice);
 
         $resp = new Response('<body></body>');
         //$resp->headers->set('Content-Type', 'application/json ; charset=utf-8');
