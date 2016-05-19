@@ -37,46 +37,45 @@ class DefaultController extends Controller {
 	"checkOutDate": "2016.09.02, 12:00",
 	"items": [{
 		"roomTypeIdentifier": "singleroom",
-		"quantity": 1,
+		"roomTypeQuantity": 1,
 		"boardingIdentifier": "noboarding",
-		"specialsIdentifier": 
-			"champagnebreakfast"
+		"specialsIdentifier": "champagnebreakfast"
 			
 		
 	}, {
 		"roomTypeIdentifier": "doubleroom",
-		"quantity": 1,
+		"roomTypeQuantity": 1,
 		"boardingIdentifier": "halfpension",
-		"specialsIdentifier": 
-			"raftingtour"
+		"specialsIdentifier": "raftingtour"
 		
 	}, {
 		"roomTypeIdentifier": "doubleroom",
-		"quantity": 2,
+		"roomTypeQuantity": 2,
 		"boardingIdentifier": "fullpension",
-		"specialsIdentifier": 
-			"champagnebreakfast"
-		
+		"specialsIdentifier": "champagnebreakfast"
 	}]
 }
 ';
 
-
-        $input_sanitized = str_replace(array("\n", "\t", "\r"), '', $input);
+        $input_sanitized = str_replace(array("\n", "\t", "\r"), '', $input); // remove newlines , tabs , carriage return
 
         $json_decoded = json_decode($input_sanitized, false); // false -> object , true -> array
         
-        dump($json_decoded);
+        // dump($json_decoded);
         
-        $c1 = new Cart();
-        $c1->setCheckInDate($json_decoded->checkInDate);
-        $c1->setCheckOutDate($json_decoded->checkOutDate);
+        $c = new Cart();
+        $c->setCheckInDate($json_decoded->checkInDate);
+        $c->setCheckOutDate($json_decoded->checkOutDate);
         foreach ($json_decoded->items as $item) {
             $i = new Item();
-            $i->s
+            $i->setRoomTypeIdentifier($item->roomTypeIdentifier);
+            $i->setRoomTypeQuantity($item->roomTypeQuantity);
+            $i->setBoardingIdentifier($item->boardingIdentifier);
+            $i->setSpecialIdentifier($item->specialsIdentifier);
+            $c->addItem($i);
         } ;
         
-        dump($c1);
+        dump($c);
         // $c1->setCheckInDate($json_decoded);
         // dump(get_class($json_decoded));
 
