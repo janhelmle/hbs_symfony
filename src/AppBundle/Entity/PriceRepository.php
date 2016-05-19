@@ -70,7 +70,7 @@ class PriceRepository extends \Doctrine\ORM\EntityRepository { // returns price 
         return $avg; // arithmetischer Mittelwert
     }
 
-    public function findLatestPricePerProductNameAndDate($productString, DateTime $date) { // returns price object
+    public function findLatestPricePerProductIdentifierAndDateTime($productString, DateTime $date) { // returns price object
 
         $em = $this->getEntityManager();
         

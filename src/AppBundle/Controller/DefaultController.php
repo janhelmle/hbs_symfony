@@ -34,7 +34,7 @@ class DefaultController extends Controller {
                 ->calculatePriceAveragePerProductAndDateInterval($roomTypesQueryResult[0], new \DateTime('2016-01-10'), new \DateTime('2016-01-16'));
         
         $pr = $em->getRepository('AppBundle:Price')
-                ->findLatestPricePerProductNameAndDate('singleroom', new \DateTime('2016-02-16'));
+                ->findLatestPricePerProductIdentifierAndDateTime('singleroom', new \DateTime('2016-02-16'));
 
         dump($pr);
         
