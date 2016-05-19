@@ -5,6 +5,7 @@ namespace AppBundle\Entity;
 use DateTime;
 use DateInterval;
 use DatePeriod;
+// use String;
 
 /**
  * PriceRepository
@@ -14,7 +15,7 @@ use DatePeriod;
  */
 class PriceRepository extends \Doctrine\ORM\EntityRepository { // returns price object
 
-    public function findLatestPricePerProductAndDate(Product $prod, DateTime $date) {
+    public function findLatestPricePerProductAndDateTime(Product $prod, DateTime $date) {
 
         $em = $this->getEntityManager();
 
@@ -35,23 +36,21 @@ class PriceRepository extends \Doctrine\ORM\EntityRepository { // returns price 
     }
 
     public function calculateTotalAmountPerProductAndDateInterval(Product $prod, DateTime $checkIn, DateTime $checkOut) { // returns double
-
         $em = $this->getEntityManager();
 
         $sum = 0;
 
         $interval = new DateInterval('P1D'); // 1 Tag
-        $daterange = new DatePeriod($checkIn, $interval, $checkOut); 
+        $daterange = new DatePeriod($checkIn, $interval, $checkOut);
 
         foreach ($daterange as $date) {
-            $sum += $em->getRepository('AppBundle:Price')->findLatestPricePerProductAndDate($prod, $date)->getValue();
+            $sum += $em->getRepository('AppBundle:Price')->findLatestPricePerProductAndDateTime($prod, $date)->getValue();
         }
-        
+
         return $sum;
     }
-    
-    public function calculatePriceAveragePerProductAndDateInterval(Product $prod, DateTime $checkIn, DateTime $checkOut) { // returns double
 
+    public function calculatePriceAveragePerProductAndDateInterval(Product $prod, DateTime $checkIn, DateTime $checkOut) { // returns double
         $em = $this->getEntityManager();
 
         $sum = 0;
@@ -59,16 +58,43 @@ class PriceRepository extends \Doctrine\ORM\EntityRepository { // returns price 
         $avg = 0;
 
         $interval = new DateInterval('P1D'); // 1 Tag
-        $daterange = new DatePeriod($checkIn, $interval, $checkOut); 
+        $daterange = new DatePeriod($checkIn, $interval, $checkOut);
 
         foreach ($daterange as $date) {
             $days += 1;
-            $sum += $em->getRepository('AppBundle:Price')->findLatestPricePerProductAndDate($prod, $date)->getValue();
+            $sum += $em->getRepository('AppBundle:Price')->findLatestPricePerProductAndDateTime($prod, $date)->getValue();
         }
-        
-        $avg = round($sum/$days , 2) ; // auf 2 Nachkommastellen gerundet
-        
+
+        $avg = round($sum / $days, 2); // auf 2 Nachkommastellen gerundet
+
         return $avg; // arithmetischer Mittelwert
+    }
+
+    public function findLatestPricePerProductNameAndDate($productString, DateTime $date) { // returns price object
+
+        $em = $this->getEntityManager();
+        
+        $query = $em->createQuery(
+                'SELECT prod FROM AppBundle:product prod WHERE prod.identifier = ?1'
+        );
+        $query->setParameter(1, $productString);
+        
+        $productObject = $query->getResult()[0]; // 1 ProductObject
+        
+        $query = $em->createQuery(
+                'SELECT pri FROM AppBundle:price pri JOIN pri.product prod WHERE prod.identifier = ?1 ORDER BY pri.date DESC'
+        );
+        $query->setParameter(1, $productObject->getIdentifier());
+
+        $result = $query->getResult(); // Array of Price Objects
+
+        foreach ($result as $r) { // laufe durch ResultSet vom Neuesten zum Aeltesten
+            if ($r->getDate() <= $date) {
+                return $r;
+            }
+        }
+
+        return $result[0]; // sollte hier nicht stehen 
     }
 
 }
