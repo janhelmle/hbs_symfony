@@ -5,7 +5,6 @@ namespace AppBundle\Entity;
 use DateTime;
 use DateInterval;
 use DatePeriod;
-// use String;
 
 /**
  * PriceRepository
