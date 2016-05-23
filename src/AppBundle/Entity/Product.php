@@ -51,11 +51,19 @@ abstract class Product {
     }
 
     /**
+     * @ORM\ManyToOne(targetEntity="Hotel", inversedBy="hotels")
+     * @ORM\JoinColumn(name="hotel_id", referencedColumnName="id")
+     */
+    private $hotel;
+
+
+    /**
      * Get id
      *
      * @return integer
      */
-    public function getId() {
+    public function getId()
+    {
         return $this->id;
     }
 
@@ -66,9 +74,10 @@ abstract class Product {
      *
      * @return Product
      */
-    public function setIdentifier($identifier) {
+    public function setIdentifier($identifier)
+    {
         $this->identifier = $identifier;
-
+    
         return $this;
     }
 
@@ -77,7 +86,8 @@ abstract class Product {
      *
      * @return string
      */
-    public function getIdentifier() {
+    public function getIdentifier()
+    {
         return $this->identifier;
     }
 
@@ -88,9 +98,10 @@ abstract class Product {
      *
      * @return Product
      */
-    public function setListText($listText) {
+    public function setListText($listText)
+    {
         $this->listText = $listText;
-
+    
         return $this;
     }
 
@@ -99,7 +110,8 @@ abstract class Product {
      *
      * @return string
      */
-    public function getListText() {
+    public function getListText()
+    {
         return $this->listText;
     }
 
@@ -110,9 +122,10 @@ abstract class Product {
      *
      * @return Product
      */
-    public function setPricingBasis($pricingBasis) {
+    public function setPricingBasis($pricingBasis)
+    {
         $this->pricingBasis = $pricingBasis;
-
+    
         return $this;
     }
 
@@ -121,7 +134,8 @@ abstract class Product {
      *
      * @return string
      */
-    public function getPricingBasis() {
+    public function getPricingBasis()
+    {
         return $this->pricingBasis;
     }
 
@@ -132,9 +146,10 @@ abstract class Product {
      *
      * @return Product
      */
-    public function setPricingBasisText($pricingBasisText) {
+    public function setPricingBasisText($pricingBasisText)
+    {
         $this->pricingBasisText = $pricingBasisText;
-
+    
         return $this;
     }
 
@@ -143,7 +158,8 @@ abstract class Product {
      *
      * @return string
      */
-    public function getPricingBasisText() {
+    public function getPricingBasisText()
+    {
         return $this->pricingBasisText;
     }
 
@@ -154,9 +170,10 @@ abstract class Product {
      *
      * @return Product
      */
-    public function addPrice(\AppBundle\Entity\Price $price) {
+    public function addPrice(\AppBundle\Entity\Price $price)
+    {
         $this->prices[] = $price;
-
+    
         return $this;
     }
 
@@ -165,7 +182,8 @@ abstract class Product {
      *
      * @param \AppBundle\Entity\Price $price
      */
-    public function removePrice(\AppBundle\Entity\Price $price) {
+    public function removePrice(\AppBundle\Entity\Price $price)
+    {
         $this->prices->removeElement($price);
     }
 
@@ -174,8 +192,32 @@ abstract class Product {
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getPrices() {
+    public function getPrices()
+    {
         return $this->prices;
     }
 
+    /**
+     * Set hotel
+     *
+     * @param \AppBundle\Entity\Hotel $hotel
+     *
+     * @return Product
+     */
+    public function setHotel(\AppBundle\Entity\Hotel $hotel = null)
+    {
+        $this->hotel = $hotel;
+    
+        return $this;
+    }
+
+    /**
+     * Get hotel
+     *
+     * @return \AppBundle\Entity\Hotel
+     */
+    public function getHotel()
+    {
+        return $this->hotel;
+    }
 }

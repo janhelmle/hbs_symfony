@@ -291,4 +291,124 @@ class Cart {
     {
         return $this->userPLZ;
     }
+
+    /**
+     * Set userFirstNameAlternate
+     *
+     * @param string $userFirstNameAlternate
+     *
+     * @return Cart
+     */
+    public function setUserFirstNameAlternate($userFirstNameAlternate)
+    {
+        $this->userFirstNameAlternate = $userFirstNameAlternate;
+    
+        return $this;
+    }
+
+    /**
+     * Get userFirstNameAlternate
+     *
+     * @return string
+     */
+    public function getUserFirstNameAlternate()
+    {
+        return $this->userFirstNameAlternate;
+    }
+
+    /**
+     * Set userLastNameAlternate
+     *
+     * @param string $userLastNameAlternate
+     *
+     * @return Cart
+     */
+    public function setUserLastNameAlternate($userLastNameAlternate)
+    {
+        $this->userLastNameAlternate = $userLastNameAlternate;
+    
+        return $this;
+    }
+
+    /**
+     * Get userLastNameAlternate
+     *
+     * @return string
+     */
+    public function getUserLastNameAlternate()
+    {
+        return $this->userLastNameAlternate;
+    }
+
+    /**
+     * Set userBirthDateAlternate
+     *
+     * @param string $userBirthDateAlternate
+     *
+     * @return Cart
+     */
+    public function setUserBirthDateAlternate($userBirthDateAlternate)
+    {
+        $this->userBirthDateAlternate = $userBirthDateAlternate;
+    
+        return $this;
+    }
+
+    /**
+     * Get userBirthDateAlternate
+     *
+     * @return string
+     */
+    public function getUserBirthDateAlternate()
+    {
+        return $this->userBirthDateAlternate;
+    }
+
+    /**
+     * Set userAddressAlternate
+     *
+     * @param string $userAddressAlternate
+     *
+     * @return Cart
+     */
+    public function setUserAddressAlternate($userAddressAlternate)
+    {
+        $this->userAddressAlternate = $userAddressAlternate;
+    
+        return $this;
+    }
+
+    /**
+     * Get userAddressAlternate
+     *
+     * @return string
+     */
+    public function getUserAddressAlternate()
+    {
+        return $this->userAddressAlternate;
+    }
+
+    /**
+     * Set userPLZAlternate
+     *
+     * @param string $userPLZAlternate
+     *
+     * @return Cart
+     */
+    public function setUserPLZAlternate($userPLZAlternate)
+    {
+        $this->userPLZAlternate = $userPLZAlternate;
+    
+        return $this;
+    }
+
+    /**
+     * Get userPLZAlternate
+     *
+     * @return string
+     */
+    public function getUserPLZAlternate()
+    {
+        return $this->userPLZAlternate;
+    }
 }
