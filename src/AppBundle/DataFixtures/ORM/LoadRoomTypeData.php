@@ -5,7 +5,6 @@ namespace AppBundle\DataFixtures\ORM;
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
-
 use AppBundle\Entity\RoomType;
 
 class LoadRoomTypeData extends AbstractFixture implements OrderedFixtureInterface {
@@ -21,6 +20,7 @@ class LoadRoomTypeData extends AbstractFixture implements OrderedFixtureInterfac
         $rt1->setCapacity(5);
         $rt1->setQuantityOfPersons(1);
         $rt1->setPositionInSubMenu(1);
+        $rt1->setHotel($this->getReference('testhotel'));
         $this->addReference('singleroom', $rt1);
         $manager->persist($rt1);
         $manager->flush();
@@ -35,6 +35,7 @@ class LoadRoomTypeData extends AbstractFixture implements OrderedFixtureInterfac
         $rt2->setCapacity(6);
         $rt2->setQuantityOfPersons(2);
         $rt2->setPositionInSubMenu(2);
+        $rt2->setHotel($this->getReference('testhotel'));
         $this->addReference('doubleroom', $rt2);
         $manager->persist($rt2);
         $manager->flush();
@@ -49,6 +50,7 @@ class LoadRoomTypeData extends AbstractFixture implements OrderedFixtureInterfac
         $rt3->setCapacity(7);
         $rt3->setQuantityOfPersons(2);
         $rt3->setPositionInSubMenu(3);
+        $rt3->setHotel($this->getReference('testhotel'));
         $this->addReference('twinroom', $rt3);
         $manager->persist($rt3);
         $manager->flush();
@@ -63,6 +65,7 @@ class LoadRoomTypeData extends AbstractFixture implements OrderedFixtureInterfac
         $rt4->setCapacity(8);
         $rt4->setQuantityOfPersons(3);
         $rt4->setPositionInSubMenu(4);
+        $rt4->setHotel($this->getReference('testhotel'));
         $this->addReference('tripleroom', $rt4);
         $manager->persist($rt4);
         $manager->flush();
@@ -77,6 +80,7 @@ class LoadRoomTypeData extends AbstractFixture implements OrderedFixtureInterfac
         $rt5->setCapacity(4);
         $rt5->setQuantityOfPersons(4);
         $rt5->setPositionInSubMenu(5);
+        $rt5->setHotel($this->getReference('testhotel'));
         $this->addReference('familyroom', $rt5);
         $manager->persist($rt5);
         $manager->flush();
@@ -91,6 +95,7 @@ class LoadRoomTypeData extends AbstractFixture implements OrderedFixtureInterfac
         $rt6->setCapacity(3);
         $rt6->setQuantityOfPersons(1);
         $rt6->setPositionInSubMenu(6);
+        $rt6->setHotel($this->getReference('testhotel'));
         $this->addReference('apartmentsingle', $rt6);
         $manager->persist($rt6);
         $manager->flush();
@@ -105,6 +110,7 @@ class LoadRoomTypeData extends AbstractFixture implements OrderedFixtureInterfac
         $rt7->setCapacity(2);
         $rt7->setQuantityOfPersons(2);
         $rt7->setPositionInSubMenu(7);
+        $rt7->setHotel($this->getReference('testhotel'));
         $this->addReference('apartmentdouble', $rt7);
         $manager->persist($rt7);
         $manager->flush();
