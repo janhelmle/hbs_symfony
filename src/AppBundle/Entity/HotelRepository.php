@@ -10,7 +10,7 @@ namespace AppBundle\Entity;
  */
 class HotelRepository extends \Doctrine\ORM\EntityRepository
 {
-     public function getEmail() { // returns String
+     public function getEmailAddress () { // returns String
 
         $em = $this->getEntityManager();
 

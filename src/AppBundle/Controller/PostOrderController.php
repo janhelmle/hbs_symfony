@@ -20,7 +20,7 @@ use AppBundle;
 class PostOrderController extends Controller {
 
     /**
-     * @Route("/api/v0/postOrder", name="getTotalPrice_v_0")
+     * @Route("/api/v0/postOrder", name="postOrder_v_0")
      */
     public function postOrderAction_v_0(Request $request) {
 
@@ -121,7 +121,7 @@ class PostOrderController extends Controller {
         // $totalPrice = $em->getRepository('AppBundle:Cart')->calculateTotalPrice($c); // Zugriff über EntityRepository
         // $totalPriceJSON = json_encode($totalPrice, 320); // 320 : 0000000101000000 = 256 + 64 : JSON_UNESCAPED_SLASHES => 64 + JSON_UNESCAPED_UNICODE => 256
         
-        $destinationEmailAddress = $em->getRepository('AppBundle:Hotel')->getEmail();
+        $destinationEmailAddress = $em->getRepository('AppBundle:Hotel')->getEmailAddress();
         $sourceEmailAddress = "test@mam.de";
         $eMailSubject = "Neue Reservierung";
         
