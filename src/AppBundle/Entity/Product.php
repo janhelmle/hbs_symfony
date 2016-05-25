@@ -12,7 +12,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  * @ORM\DiscriminatorColumn(name="discriminator", type="string")
  * @ORM\DiscriminatorMap({"product" = "Product", "roomType" = "RoomType" , "additionalProduct" = "AdditionalProduct"})
  */
-class Product {
+abstract class Product {
 
     /**
      * @ORM\Column(type="integer")
@@ -51,7 +51,7 @@ class Product {
     }
 
     /**
-     * @ORM\ManyToOne(targetEntity="Hotel", inversedBy="hotels")
+     * @ORM\ManyToOne(targetEntity="Hotel", inversedBy="products")
      * @ORM\JoinColumn(name="hotel_id", referencedColumnName="id")
      */
     private $hotel;
