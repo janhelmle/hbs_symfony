@@ -37,18 +37,17 @@ class PostOrderController extends Controller {
 //        "userLastName": "Anders",
 //        "userBirthDate": "11.01.1991",
 //        "userAddress": "Antonstrasse 11",
-//        "userPLZ": "12345",
+//        "userPlz": "12345 Astadt",
 //        "userEmail": "a@a.com",
 //        
 //        "alternateCheck": true,
 //        
-//        "userFirstName": "Bernd",
-//        "userLastName": "Bartel",
-//        "userBirthDate": "11.01.1991",
-//        "userAddress": "Antonstrasse 11",
-//        "userPLZ": "12345",
-//
-//
+//        "userFirstNameAlternate": "Bernd",
+//        "userLastNameAlternate": "Bartel",
+//        "userBirthDateAlternate": "22.02.1992",
+//        "userAddressAlternate": "Berndstrasse 22",
+//        "userPlzAlternate": "54321 Bstadt",
+//        "userEmailAlternate": "a@a.com",
 //
 //	"items": [{
 //		"roomTypeIdentifier": "singleroom",
@@ -86,27 +85,28 @@ class PostOrderController extends Controller {
         $input_sanitized = str_replace(array("\n", "\t", "\r"), '', $input); // remove newlines , tabs , carriage return
 
         $json_decoded = json_decode($input_sanitized, false); // false -> object , true -> array
-        
+
         $c = new Cart();
-        
+
         $c->setCheckInDate($json_decoded->checkInDate);
         $c->setCheckOutDate($json_decoded->checkOutDate);
-        
+
         $c->setUserFirstName($json_decoded->userFirstName);
         $c->setUserLastName($json_decoded->userLastName);
         $c->setUserBirthDate($json_decoded->userBirthDate);
         $c->setUserAddress($json_decoded->userAddress);
-        $c->setUserPLZ($json_decoded->userPLZ);
-        $c->setUserEMail($json_decoded->userEMail);
-        
+        $c->setUserPlz($json_decoded->userPlz);
+        $c->setUserEmail($json_decoded->userEmail);
+
         $c->setAlternateCheck($json_decoded->alternateCheck);
-        
+
         $c->setUserFirstNameAlternate($json_decoded->userFirstNameAlternate);
         $c->setUserLastNameAlternate($json_decoded->userLastNameAlternate);
         $c->setUserBirthDateAlternate($json_decoded->userBirthDateAlternate);
         $c->setUserAddressAlternate($json_decoded->userAddressAlternate);
-        $c->setUserPLZAlternate($json_decoded->userPLZAlternate);
-        
+        $c->setUserPlzAlternate($json_decoded->userPlzAlternate);
+        $c->setUserEmailAlternate($json_decoded->userEmailAlternate);
+
         foreach ($json_decoded->items as $item) {
             $i = new Item();
             $i->setRoomTypeIdentifier($item->roomTypeIdentifier);
@@ -117,7 +117,6 @@ class PostOrderController extends Controller {
         }
 
         // $totalPrice = $em->getRepository('AppBundle:Cart')->calculateTotalPrice($c); // Zugriff über EntityRepository
-
         // $totalPriceJSON = json_encode($totalPrice, 320); // 320 : 0000000101000000 = 256 + 64 : JSON_UNESCAPED_SLASHES => 64 + JSON_UNESCAPED_UNICODE => 256
 
         $resp = new Response($totalPriceJSON);
