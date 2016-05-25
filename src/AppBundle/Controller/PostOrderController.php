@@ -28,45 +28,45 @@ class PostOrderController extends Controller {
 
         $em = $this->getDoctrine()->getManager();
 
-//        $input = '
-//            {
-//	"checkInDate": "2016.01.10, 12:00",
-//	"checkOutDate": "2016.01.16, 12:00",
-//        
-//        "userFirstName": "Anton",
-//        "userLastName": "Anders",
-//        "userBirthDate": "11.01.1991",
-//        "userAddress": "Antonstrasse 11",
-//        "userPlz": "12345 Astadt",
-//        "userEmail": "a@a.com",
-//        
-//        "alternateCheck": true,
-//        
-//        "userFirstNameAlternate": "Bernd",
-//        "userLastNameAlternate": "Bartel",
-//        "userBirthDateAlternate": "22.02.1992",
-//        "userAddressAlternate": "Berndstrasse 22",
-//        "userPlzAlternate": "54321 Bstadt",
-//        "userEmailAlternate": "a@a.com",
-//
-//	"items": [{
-//		"roomTypeIdentifier": "singleroom",
-//		"roomTypeQuantity": 1,
-//		"boardingIdentifier": "noboarding",
-//		"specialsIdentifier": "champagnebreakfast"
-//	}, {
-//		"roomTypeIdentifier": "doubleroom",
-//		"roomTypeQuantity": 1,
-//		"boardingIdentifier": "halfpension",
-//		"specialsIdentifier": "raftingtour"
-//	}, {
-//		"roomTypeIdentifier": "doubleroom",
-//		"roomTypeQuantity": 2,
-//		"boardingIdentifier": "fullpension",
-//		"specialsIdentifier": "champagnebreakfast"
-//	}]
-//}
-// ';
+        $input = '
+            {
+	"checkInDate": "2016.01.10, 12:00",
+	"checkOutDate": "2016.01.16, 12:00",
+        
+        "userFirstName": "Anton",
+        "userLastName": "Anders",
+        "userBirthDate": "11.01.1991",
+        "userAddress": "Antonstrasse 11",
+        "userPlz": "12345 Astadt",
+        "userEmail": "a@a.com",
+        
+        "alternateCheck": true,
+        
+        "userFirstNameAlternate": "Bernd",
+        "userLastNameAlternate": "Bartel",
+        "userBirthDateAlternate": "22.02.1992",
+        "userAddressAlternate": "Berndstrasse 22",
+        "userPlzAlternate": "54321 Bstadt",
+        "userEmailAlternate": "a@a.com",
+
+	"items": [{
+		"roomTypeIdentifier": "singleroom",
+		"roomTypeQuantity": 1,
+		"boardingIdentifier": "noboarding",
+		"specialsIdentifier": "champagnebreakfast"
+	}, {
+		"roomTypeIdentifier": "doubleroom",
+		"roomTypeQuantity": 1,
+		"boardingIdentifier": "halfpension",
+		"specialsIdentifier": "raftingtour"
+	}, {
+		"roomTypeIdentifier": "doubleroom",
+		"roomTypeQuantity": 2,
+		"boardingIdentifier": "fullpension",
+		"specialsIdentifier": "champagnebreakfast"
+	}]
+}
+ ';
 
         if (
                 (!$input)
@@ -116,11 +116,26 @@ class PostOrderController extends Controller {
             $c->addItem($i);
         }
 
+        dump($c);
+        
         // $totalPrice = $em->getRepository('AppBundle:Cart')->calculateTotalPrice($c); // Zugriff über EntityRepository
         // $totalPriceJSON = json_encode($totalPrice, 320); // 320 : 0000000101000000 = 256 + 64 : JSON_UNESCAPED_SLASHES => 64 + JSON_UNESCAPED_UNICODE => 256
-
-        $resp = new Response($totalPriceJSON);
-        $resp->headers->set('Content-Type', 'application/json ; charset=utf-8');
+        
+        $destinationEmailAddress = $em->getRepository('AppBundle:Hotel')->getEmail();
+        $sourceEmailAddress = "test@mam.de";
+        $eMailSubject = "Neue Reservierung";
+        
+        $message = \Swift_Message::newInstance()
+                ->setSubject($eMailSubject)
+                ->setFrom($sourceEmailAddress)
+                ->setTo($destinationEmailAddress)
+                ->setBody('Body') 
+        ;
+        
+        $this->get('mailer')->send($message);
+        
+        $resp = new Response('<body></body>');
+        // $resp->headers->set('Content-Type', 'application/json ; charset=utf-8');
 
         return $resp;
     }
