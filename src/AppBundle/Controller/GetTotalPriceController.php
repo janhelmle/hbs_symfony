@@ -82,7 +82,7 @@ class GetTotalPriceController extends Controller {
             $c->addItem($i);
         }
 
-        $totalPrice = $em->getRepository('AppBundle:Cart')->calculateTotalPrice($c);
+        $totalPrice = $em->getRepository('AppBundle:Cart')->calculateTotalPrice($c); // Zugriff über EntityRepository
 
         $totalPriceJSON = json_encode($totalPrice, 320); // 320 : 0000000101000000 = 256 + 64 : JSON_UNESCAPED_SLASHES => 64 + JSON_UNESCAPED_UNICODE => 256
 

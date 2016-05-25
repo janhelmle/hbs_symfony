@@ -52,32 +52,37 @@ class Cart {
      * @ORM\Column(type="string" , length=100 , nullable=true)
      */
     private $userPLZ;
-    
+
+    /**
+     * @ORM\Column(type="boolean" , nullable=true)
+     */
+    private $alternateCheck;
+
     /**
      * @ORM\Column(type="string" , length=100 , nullable=true)
      */
     private $userFirstNameAlternate;
-    
+
     /**
      * @ORM\Column(type="string" , length=100 , nullable=true)
      */
     private $userLastNameAlternate;
-    
+
     /**
      * @ORM\Column(type="string" , length=100 , nullable=true)
      */
     private $userBirthDateAlternate;
-    
+
     /**
      * @ORM\Column(type="string" , length=100 , nullable=true)
      */
     private $userAddressAlternate;
-    
+
     /**
      * @ORM\Column(type="string" , length=100 , nullable=true)
      */
     private $userPLZAlternate;
-    
+
     /**
      * @ORM\OneToMany(targetEntity="Item", mappedBy="cart")
      */
@@ -87,12 +92,14 @@ class Cart {
         $this->items = new ArrayCollection();
     }
 
+
     /**
      * Get id
      *
      * @return integer
      */
-    public function getId() {
+    public function getId()
+    {
         return $this->id;
     }
 
@@ -103,9 +110,10 @@ class Cart {
      *
      * @return Cart
      */
-    public function setCheckInDate($checkInDate) {
+    public function setCheckInDate($checkInDate)
+    {
         $this->checkInDate = $checkInDate;
-
+    
         return $this;
     }
 
@@ -114,7 +122,8 @@ class Cart {
      *
      * @return \DateTime
      */
-    public function getCheckInDate() {
+    public function getCheckInDate()
+    {
         return $this->checkInDate;
     }
 
@@ -125,9 +134,10 @@ class Cart {
      *
      * @return Cart
      */
-    public function setCheckOutDate($checkOutDate) {
+    public function setCheckOutDate($checkOutDate)
+    {
         $this->checkOutDate = $checkOutDate;
-
+    
         return $this;
     }
 
@@ -136,41 +146,10 @@ class Cart {
      *
      * @return \DateTime
      */
-    public function getCheckOutDate() {
+    public function getCheckOutDate()
+    {
         return $this->checkOutDate;
     }
-
-    /**
-     * Add item
-     *
-     * @param \AppBundle\Entity\Item $item
-     *
-     * @return Cart
-     */
-    public function addItem(\AppBundle\Entity\Item $item) {
-        $this->items[] = $item;
-
-        return $this;
-    }
-
-    /**
-     * Remove item
-     *
-     * @param \AppBundle\Entity\Item $item
-     */
-    public function removeItem(\AppBundle\Entity\Item $item) {
-        $this->items->removeElement($item);
-    }
-
-    /**
-     * Get items
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getItems() {
-        return $this->items;
-    }
-
 
     /**
      * Set userFirstName
@@ -293,6 +272,30 @@ class Cart {
     }
 
     /**
+     * Set alternateCheck
+     *
+     * @param boolean $alternateCheck
+     *
+     * @return Cart
+     */
+    public function setAlternateCheck($alternateCheck)
+    {
+        $this->alternateCheck = $alternateCheck;
+    
+        return $this;
+    }
+
+    /**
+     * Get alternateCheck
+     *
+     * @return boolean
+     */
+    public function getAlternateCheck()
+    {
+        return $this->alternateCheck;
+    }
+
+    /**
      * Set userFirstNameAlternate
      *
      * @param string $userFirstNameAlternate
@@ -410,5 +413,39 @@ class Cart {
     public function getUserPLZAlternate()
     {
         return $this->userPLZAlternate;
+    }
+
+    /**
+     * Add item
+     *
+     * @param \AppBundle\Entity\Item $item
+     *
+     * @return Cart
+     */
+    public function addItem(\AppBundle\Entity\Item $item)
+    {
+        $this->items[] = $item;
+    
+        return $this;
+    }
+
+    /**
+     * Remove item
+     *
+     * @param \AppBundle\Entity\Item $item
+     */
+    public function removeItem(\AppBundle\Entity\Item $item)
+    {
+        $this->items->removeElement($item);
+    }
+
+    /**
+     * Get items
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getItems()
+    {
+        return $this->items;
     }
 }
