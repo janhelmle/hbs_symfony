@@ -28,45 +28,46 @@ class PostOrderController extends Controller {
 
         $em = $this->getDoctrine()->getManager();
 
-        $input = '
-            {
-	"checkInDate": "2016.01.10, 12:00",
-	"checkOutDate": "2016.01.16, 12:00",
-        
-        "userFirstName": "Anton",
-        "userLastName": "Anders",
-        "userBirthDate": "11.01.1991",
-        "userAddress": "Antonstrasse 11",
-        "userPLZ": "12345",
-        
-        "alternateCheck": true,
-        
-        "userFirstName": "Bernd",
-        "userLastName": "Bartel",
-        "userBirthDate": "11.01.1991",
-        "userAddress": "Antonstrasse 11",
-        "userPLZ": "12345",
-
-
-
-	"items": [{
-		"roomTypeIdentifier": "singleroom",
-		"roomTypeQuantity": 1,
-		"boardingIdentifier": "noboarding",
-		"specialsIdentifier": "champagnebreakfast"
-	}, {
-		"roomTypeIdentifier": "doubleroom",
-		"roomTypeQuantity": 1,
-		"boardingIdentifier": "halfpension",
-		"specialsIdentifier": "raftingtour"
-	}, {
-		"roomTypeIdentifier": "doubleroom",
-		"roomTypeQuantity": 2,
-		"boardingIdentifier": "fullpension",
-		"specialsIdentifier": "champagnebreakfast"
-	}]
-}
- ';
+//        $input = '
+//            {
+//	"checkInDate": "2016.01.10, 12:00",
+//	"checkOutDate": "2016.01.16, 12:00",
+//        
+//        "userFirstName": "Anton",
+//        "userLastName": "Anders",
+//        "userBirthDate": "11.01.1991",
+//        "userAddress": "Antonstrasse 11",
+//        "userPLZ": "12345",
+//        "userEmail": "a@a.com",
+//        
+//        "alternateCheck": true,
+//        
+//        "userFirstName": "Bernd",
+//        "userLastName": "Bartel",
+//        "userBirthDate": "11.01.1991",
+//        "userAddress": "Antonstrasse 11",
+//        "userPLZ": "12345",
+//
+//
+//
+//	"items": [{
+//		"roomTypeIdentifier": "singleroom",
+//		"roomTypeQuantity": 1,
+//		"boardingIdentifier": "noboarding",
+//		"specialsIdentifier": "champagnebreakfast"
+//	}, {
+//		"roomTypeIdentifier": "doubleroom",
+//		"roomTypeQuantity": 1,
+//		"boardingIdentifier": "halfpension",
+//		"specialsIdentifier": "raftingtour"
+//	}, {
+//		"roomTypeIdentifier": "doubleroom",
+//		"roomTypeQuantity": 2,
+//		"boardingIdentifier": "fullpension",
+//		"specialsIdentifier": "champagnebreakfast"
+//	}]
+//}
+// ';
 
         if (
                 (!$input)
@@ -96,6 +97,7 @@ class PostOrderController extends Controller {
         $c->setUserBirthDate($json_decoded->userBirthDate);
         $c->setUserAddress($json_decoded->userAddress);
         $c->setUserPLZ($json_decoded->userPLZ);
+        $c->setUserEMail($json_decoded->userEMail);
         
         $c->setAlternateCheck($json_decoded->alternateCheck);
         

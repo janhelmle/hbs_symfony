@@ -56,7 +56,7 @@ class Cart {
     /**
      * @ORM\Column(type="string" , length=200 , nullable=true)
      */
-    private $userEMail;
+    private $userEmail;
 
     /**
      * @ORM\Column(type="boolean" , nullable=true)
@@ -91,7 +91,7 @@ class Cart {
     /**
      * @ORM\Column(type="string" , length=200 , nullable=true)
      */
-    private $userEMailAlternate;
+    private $userEmailAlternate;
 
     /**
      * @ORM\OneToMany(targetEntity="Item", mappedBy="cart")
@@ -281,27 +281,27 @@ class Cart {
     }
 
     /**
-     * Set userEMail
+     * Set userEmail
      *
-     * @param string $userEMail
+     * @param string $userEmail
      *
      * @return Cart
      */
-    public function setUserEMail($userEMail)
+    public function setUserEmail($userEmail)
     {
-        $this->userEMail = $userEMail;
+        $this->userEmail = $userEmail;
     
         return $this;
     }
 
     /**
-     * Get userEMail
+     * Get userEmail
      *
      * @return string
      */
-    public function getUserEMail()
+    public function getUserEmail()
     {
-        return $this->userEMail;
+        return $this->userEmail;
     }
 
     /**
@@ -449,27 +449,27 @@ class Cart {
     }
 
     /**
-     * Set userEMailAlternate
+     * Set userEmailAlternate
      *
-     * @param string $userEMailAlternate
+     * @param string $userEmailAlternate
      *
      * @return Cart
      */
-    public function setUserEMailAlternate($userEMailAlternate)
+    public function setUserEmailAlternate($userEmailAlternate)
     {
-        $this->userEMailAlternate = $userEMailAlternate;
+        $this->userEmailAlternate = $userEmailAlternate;
     
         return $this;
     }
 
     /**
-     * Get userEMailAlternate
+     * Get userEmailAlternate
      *
      * @return string
      */
-    public function getUserEMailAlternate()
+    public function getUserEmailAlternate()
     {
-        return $this->userEMailAlternate;
+        return $this->userEmailAlternate;
     }
 
     /**
