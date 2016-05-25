@@ -51,7 +51,12 @@ class Cart {
     /**
      * @ORM\Column(type="string" , length=100 , nullable=true)
      */
-    private $userPLZ;
+    private $userPlz;
+    
+    /**
+     * @ORM\Column(type="string" , length=200 , nullable=true)
+     */
+    private $userEMail;
 
     /**
      * @ORM\Column(type="boolean" , nullable=true)
@@ -81,7 +86,12 @@ class Cart {
     /**
      * @ORM\Column(type="string" , length=100 , nullable=true)
      */
-    private $userPLZAlternate;
+    private $userPlzAlternate;
+    
+    /**
+     * @ORM\Column(type="string" , length=200 , nullable=true)
+     */
+    private $userEMailAlternate;
 
     /**
      * @ORM\OneToMany(targetEntity="Item", mappedBy="cart")
@@ -91,7 +101,6 @@ class Cart {
     public function __construct() {
         $this->items = new ArrayCollection();
     }
-
 
     /**
      * Get id
@@ -248,27 +257,51 @@ class Cart {
     }
 
     /**
-     * Set userPLZ
+     * Set userPlz
      *
-     * @param string $userPLZ
+     * @param string $userPlz
      *
      * @return Cart
      */
-    public function setUserPLZ($userPLZ)
+    public function setUserPlz($userPlz)
     {
-        $this->userPLZ = $userPLZ;
+        $this->userPlz = $userPlz;
     
         return $this;
     }
 
     /**
-     * Get userPLZ
+     * Get userPlz
      *
      * @return string
      */
-    public function getUserPLZ()
+    public function getUserPlz()
     {
-        return $this->userPLZ;
+        return $this->userPlz;
+    }
+
+    /**
+     * Set userEMail
+     *
+     * @param string $userEMail
+     *
+     * @return Cart
+     */
+    public function setUserEMail($userEMail)
+    {
+        $this->userEMail = $userEMail;
+    
+        return $this;
+    }
+
+    /**
+     * Get userEMail
+     *
+     * @return string
+     */
+    public function getUserEMail()
+    {
+        return $this->userEMail;
     }
 
     /**
@@ -392,27 +425,51 @@ class Cart {
     }
 
     /**
-     * Set userPLZAlternate
+     * Set userPlzAlternate
      *
-     * @param string $userPLZAlternate
+     * @param string $userPlzAlternate
      *
      * @return Cart
      */
-    public function setUserPLZAlternate($userPLZAlternate)
+    public function setUserPlzAlternate($userPlzAlternate)
     {
-        $this->userPLZAlternate = $userPLZAlternate;
+        $this->userPlzAlternate = $userPlzAlternate;
     
         return $this;
     }
 
     /**
-     * Get userPLZAlternate
+     * Get userPlzAlternate
      *
      * @return string
      */
-    public function getUserPLZAlternate()
+    public function getUserPlzAlternate()
     {
-        return $this->userPLZAlternate;
+        return $this->userPlzAlternate;
+    }
+
+    /**
+     * Set userEMailAlternate
+     *
+     * @param string $userEMailAlternate
+     *
+     * @return Cart
+     */
+    public function setUserEMailAlternate($userEMailAlternate)
+    {
+        $this->userEMailAlternate = $userEMailAlternate;
+    
+        return $this;
+    }
+
+    /**
+     * Get userEMailAlternate
+     *
+     * @return string
+     */
+    public function getUserEMailAlternate()
+    {
+        return $this->userEMailAlternate;
     }
 
     /**

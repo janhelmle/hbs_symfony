@@ -51,7 +51,12 @@ class Cart {
     /**
      * @ORM\Column(type="string" , length=100 , nullable=true)
      */
-    private $userPLZ;
+    private $userPlz;
+    
+    /**
+     * @ORM\Column(type="string" , length=200 , nullable=true)
+     */
+    private $userEMail;
 
     /**
      * @ORM\Column(type="boolean" , nullable=true)
@@ -81,7 +86,12 @@ class Cart {
     /**
      * @ORM\Column(type="string" , length=100 , nullable=true)
      */
-    private $userPLZAlternate;
+    private $userPlzAlternate;
+    
+    /**
+     * @ORM\Column(type="string" , length=200 , nullable=true)
+     */
+    private $userEMailAlternate;
 
     /**
      * @ORM\OneToMany(targetEntity="Item", mappedBy="cart")
@@ -91,5 +101,4 @@ class Cart {
     public function __construct() {
         $this->items = new ArrayCollection();
     }
-
 }
