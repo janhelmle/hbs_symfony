@@ -44,7 +44,7 @@ abstract class Product {
     /**
      * @ORM\OneToMany(targetEntity="Price", mappedBy="product")
      */
-    private $prices;
+    private $prices; // ArrayCollection
 
     public function __construct() {
         $this->prices = new ArrayCollection();
