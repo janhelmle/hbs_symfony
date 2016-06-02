@@ -70,24 +70,24 @@ class GetPricesAndAvailabilitiesController extends Controller {
         }
 
         
-        $additionalProducts = $em->getRepository('AppBundle:AdditionalProduct')->findAllBoardingsOrderedByPositionInList(); // array of AdditionalProducts objects
+        $boardings = $em->getRepository('AppBundle:AdditionalProduct')->findAllBoardingsOrderedByPositionInList(); // array of AdditionalProducts objects
 
-        foreach ($additionalProducts as $ap) {
+        foreach ($boardings as $b) {
             $i = new stdClass();
-            $i->identifier = $ap->getIdentifier();
+            $i->identifier = $b->getIdentifier();
             $i->price = $em->getRepository('AppBundle:Price')
-                    ->calculatePriceAveragePerProductAndDateInterval($ap, $checkInDateTime, $checkOutDateTime);
+                    ->calculatePriceAveragePerProductAndDateInterval($b, $checkInDateTime, $checkOutDateTime);
             $dto->boardings[] = $i;
         }
 
-        $additionalProducts = $em->getRepository('AppBundle:AdditionalProduct')->findAllSpecialsOrderedByPositionInList(); // array of AdditionalProducts objects
+        $specials = $em->getRepository('AppBundle:AdditionalProduct')->findAllSpecialsOrderedByPositionInList(); // array of AdditionalProducts objects
 
-        foreach ($additionalProducts as $ap) {
+        foreach ($specials as $s) {
             $i = new stdClass();
-            $i->identifier = $ap->getIdentifier();
+            $i->identifier = $s->getIdentifier();
             // $i->price = $ap->getPrices()[0]->getValue();
             $i->price = $em->getRepository('AppBundle:Price')
-                    ->calculatePriceAveragePerProductAndDateInterval($ap, $checkInDateTime, $checkOutDateTime);
+                    ->calculatePriceAveragePerProductAndDateInterval($s, $checkInDateTime, $checkOutDateTime);
             $dto->specials[] = $i;
         }
 
