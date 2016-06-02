@@ -28,9 +28,6 @@ class AdditionalProduct extends Product {
      */
     private $additionalproductcategory;
 
-
-    
-
     /**
      * Set positionInList
      *

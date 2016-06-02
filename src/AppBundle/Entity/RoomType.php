@@ -7,7 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use JsonSerializable;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="AppBundle\Entity\RoomTypeRepository")
  * @ORM\Table(name="roomType")
  */
 class RoomType extends Product {

@@ -48,7 +48,6 @@ class AdditionalProductCategory
         $this->additionalProducts = new ArrayCollection();
     }
 
-
     /**
      * Get id
      *
