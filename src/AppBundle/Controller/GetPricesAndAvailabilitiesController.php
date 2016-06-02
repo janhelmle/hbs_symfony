@@ -70,7 +70,7 @@ class GetPricesAndAvailabilitiesController extends Controller {
         }
 
         
-        $boardings = $em->getRepository('AppBundle:AdditionalProduct')->findAllBoardingsOrderedByPositionInList(); // array of AdditionalProducts objects
+        $boardings = $em->getRepository('AppBundle:AdditionalProduct')->findAllBoardingsOrderedByPositionInList(); // array of AdditionalProduct objects
 
         foreach ($boardings as $b) {
             $i = new stdClass();
@@ -80,7 +80,7 @@ class GetPricesAndAvailabilitiesController extends Controller {
             $dto->boardings[] = $i;
         }
 
-        $specials = $em->getRepository('AppBundle:AdditionalProduct')->findAllSpecialsOrderedByPositionInList(); // array of AdditionalProducts objects
+        $specials = $em->getRepository('AppBundle:AdditionalProduct')->findAllSpecialsOrderedByPositionInList(); // array of AdditionalProduct objects
 
         foreach ($specials as $s) {
             $i = new stdClass();
