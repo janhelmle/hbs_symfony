@@ -20,13 +20,14 @@ class GetInitialDataController extends Controller {
     public function getInitialDataAction_v_01(Request $request) {
 
         $em = $this->getDoctrine()->getManager();
-        
-        $roomTypesQueryResult = $em->getRepository('AppBundle:RoomType')->findAllWhereCapacityGreaterZeroOrderedByPositionInSubMenu(); // type: array
-         
+
         $dto = new stdClass(); // neues Data Transfer Object
 
+
+        $roomTypes = $em->getRepository('AppBundle:RoomType')->findAllWhereCapacityGreaterZeroOrderedByPositionInSubMenu(); // array of RoomType objects
+
         $dto->roomTypes = new stdClass();
-        foreach ($roomTypesQueryResult as $rt) {
+        foreach ($roomTypes as $rt) {
             $dto->roomTypes->{$rt->getidentifier()} = new stdClass();
             $dto->roomTypes->{$rt->getidentifier()}->subMenuText = $rt->getSubMenuText();
             $dto->roomTypes->{$rt->getidentifier()}->listText = $rt->getListText();
@@ -34,48 +35,22 @@ class GetInitialDataController extends Controller {
             $dto->roomTypes->{$rt->getidentifier()}->capacity = $rt->getCapacity();
         }
 
-        
-        $query = $em->createQuery("
-                SELECT 
-                
-                ap
-                
-                FROM AppBundle:AdditionalProduct ap
-                JOIN ap.additionalproductcategory apc
-                WHERE apc.identifier = 'boardings'
-		
-		ORDER BY ap.positionInList ASC
-                
-                ");
 
-        $boardings = $query->getResult();
-        
+        $boardings = $em->getRepository('AppBundle:AdditionalProduct')->findAllBoardingsOrderedByPositionInList(); // array of AdditionalProduct objects
+
         $dto->boardings = new stdClass();
-        $dto->boardings->subMenuText = $boardings[0]->getAdditionalProductCategory()->getSubMenuText();
+        $dto->boardings->subMenuText = $boardings[0]->getAdditionalProductCategory()->getSubMenuText(); // 'Verpflegung'
         foreach ($boardings as $b) {
             $dto->boardings->{$b->getidentifier()} = new stdClass();
             $dto->boardings->{$b->getidentifier()}->listText = $b->getListText();
             $dto->boardings->{$b->getidentifier()}->pricingBasisText = $b->getpricingBasisText();
         }
 
-        
-        $query = $em->createQuery("
-                SELECT 
-                
-                ap
-                
-                FROM AppBundle:AdditionalProduct ap
-                JOIN ap.additionalproductcategory apc
-                WHERE apc.identifier = 'specials'
-		
-		ORDER BY ap.positionInList ASC
-                
-                ");
 
-        $specials = $query->getResult();
-        
+        $specials = $em->getRepository('AppBundle:AdditionalProduct')->findAllSpecialsOrderedByPositionInList(); // array of AdditionalProduct objects
+
         $dto->specials = new stdClass();
-        $dto->specials->subMenuText = $specials[0]->getAdditionalProductCategory()->getSubMenuText();
+        $dto->specials->subMenuText = $specials[0]->getAdditionalProductCategory()->getSubMenuText(); // 'Specials (optional)'
         foreach ($specials as $s) {
             $dto->specials->{$s->getidentifier()} = new stdClass();
             $dto->specials->{$s->getidentifier()}->listText = $s->getListText();
@@ -88,20 +63,17 @@ class GetInitialDataController extends Controller {
         $resp = new Response($productsJSON);
         $resp->headers->set('Content-Type', 'application/json ; charset=utf-8');
 
-        // $resp = new Response('<body></body>');
-        
         return $resp;
     }
-    
-    
+
     /**
      * @Route("/api/v0/getinitialdata", name="getinitialdata_v_0")
      */
     public function getInitialDataAction_v_0(Request $request) {
 
-	$em = $this->getDoctrine()->getManager();
+        $em = $this->getDoctrine()->getManager();
 
-	$query = $em->createQuery('
+        $query = $em->createQuery('
                 SELECT 
                 
                 p.identifier , 
@@ -116,9 +88,9 @@ class GetInitialDataController extends Controller {
                 
                 ');
 
-	$roomtypes = $query->getResult();
+        $roomtypes = $query->getResult();
 
-	$query = $em->createQuery("
+        $query = $em->createQuery("
                 SELECT 
                 
                 a.identifier , 
@@ -134,9 +106,9 @@ class GetInitialDataController extends Controller {
                 
                 ");
 
-	$boardings = $query->getResult();
+        $boardings = $query->getResult();
 
-	$query = $em->createQuery("
+        $query = $em->createQuery("
                 SELECT 
                 
                 a.identifier , 
@@ -152,21 +124,21 @@ class GetInitialDataController extends Controller {
                 
                 ");
 
-	$specials = $query->getResult();
+        $specials = $query->getResult();
 
 
-	$products = array(
-	    'roomtypes' => $roomtypes,
-	    'boardings' => $boardings,
-	    'specials' => $specials
-	);
+        $products = array(
+            'roomtypes' => $roomtypes,
+            'boardings' => $boardings,
+            'specials' => $specials
+        );
 
-	$productsJSON = json_encode($products, 320);
+        $productsJSON = json_encode($products, 320);
 
-	$resp = new Response($productsJSON);
-	$resp->headers->set('Content-Type', 'application/json ; charset=utf-8');
+        $resp = new Response($productsJSON);
+        $resp->headers->set('Content-Type', 'application/json ; charset=utf-8');
 
-	return $resp;
+        return $resp;
     }
-    
+
 }

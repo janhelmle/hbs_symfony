@@ -24,7 +24,7 @@ class RoomTypeRepository extends \Doctrine\ORM\EntityRepository {
                 ORDER BY r.positionInSubMenu ASC
                 '
                         )
-                ->getResult(); 
+                        ->getResult();
     }
 
 }
