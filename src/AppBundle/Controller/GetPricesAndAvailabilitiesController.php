@@ -69,44 +69,18 @@ class GetPricesAndAvailabilitiesController extends Controller {
             $dto->roomTypes[] = $i;
         }
 
-        $query = $em->createQuery("
-            
-                SELECT 
-                    ap
-                FROM
-                    AppBundle:AdditionalProduct ap
-                JOIN
-                    ap.additionalproductcategory apc
-                WHERE
-                    apc.identifier = 'boardings'
-                    
-                ");
-
-        $additionalProducts = $query->getResult();
+        
+        $additionalProducts = $em->getRepository('AppBundle:AdditionalProduct')->findAllBoardingsOrderedByPositionInList(); // array of AdditionalProducts objects
 
         foreach ($additionalProducts as $ap) {
             $i = new stdClass();
             $i->identifier = $ap->getIdentifier();
-            // $i->price = $ap->getPrices()[0]->getValue();
             $i->price = $em->getRepository('AppBundle:Price')
                     ->calculatePriceAveragePerProductAndDateInterval($ap, $checkInDateTime, $checkOutDateTime);
             $dto->boardings[] = $i;
         }
 
-        $query = $em->createQuery("
-            
-                SELECT 
-                    ap
-                FROM
-                    AppBundle:AdditionalProduct ap
-                JOIN
-                    ap.additionalproductcategory apc
-                WHERE
-                    apc.identifier = 'specials'
-                    
-                ");
-
-        $additionalProducts = $query->getResult();
+        $additionalProducts = $em->getRepository('AppBundle:AdditionalProduct')->findAllSpecialsOrderedByPositionInList(); // array of AdditionalProducts objects
 
         foreach ($additionalProducts as $ap) {
             $i = new stdClass();
