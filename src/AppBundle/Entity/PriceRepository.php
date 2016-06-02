@@ -26,15 +26,16 @@ class PriceRepository extends \Doctrine\ORM\EntityRepository {
         $result = $query->getResult(); // Array of Price Objects
 
         foreach ($result as $r) { // laufe durch ResultSet vom Neuesten zum Aeltesten
-            if ($r->getDate() <= $date) {
+            if ($r->getDate() <= $date) { // passenden Preis gefunden
                 return $r;
             }
         }
 
-        return NULL; // keinen gefunden
+        return NULL; // keinen Preis gefunden
     }
 
     public function calculateTotalAmountPerProductAndDateInterval(Product $prod, DateTime $checkIn, DateTime $checkOut) { // returns double
+        
         $em = $this->getEntityManager();
 
         $sum = 0;
@@ -50,6 +51,7 @@ class PriceRepository extends \Doctrine\ORM\EntityRepository {
     }
 
     public function calculatePriceAveragePerProductAndDateInterval(Product $prod, DateTime $checkIn, DateTime $checkOut) { // returns double
+        
         $em = $this->getEntityManager();
 
         $sum = 0;
@@ -69,7 +71,7 @@ class PriceRepository extends \Doctrine\ORM\EntityRepository {
         return $avg; // arithmetischer Mittelwert
     }
 
-    public function findLatestPricePerProductIdentifierAndDateTime($productString, DateTime $date) { // returns price object
+    public function findLatestPricePerProductIdentifierAndDateTime(string $productString, DateTime $date) { // returns price object
 
         $em = $this->getEntityManager();
         
@@ -88,12 +90,12 @@ class PriceRepository extends \Doctrine\ORM\EntityRepository {
         $result = $query->getResult(); // Array of Price Objects
 
         foreach ($result as $r) { // laufe durch ResultSet vom Neuesten zum Aeltesten
-            if ($r->getDate() <= $date) {
+            if ($r->getDate() <= $date) { // passenden Preis gefunden
                 return $r;
             }
         }
 
-        return $result[0]; // sollte hier nicht stehen 
+        return NULL; // keinen Preis gefunden
     }
 
 }

@@ -68,7 +68,6 @@ class GetTotalPriceController extends Controller {
         $input_sanitized = str_replace(array("\n", "\t", "\r"), '', $input); // remove newlines , tabs , carriage return
 
         $json_decoded = json_decode($input_sanitized, false); // false -> object , true -> array
-        // dump($json_decoded);
 
         $c = new Cart();
         $c->setCheckInDate($json_decoded->checkInDate);
