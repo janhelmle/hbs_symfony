@@ -20,22 +20,9 @@ class GetInitialDataController extends Controller {
     public function getInitialDataAction_v_01(Request $request) {
 
         $em = $this->getDoctrine()->getManager();
-
-        $query = $em->createQuery('
-                SELECT 
-                
-                r 
-
-                FROM AppBundle:RoomType r
-                
-                WHERE r.capacity > 0
-                
-                ORDER BY r.positionInSubMenu ASC
-                
-                ');
-
-        $roomTypesQueryResult = $query->getResult();
-
+        
+        $roomTypesQueryResult = $em->getRepository('AppBundle:RoomType')->findAllWhereCapacityGreaterZeroOrderedByPositionInSubMenu(); // type: array
+         
         $dto = new stdClass(); // neues Data Transfer Object
 
         $dto->roomTypes = new stdClass();
@@ -101,6 +88,8 @@ class GetInitialDataController extends Controller {
         $resp = new Response($productsJSON);
         $resp->headers->set('Content-Type', 'application/json ; charset=utf-8');
 
+        // $resp = new Response('<body></body>');
+        
         return $resp;
     }
     
