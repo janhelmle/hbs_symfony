@@ -85,7 +85,6 @@ class GetPricesAndAvailabilitiesController extends Controller {
         foreach ($specials as $s) {
             $i = new stdClass();
             $i->identifier = $s->getIdentifier();
-            // $i->price = $ap->getPrices()[0]->getValue();
             $i->price = $em->getRepository('AppBundle:Price')
                     ->calculatePriceAveragePerProductAndDateInterval($s, $checkInDateTime, $checkOutDateTime);
             $dto->specials[] = $i;
