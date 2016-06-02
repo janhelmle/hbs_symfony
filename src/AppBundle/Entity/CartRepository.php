@@ -43,7 +43,7 @@ class CartRepository extends \Doctrine\ORM\EntityRepository {
             );
             $query->setParameter(1, $item->getBoardingIdentifier());
 
-            $boardingObject = $query->getResult()[0]; // 1 AdditionalProducts Object (boarding)
+            $boardingObject = $query->getResult()[0]; // 1 AdditionalProduct Object (boarding)
 
             $boardingPrice = $em->getRepository('AppBundle:Price')->calculateTotalAmountPerProductAndDateInterval($boardingObject, $checkInDateTime, $checkOutDateTime);
 
@@ -56,7 +56,7 @@ class CartRepository extends \Doctrine\ORM\EntityRepository {
             );
             $query->setParameter(1, $item->getSpecialIdentifier());
 
-            $specialObject = $query->getResult()[0]; // 1 AdditionalProducts Object (special)
+            $specialObject = $query->getResult()[0]; // 1 AdditionalProduct Object (special)
 
             $specialPrice = $em->getRepository('AppBundle:Price')->calculateTotalAmountPerProductAndDateInterval($specialObject, $checkInDateTime, $checkOutDateTime);
 
