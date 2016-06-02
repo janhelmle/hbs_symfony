@@ -36,7 +36,7 @@ class GetInitialDataController extends Controller {
 
         $roomTypesQueryResult = $query->getResult();
 
-        $dto = new stdClass();
+        $dto = new stdClass(); // neues Data Transfer Object
 
         $dto->roomTypes = new stdClass();
         foreach ($roomTypesQueryResult as $rt) {
@@ -47,6 +47,7 @@ class GetInitialDataController extends Controller {
             $dto->roomTypes->{$rt->getidentifier()}->capacity = $rt->getCapacity();
         }
 
+        
         $query = $em->createQuery("
                 SELECT 
                 

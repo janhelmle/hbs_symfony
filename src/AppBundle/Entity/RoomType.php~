@@ -42,10 +42,10 @@ class RoomType extends Product {
     /**
      * @ORM\OneToMany(targetEntity="Availability", mappedBy="roomType")
      */
-    private $availabilities;
+    private $availabilities; // ArrayCollection
 
     public function __construct() {
-        parent::__construct();
+        parent::__construct(); // Product Konstruktor aufrufen
         $this->availabilities = new ArrayCollection();
     }
 
