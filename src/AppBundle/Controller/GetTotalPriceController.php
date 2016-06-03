@@ -55,7 +55,7 @@ class GetTotalPriceController extends Controller {
                 (!$input)
         ) {
             $resp = new Response(
-                    "Malformed request syntax. "
+                    "Malformed request syntax. No Data."
                     . " "
             );
             $resp->setStatusCode(Response::HTTP_BAD_REQUEST);
@@ -66,19 +66,25 @@ class GetTotalPriceController extends Controller {
         $input_sanitized = str_replace(array("\n", "\t", "\r"), '', $input); // remove newlines , tabs , carriage return
 
         $json_decoded = json_decode($input_sanitized, false); // false -> object , true -> array // NULL if not JSON
-        
-        if(!$json_decoded) { return (new Response("error: input not json conform."))->setStatusCode('400') ; } 
 
-        $c = new Cart();
-        $c->setCheckInDate($json_decoded->checkInDate);
-        $c->setCheckOutDate($json_decoded->checkOutDate);
-        foreach ($json_decoded->items as $item) {
-            $i = new Item();
-            $i->setRoomTypeIdentifier($item->roomTypeIdentifier);
-            $i->setRoomTypeQuantity($item->roomTypeQuantity);
-            $i->setBoardingIdentifier($item->boardingIdentifier);
-            $i->setSpecialIdentifier($item->specialsIdentifier);
-            $c->addItem($i);
+        if (!$json_decoded) {
+            return (new Response("error: input not json conform."))->setStatusCode('400');
+        }
+
+        try {
+            $c = new Cart();
+            $c->setCheckInDate($json_decoded->checkInDate);
+            $c->setCheckOutDate($json_decoded->checkOutDate);
+            foreach ($json_decoded->items as $item) {
+                $i = new Item();
+                $i->setRoomTypeIdentifier($item->roomTypeIdentifier);
+                $i->setRoomTypeQuantity($item->roomTypeQuantity);
+                $i->setBoardingIdentifier($item->boardingIdentifier);
+                $i->setSpecialIdentifier($item->specialsIdentifier);
+                $c->addItem($i);
+            }
+        } catch (\Exception $e) {
+            return (new Response("error: input not accepted - schema not conform."))->setStatusCode('400');
         }
 
         $totalPrice = $em->getRepository('AppBundle:Cart')->calculateTotalPrice($c); // Zugriff über EntityRepository
