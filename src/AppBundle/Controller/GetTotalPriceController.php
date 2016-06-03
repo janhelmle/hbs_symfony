@@ -54,8 +54,6 @@ class GetTotalPriceController extends Controller {
         if (
                 (!$input)
         ) {
-
-
             $resp = new Response(
                     "Malformed request syntax. "
                     . " "
@@ -67,7 +65,9 @@ class GetTotalPriceController extends Controller {
 
         $input_sanitized = str_replace(array("\n", "\t", "\r"), '', $input); // remove newlines , tabs , carriage return
 
-        $json_decoded = json_decode($input_sanitized, false); // false -> object , true -> array
+        $json_decoded = json_decode($input_sanitized, false); // false -> object , true -> array // NULL if not JSON
+        
+        if(!$json_decoded) { return (new Response("error: input not json conform."))->setStatusCode('400') ; } 
 
         $c = new Cart();
         $c->setCheckInDate($json_decoded->checkInDate);
