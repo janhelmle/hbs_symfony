@@ -6,6 +6,8 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class GetInitialDataTest extends WebTestCase {
 
+    //  /api/v0/getinitialdata //
+
     public function testHeader_v0() {
         $client = static::createClient();
 
@@ -29,6 +31,16 @@ class GetInitialDataTest extends WebTestCase {
         );
     }
 
+    public function testNotEmpty_v0() {
+        $client = static::createClient();
+
+        $crawler = $client->request('GET', '/api/v0/getinitialdata');
+
+        $this->assertNotEmpty($client->getResponse()->getContent());
+    }
+
+    //  /api/v0.1/getinitialdata //
+
     public function testHeader_v0_1() {
         $client = static::createClient();
 
@@ -50,6 +62,14 @@ class GetInitialDataTest extends WebTestCase {
                 200, // or Symfony\Component\HttpFoundation\Response::HTTP_OK
                 $client->getResponse()->getStatusCode()
         );
+    }
+    
+    public function testNotEmpty_v0_1() {
+        $client = static::createClient();
+
+        $crawler = $client->request('GET', '/api/v0.1/getinitialdata');
+
+        $this->assertNotEmpty($client->getResponse()->getContent());
     }
 
 }
