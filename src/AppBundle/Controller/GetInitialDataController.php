@@ -32,7 +32,7 @@ class GetInitialDataController extends Controller {
         }
 
 
-        $boardings = $em->getRepository('AppBundle:AdditionalProduct')->findAllBoardingsOrderedByPositionInList(); // array of AdditionalProduct objects
+        $boardings = $em->getRepository('AppBundle:AdditionalProduct')->findAllBoardingsOrderedByPositionInList(); // array of Boarding objects
 
         $dto->boardings = new stdClass();
         $dto->boardings->subMenuText = $boardings[0]->getAdditionalProductCategory()->getSubMenuText(); // 'Verpflegung'
@@ -43,7 +43,7 @@ class GetInitialDataController extends Controller {
         }
 
 
-        $specials = $em->getRepository('AppBundle:AdditionalProduct')->findAllSpecialsOrderedByPositionInList(); // array of AdditionalProduct objects
+        $specials = $em->getRepository('AppBundle:AdditionalProduct')->findAllSpecialsOrderedByPositionInList(); // array of Special objects
 
         $dto->specials = new stdClass();
         $dto->specials->subMenuText = $specials[0]->getAdditionalProductCategory()->getSubMenuText(); // 'Specials (optional)'
