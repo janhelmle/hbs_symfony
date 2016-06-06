@@ -107,7 +107,7 @@ class GetPricesAndAvailabilitiesControllerTest extends WebTestCase {
     }
 
     //  /api/v0.1/getinitialdata //
-    
+
     public function testHeader_v0_1() {
         $client = static::createClient();
 
@@ -203,7 +203,5 @@ class GetPricesAndAvailabilitiesControllerTest extends WebTestCase {
 
         $this->assertJsonStringEqualsJsonString($client->getResponse()->getContent(), $expected);
     }
-    
-    //  /api/v0.2/getinitialdata //
-    
+
 }
