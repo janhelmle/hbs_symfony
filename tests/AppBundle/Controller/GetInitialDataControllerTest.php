@@ -4,7 +4,7 @@ namespace Tests\AppBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
-class GetInitialDataTest extends WebTestCase {
+class GetInitialDataControllerTest extends WebTestCase {
 
     //  /api/v0/getinitialdata //
 
@@ -240,7 +240,7 @@ class GetInitialDataTest extends WebTestCase {
 			"pricingBasisText": "/Person"
 		}
 	}
-}';
+    }';
 
         $this->assertJsonStringEqualsJsonString($client->getResponse()->getContent(), $expected);
     }
