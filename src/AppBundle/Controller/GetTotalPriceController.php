@@ -55,7 +55,7 @@ class GetTotalPriceController extends Controller {
                 (!$input)
         ) {
             $resp = new Response(
-                    "Malformed request syntax. No Data."
+                    "Error. Malformed request syntax. No Data."
                     . " "
             );
             $resp->setStatusCode(Response::HTTP_BAD_REQUEST);
@@ -68,7 +68,7 @@ class GetTotalPriceController extends Controller {
         $json_decoded = json_decode($input_sanitized, false); // false -> object , true -> array // NULL if not JSON
 
         if (!$json_decoded) {
-            return (new Response("error: input not json conform."))->setStatusCode('400');
+            return (new Response("Error: input not json conform."))->setStatusCode('400');
         }
 
         try {
@@ -86,9 +86,9 @@ class GetTotalPriceController extends Controller {
         } catch (\Exception $e) {
             return (new Response("error: input not accepted - schema not conform."))->setStatusCode('400');
         }
-
+        
         $totalPrice = $em->getRepository('AppBundle:Cart')->calculateTotalPrice($c); // Zugriff über EntityRepository
-
+        
         $totalPriceJSON = json_encode($totalPrice, 320); // 320 : 0000000101000000 = 256 + 64 : JSON_UNESCAPED_SLASHES => 64 + JSON_UNESCAPED_UNICODE => 256
 
         $resp = new Response($totalPriceJSON);
