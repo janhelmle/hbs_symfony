@@ -204,4 +204,36 @@ class GetPricesAndAvailabilitiesControllerTest extends WebTestCase {
         $this->assertJsonStringEqualsJsonString($client->getResponse()->getContent(), $expected);
     }
 
+    //  /api/v0.1/getinitialdata //
+
+    public function testHeaderValidInput_v0_2() {
+        $client = static::createClient(array(), array(
+                    'HTTP_checkInDate' => '2016.01.10, 12:00',
+                    'HTTP_checkOutDate' => '2016.01.11, 12:00'
+        ));
+
+
+        $crawler = $client->request('GET', '/api/v0.2/getpricesandavailabilities');
+
+        $this->assertTrue(
+                $client->getResponse()->headers->contains(
+                        'Content-Type', 'application/json ; charset=utf-8'
+                )
+        );
+    }
+
+    public function testStatusCodeValidInput_v0_2() {
+        $client = static::createClient(array(), array(
+                    'HTTP_checkInDate' => '2016.01.10, 12:00',
+                    'HTTP_checkOutDate' => '2016.01.11, 12:00'
+        ));
+
+        $crawler = $client->request('GET', '/api/v0.2/getpricesandavailabilities');
+
+        $this->assertEquals(
+                200, // or Symfony\Component\HttpFoundation\Response::HTTP_OK
+                $client->getResponse()->getStatusCode()
+        );
+    }
+
 }
