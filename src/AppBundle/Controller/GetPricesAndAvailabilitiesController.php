@@ -50,6 +50,16 @@ class GetPricesAndAvailabilitiesController extends Controller {
             return $resp;
         }
 
+        $diff = $checkInDateTime->diff($checkOutDateTime);
+        
+        if(($diff->days) > 365){
+            $resp = new Response(
+                    "Error: Interval too big."
+            );
+            $resp->setStatusCode(Response::HTTP_BAD_REQUEST); // 400
+            $resp->headers->set('Content-Type', 'Content-Type: text/html; charset=utf-8');
+            return $resp;
+        };
 
         $dto->checkInDate = $checkInDate;
         $dto->checkOutDate = $checkOutDate;
