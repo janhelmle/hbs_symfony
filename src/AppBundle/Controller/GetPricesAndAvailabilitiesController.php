@@ -34,7 +34,7 @@ class GetPricesAndAvailabilitiesController extends Controller {
                     . "Please use header keys 'checkInDate' and 'checkOutDate' with values in this form : "
                     . "'Y.m.d, H:i' , e.g. '2016.04.26, 12:00'"
             );
-            $resp->setStatusCode(Response::HTTP_BAD_REQUEST);
+            $resp->setStatusCode(Response::HTTP_BAD_REQUEST); // 400
             $resp->headers->set('Content-Type', 'Content-Type: text/html; charset=utf-8');
             return $resp;
         }
@@ -45,7 +45,7 @@ class GetPricesAndAvailabilitiesController extends Controller {
             $resp = new Response(
                     "Error: checkInDate >= checkOutDate. Please try again with the correct settings."
             );
-            $resp->setStatusCode(Response::HTTP_BAD_REQUEST);
+            $resp->setStatusCode(Response::HTTP_BAD_REQUEST); // 400
             $resp->headers->set('Content-Type', 'Content-Type: text/html; charset=utf-8');
             return $resp;
         }
