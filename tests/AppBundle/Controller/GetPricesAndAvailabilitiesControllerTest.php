@@ -377,4 +377,15 @@ class GetPricesAndAvailabilitiesControllerTest extends WebTestCase {
 
         $this->assertContains('Error', $client->getResponse()->getContent());
     }
+    
+    public function testContentCheckInDateEqualsCheckOutDate_v0_2() {
+        $client = static::createClient(array(), array(
+                    'HTTP_checkInDate' => '2016.01.16, 12:00',
+                    'HTTP_checkOutDate' => '2016.01.16, 12:00'
+        ));
+
+        $crawler = $client->request('GET', '/api/v0.2/getpricesandavailabilities');
+
+        $this->assertContains('Error', $client->getResponse()->getContent());
+    }
 }
