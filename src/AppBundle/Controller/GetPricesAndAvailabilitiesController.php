@@ -30,7 +30,7 @@ class GetPricesAndAvailabilitiesController extends Controller {
                 (!$checkInDateTime) OR ( !$checkOutDateTime)
         ) {
             $resp = new Response(
-                    "Malformed request syntax. "
+                    "Error. Malformed request syntax. "
                     . "Please use header keys 'checkInDate' and 'checkOutDate' with values in this form : "
                     . "'Y.m.d, H:i' , e.g. '2016.04.26, 12:00'"
             );
@@ -116,7 +116,7 @@ class GetPricesAndAvailabilitiesController extends Controller {
 
 
             $resp = new Response(
-                    "malformed request syntax. "
+                    "Error. Malformed request syntax. "
                     . "Please use header keys 'checkInDate' and 'checkOutDate' with values in this form : "
                     . "'Y.m.d, H:i'"
             );

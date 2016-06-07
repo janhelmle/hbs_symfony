@@ -74,7 +74,7 @@ class PostOrderController extends Controller {
 
 
             $resp = new Response(
-                    "Malformed request syntax. "
+                    "Error. Malformed request syntax. "
                     . " "
             );
             $resp->setStatusCode(Response::HTTP_BAD_REQUEST);
