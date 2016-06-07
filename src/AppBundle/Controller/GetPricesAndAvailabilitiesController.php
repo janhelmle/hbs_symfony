@@ -43,7 +43,7 @@ class GetPricesAndAvailabilitiesController extends Controller {
                 $checkInDateTime >= $checkOutDateTime
         ) {
             $resp = new Response(
-                    "ERROR: checkInDate >= checkOutDate. Please try again with the correct settings."
+                    "Error: checkInDate >= checkOutDate. Please try again with the correct settings."
             );
             $resp->setStatusCode(Response::HTTP_BAD_REQUEST);
             $resp->headers->set('Content-Type', 'Content-Type: text/html; charset=utf-8');
