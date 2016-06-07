@@ -330,7 +330,7 @@ class GetPricesAndAvailabilitiesControllerTest extends WebTestCase {
                 )
         );
     }
-    
+
     public function testStatusCodeInValidInput_v0_2() {
         $client = static::createClient(array(), array(
                     'HTTP_checkInDate' => '2016.01.14, 12:0',
@@ -344,7 +344,7 @@ class GetPricesAndAvailabilitiesControllerTest extends WebTestCase {
                 $client->getResponse()->getStatusCode()
         );
     }
-    
+
     public function testContentNotEmptyInValidInput_v0_2() {
         $client = static::createClient(array(), array(
                     'HTTP_checkInDate' => '2016.01.14, 12:0',
@@ -354,6 +354,17 @@ class GetPricesAndAvailabilitiesControllerTest extends WebTestCase {
         $crawler = $client->request('GET', '/api/v0.2/getpricesandavailabilities');
 
         $this->assertNotEmpty($client->getResponse()->getContent());
+    }
+
+    public function testContentInValidInput_v0_2() {
+        $client = static::createClient(array(), array(
+                    'HTTP_checkInDate' => '2016.01.14, 12:0',
+                    'HTTP_checkOutDate' => '2016.01.16, 12:00'
+        ));
+
+        $crawler = $client->request('GET', '/api/v0.2/getpricesandavailabilities');
+
+        $this->assertContains('Error', $client->getResponse()->getContent());
     }
 
 }
