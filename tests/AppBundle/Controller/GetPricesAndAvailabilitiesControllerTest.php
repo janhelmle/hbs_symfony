@@ -204,12 +204,12 @@ class GetPricesAndAvailabilitiesControllerTest extends WebTestCase {
         $this->assertJsonStringEqualsJsonString($client->getResponse()->getContent(), $expected);
     }
 
-    //  /api/v0.1/getinitialdata //
+    //  /api/v0.2/getinitialdata //
 
     public function testHeaderValidInput_v0_2() {
         $client = static::createClient(array(), array(
-                    'HTTP_checkInDate' => '2016.01.10, 12:00',
-                    'HTTP_checkOutDate' => '2016.01.11, 12:00'
+                    'HTTP_checkInDate' => '2016.01.14, 12:00',
+                    'HTTP_checkOutDate' => '2016.01.16, 12:00'
         ));
 
 
@@ -224,8 +224,8 @@ class GetPricesAndAvailabilitiesControllerTest extends WebTestCase {
 
     public function testStatusCodeValidInput_v0_2() {
         $client = static::createClient(array(), array(
-                    'HTTP_checkInDate' => '2016.01.10, 12:00',
-                    'HTTP_checkOutDate' => '2016.01.11, 12:00'
+                    'HTTP_checkInDate' => '2016.01.14, 12:00',
+                    'HTTP_checkOutDate' => '2016.01.16, 12:00'
         ));
 
         $crawler = $client->request('GET', '/api/v0.2/getpricesandavailabilities');
@@ -234,6 +234,85 @@ class GetPricesAndAvailabilitiesControllerTest extends WebTestCase {
                 200, // or Symfony\Component\HttpFoundation\Response::HTTP_OK
                 $client->getResponse()->getStatusCode()
         );
+    }
+
+    public function testContentNotEmptyValidInput_v0_2() {
+        $client = static::createClient(array(), array(
+                    'HTTP_checkInDate' => '2016.01.14, 12:00',
+                    'HTTP_checkOutDate' => '2016.01.16, 12:00'
+        ));
+
+        $crawler = $client->request('GET', '/api/v0.2/getpricesandavailabilities');
+
+        $this->assertNotEmpty($client->getResponse()->getContent());
+    }
+
+    public function testJsonContentValidInput_v0_2() {
+        $client = static::createClient(array(), array(
+                    'HTTP_checkInDate' => '2016.01.14, 12:00',
+                    'HTTP_checkOutDate' => '2016.01.16, 12:00'
+        ));
+
+        $crawler = $client->request('GET', '/api/v0.2/getpricesandavailabilities');
+
+        $expected = '{
+	"checkInDate": "2016.01.14, 12:00",
+	"checkOutDate": "2016.01.16, 12:00",
+	"roomTypes": [{
+		"identifier": "singleroom",
+		"price": 115,
+		"quantity": 5
+	}, {
+		"identifier": "doubleroom",
+		"price": 120,
+		"quantity": 4
+	}, {
+		"identifier": "twinroom",
+		"price": 130,
+		"quantity": 3
+	}, {
+		"identifier": "tripleroom",
+		"price": 140,
+		"quantity": 2
+	}, {
+		"identifier": "familyroom",
+		"price": 150,
+		"quantity": 1
+	}, {
+		"identifier": "apartmentsingle",
+		"price": 160,
+		"quantity": 1
+	}, {
+		"identifier": "apartmentdouble",
+		"price": 170,
+		"quantity": 5
+	}],
+	"boardings": [{
+		"identifier": "halfpension",
+		"price": 12.5
+	}, {
+		"identifier": "fullpension",
+		"price": 25
+	}, {
+		"identifier": "breakfast",
+		"price": 8
+	}, {
+		"identifier": "noboarding",
+		"price": 0
+	}],
+	"specials": [{
+		"identifier": "champagnebreakfast",
+		"price": 12.5
+	}, {
+		"identifier": "rosesinrooms",
+		"price": 30
+	}, {
+		"identifier": "raftingtour",
+		"price": 25
+	}]
+        }';
+
+        $this->assertJsonStringEqualsJsonString($client->getResponse()->getContent(), $expected);
     }
 
 }
