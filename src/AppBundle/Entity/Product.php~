@@ -40,7 +40,12 @@ abstract class Product {
      * @ORM\Column(type="string" , length=100 , nullable=true)
      */
     private $pricingBasisText;
-
+    
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $enabled;
+    
     /**
      * @ORM\OneToMany(targetEntity="Price", mappedBy="product")
      */
@@ -219,5 +224,29 @@ abstract class Product {
     public function getHotel()
     {
         return $this->hotel;
+    }
+
+    /**
+     * Set enabled
+     *
+     * @param boolean $enabled
+     *
+     * @return Product
+     */
+    public function setEnabled($enabled)
+    {
+        $this->enabled = $enabled;
+    
+        return $this;
+    }
+
+    /**
+     * Get enabled
+     *
+     * @return boolean
+     */
+    public function getEnabled()
+    {
+        return $this->enabled;
     }
 }
