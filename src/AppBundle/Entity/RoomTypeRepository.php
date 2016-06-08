@@ -27,16 +27,16 @@ class RoomTypeRepository extends \Doctrine\ORM\EntityRepository {
                         ->getResult();
     }
     
-    public function findAll() { // returns array of RoomType objects
-        return $this->getEntityManager()
-                        ->createQuery('
-                SELECT 
-                    rt
-                FROM
-                    AppBundle:RoomType rt
-                '
-                        )
-                        ->getResult();
-    }
+//    public function findAll() { // returns array of RoomType objects
+//        return $this->getEntityManager()
+//                        ->createQuery('
+//                SELECT 
+//                    rt
+//                FROM
+//                    AppBundle:RoomType rt
+//                '
+//                        )
+//                        ->getResult();
+//    }
 
 }

@@ -71,31 +71,31 @@ class PriceRepository extends \Doctrine\ORM\EntityRepository {
         return $avg; // arithmetischer Mittelwert
     }
 
-    public function findLatestPricePerProductIdentifierAndDateTime(string $productString, DateTime $date) { // returns price object
-
-        $em = $this->getEntityManager();
-        
-        $query = $em->createQuery(
-                'SELECT prod FROM AppBundle:product prod WHERE prod.identifier = ?1'
-        );
-        $query->setParameter(1, $productString);
-        
-        $productObject = $query->getResult()[0]; // 1 ProductObject
-        
-        $query = $em->createQuery(
-                'SELECT pri FROM AppBundle:price pri JOIN pri.product prod WHERE prod.identifier = ?1 ORDER BY pri.date DESC'
-        );
-        $query->setParameter(1, $productObject->getIdentifier());
-
-        $result = $query->getResult(); // Array of Price Objects
-
-        foreach ($result as $r) { // laufe durch ResultSet vom Neuesten zum Aeltesten
-            if ($r->getDate() <= $date) { // passenden Preis gefunden
-                return $r;
-            }
-        }
-
-        return NULL; // keinen Preis gefunden
-    }
+//    public function findLatestPricePerProductIdentifierAndDateTime(string $productString, DateTime $date) { // returns price object
+//
+//        $em = $this->getEntityManager();
+//        
+//        $query = $em->createQuery(
+//                'SELECT prod FROM AppBundle:product prod WHERE prod.identifier = ?1'
+//        );
+//        $query->setParameter(1, $productString);
+//        
+//        $productObject = $query->getResult()[0]; // 1 ProductObject
+//        
+//        $query = $em->createQuery(
+//                'SELECT pri FROM AppBundle:price pri JOIN pri.product prod WHERE prod.identifier = ?1 ORDER BY pri.date DESC'
+//        );
+//        $query->setParameter(1, $productObject->getIdentifier());
+//
+//        $result = $query->getResult(); // Array of Price Objects
+//
+//        foreach ($result as $r) { // laufe durch ResultSet vom Neuesten zum Aeltesten
+//            if ($r->getDate() <= $date) { // passenden Preis gefunden
+//                return $r;
+//            }
+//        }
+//
+//        return NULL; // keinen Preis gefunden
+//    }
 
 }
