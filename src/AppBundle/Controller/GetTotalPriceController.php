@@ -6,16 +6,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Serializer\Encoder\XmlEncoder;
-use Symfony\Component\Serializer\Encoder\JsonEncoder;
-use Symfony\Component\Serializer\Encoder\JsonDecode;
-use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
-use Symfony\Component\Serializer\Normalizer\PropertyNormalizer;
-use Symfony\Component\Serializer\Serializer;
-use JMS\Serializer\SerializerBuilder;
 use AppBundle\Entity\Cart;
 use AppBundle\Entity\Item;
-use AppBundle;
 
 class GetTotalPriceController extends Controller {
 
@@ -86,9 +78,9 @@ class GetTotalPriceController extends Controller {
         } catch (\Exception $e) {
             return (new Response("Error: input not accepted - schema not conform."))->setStatusCode('400'); // HTTP_BAD_REQUEST
         }
-        
+
         $totalPrice = $em->getRepository('AppBundle:Cart')->calculateTotalPrice($c); // Zugriff über EntityRepository
-        
+
         $totalPriceJSON = json_encode($totalPrice, 320); // 320 : 0000000101000000 = 256 + 64 : JSON_UNESCAPED_SLASHES => 64 + JSON_UNESCAPED_UNICODE => 256
 
         $resp = new Response($totalPriceJSON);
