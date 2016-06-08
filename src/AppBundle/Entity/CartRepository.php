@@ -31,8 +31,10 @@ class CartRepository extends \Doctrine\ORM\EntityRepository {
             $query->setParameter(1, $item->getRoomTypeIdentifier());
 
             $roomTypeObject = $query->getOneOrNullResult(); // 0 or 1 RoomType object
-            
-            if(!$roomTypeObject) { throw new \Exception('Error. No RoomType Found: ' . $item->getRoomTypeIdentifier()); }
+
+            if (!$roomTypeObject) {
+                throw new \Exception('Error. No RoomType Found: ' . $item->getRoomTypeIdentifier());
+            }
 
             $roomTypePrice = $em->getRepository('AppBundle:Price')->calculateTotalAmountPerProductAndDateInterval($roomTypeObject, $checkInDateTime, $checkOutDateTime);
 
@@ -40,15 +42,17 @@ class CartRepository extends \Doctrine\ORM\EntityRepository {
             $sum += $roomTypePrice * $item->getRoomTypeQuantity();
 
 
-            
+
             $query = $em->createQuery(
                     'SELECT prod FROM AppBundle:Product prod WHERE prod.identifier = ?1'
             );
             $query->setParameter(1, $item->getBoardingIdentifier());
 
             $boardingObject = $query->getOneOrNullResult(); // 0 or 1 AdditionalProduct Object (boarding)
-            
-            if(!$boardingObject) { throw new \Exception('Error. No Boarding Found: ' . $item->getBoardingIdentifier()); }
+
+            if (!$boardingObject) {
+                throw new \Exception('Error. No Boarding Found: ' . $item->getBoardingIdentifier());
+            }
 
             $boardingPrice = $em->getRepository('AppBundle:Price')->calculateTotalAmountPerProductAndDateInterval($boardingObject, $checkInDateTime, $checkOutDateTime);
 
@@ -56,15 +60,17 @@ class CartRepository extends \Doctrine\ORM\EntityRepository {
             $sum += $boardingPrice * $roomTypeObject->getQuantityOfPersons();
 
 
-            
+
             $query = $em->createQuery(
                     'SELECT prod FROM AppBundle:Product prod WHERE prod.identifier = ?1'
             );
             $query->setParameter(1, $item->getSpecialIdentifier());
 
             $specialObject = $query->getOneOrNullResult(); // 1 AdditionalProduct Object (special)
-            
-            if(!$specialObject) { throw new \Exception('Error. No Special Found: ' . $item->getSpecialIdentifier()); }
+
+            if (!$specialObject) {
+                throw new \Exception('Error. No Special Found: ' . $item->getSpecialIdentifier());
+            }
 
             $specialPrice = $em->getRepository('AppBundle:Price')->calculateTotalAmountPerProductAndDateInterval($specialObject, $checkInDateTime, $checkOutDateTime);
 
