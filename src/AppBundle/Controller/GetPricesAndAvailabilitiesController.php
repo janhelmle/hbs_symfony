@@ -147,6 +147,7 @@ class GetPricesAndAvailabilitiesController extends Controller {
                     rt
                 FROM
                     AppBundle:RoomType rt
+                WHERE rt.enabled = TRUE
                     
                 ');
 
@@ -170,6 +171,7 @@ class GetPricesAndAvailabilitiesController extends Controller {
                     ap.additionalproductcategory apc
                 WHERE
                     apc.identifier = 'boardings'
+                AND ap.enabled = TRUE
                     
                 ");
 
@@ -192,6 +194,7 @@ class GetPricesAndAvailabilitiesController extends Controller {
                     ap.additionalproductcategory apc
                 WHERE
                     apc.identifier = 'specials'
+                AND ap.enabled = TRUE
                     
                 ");
 
@@ -231,6 +234,8 @@ class GetPricesAndAvailabilitiesController extends Controller {
                 
                 WHERE prod INSTANCE OF \AppBundle\Entity\AdditionalProduct
                 
+                AND prod.enabled = TRUE
+                
                 ');
 
         $additionalproducts = $query->getResult();
@@ -251,6 +256,8 @@ class GetPricesAndAvailabilitiesController extends Controller {
                 JOIN rt.prices pr 
                 
                 WHERE av.quantity > 0
+                
+                AND rt.enabled = TRUE
                 
                 ');
 

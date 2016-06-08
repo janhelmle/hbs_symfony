@@ -79,6 +79,8 @@ class GetInitialDataController extends Controller {
                 p.capacity 
                  
                 FROM AppBundle:RoomType p
+                
+                WHERE p.enabled = TRUE
 		
 		ORDER BY p.positionInSubMenu ASC
                 
@@ -97,6 +99,7 @@ class GetInitialDataController extends Controller {
                 FROM AppBundle:AdditionalProduct a
                 JOIN a.additionalproductcategory p
                 WHERE p.identifier = 'boardings'
+                AND a.enabled = TRUE
 		
 		ORDER BY a.positionInList ASC
                 
@@ -115,6 +118,7 @@ class GetInitialDataController extends Controller {
                 FROM AppBundle:AdditionalProduct a
                 JOIN a.additionalproductcategory p
                 WHERE p.identifier = 'specials'
+                AND a.enabled = TRUE
 		
 		ORDER BY a.positionInList ASC
                 

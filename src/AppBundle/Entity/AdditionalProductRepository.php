@@ -20,6 +20,8 @@ class AdditionalProductRepository extends \Doctrine\ORM\EntityRepository {
                 FROM AppBundle:AdditionalProduct ap
                 JOIN ap.additionalproductcategory apc
                 WHERE apc.identifier = 'boardings'
+                
+                AND ap.enabled = TRUE
 		
 		ORDER BY ap.positionInList ASC
                 "
@@ -37,6 +39,8 @@ class AdditionalProductRepository extends \Doctrine\ORM\EntityRepository {
                 FROM AppBundle:AdditionalProduct ap
                 JOIN ap.additionalproductcategory apc
                 WHERE apc.identifier = 'specials'
+                
+                AND ap.enabled = TRUE
 		
 		ORDER BY ap.positionInList ASC
                 "

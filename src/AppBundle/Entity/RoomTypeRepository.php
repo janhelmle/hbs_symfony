@@ -21,6 +21,8 @@ class RoomTypeRepository extends \Doctrine\ORM\EntityRepository {
                 
                 WHERE r.capacity > 0
                 
+                AND r.enabled = TRUE
+                
                 ORDER BY r.positionInSubMenu ASC
                 '
                         )
