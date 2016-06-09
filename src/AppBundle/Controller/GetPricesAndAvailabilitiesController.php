@@ -168,7 +168,7 @@ class GetPricesAndAvailabilitiesController extends Controller {
                 FROM
                     AppBundle:AdditionalProduct ap
                 JOIN
-                    ap.additionalproductcategory apc
+                    ap.additionalProductCategory apc
                 WHERE
                     apc.identifier = 'boardings'
                 AND ap.enabled = TRUE
@@ -191,7 +191,7 @@ class GetPricesAndAvailabilitiesController extends Controller {
                 FROM
                     AppBundle:AdditionalProduct ap
                 JOIN
-                    ap.additionalproductcategory apc
+                    ap.additionalProductCategory apc
                 WHERE
                     apc.identifier = 'specials'
                 AND ap.enabled = TRUE

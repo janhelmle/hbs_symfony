@@ -18,7 +18,7 @@ class AdditionalProductRepository extends \Doctrine\ORM\EntityRepository {
                 ap
                 
                 FROM AppBundle:AdditionalProduct ap
-                JOIN ap.additionalproductcategory apc
+                JOIN ap.additionalProductCategory apc
                 WHERE apc.identifier = 'boardings'
                 
                 AND ap.enabled = TRUE
@@ -37,7 +37,7 @@ class AdditionalProductRepository extends \Doctrine\ORM\EntityRepository {
                 ap
                 
                 FROM AppBundle:AdditionalProduct ap
-                JOIN ap.additionalproductcategory apc
+                JOIN ap.additionalProductCategory apc
                 WHERE apc.identifier = 'specials'
                 
                 AND ap.enabled = TRUE

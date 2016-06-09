@@ -21,7 +21,7 @@ class LoadAdditionalProductData extends AbstractFixture implements OrderedFixtur
         $ap1->setEnabled(1);
         $ap1->setHotel($this->getReference('testhotel'));
         $this->addReference('halfpension', $ap1);
-        $ap1->setAdditionalProductcategory($this->getReference('Verpflegung'));
+        $ap1->setAdditionalProductCategory($this->getReference('Verpflegung'));
         $manager->persist($ap1);
         $manager->flush();
 
@@ -34,7 +34,7 @@ class LoadAdditionalProductData extends AbstractFixture implements OrderedFixtur
         $ap2->setEnabled(1);
         $ap2->setHotel($this->getReference('testhotel'));
         $this->addReference('fullpension', $ap2);
-        $ap2->setAdditionalProductcategory($this->getReference('Verpflegung'));
+        $ap2->setAdditionalProductCategory($this->getReference('Verpflegung'));
         $manager->persist($ap2);
         $manager->flush();
 
@@ -47,7 +47,7 @@ class LoadAdditionalProductData extends AbstractFixture implements OrderedFixtur
         $ap3->setEnabled(1);
         $ap3->setHotel($this->getReference('testhotel'));
         $this->addReference('breakfast', $ap3);
-        $ap3->setAdditionalProductcategory($this->getReference('Verpflegung'));
+        $ap3->setAdditionalProductCategory($this->getReference('Verpflegung'));
         $manager->persist($ap3);
         $manager->flush();
 
@@ -60,7 +60,7 @@ class LoadAdditionalProductData extends AbstractFixture implements OrderedFixtur
         $ap4->setEnabled(1);
         $ap4->setHotel($this->getReference('testhotel'));
         $this->addReference('noboarding', $ap4);
-        $ap4->setAdditionalProductcategory($this->getReference('Verpflegung'));
+        $ap4->setAdditionalProductCategory($this->getReference('Verpflegung'));
         $manager->persist($ap4);
         $manager->flush();
         
@@ -73,7 +73,7 @@ class LoadAdditionalProductData extends AbstractFixture implements OrderedFixtur
         $ap4a->setEnabled(0);
         $ap4a->setHotel($this->getReference('testhotel'));
         $this->addReference('notenabledboarding', $ap4a);
-        $ap4a->setAdditionalProductcategory($this->getReference('Verpflegung'));
+        $ap4a->setAdditionalProductCategory($this->getReference('Verpflegung'));
         $manager->persist($ap4a);
         $manager->flush();
 
@@ -86,7 +86,7 @@ class LoadAdditionalProductData extends AbstractFixture implements OrderedFixtur
         $ap5->setEnabled(1);
         $ap5->setHotel($this->getReference('testhotel'));
         $this->addReference('champagnebreakfast', $ap5);
-        $ap5->setAdditionalProductcategory($this->getReference('Specials'));
+        $ap5->setAdditionalProductCategory($this->getReference('Specials'));
         $manager->persist($ap5);
         $manager->flush();
 
@@ -99,7 +99,7 @@ class LoadAdditionalProductData extends AbstractFixture implements OrderedFixtur
         $ap6->setEnabled(1);
         $ap6->setHotel($this->getReference('testhotel'));
         $this->addReference('rosesinrooms', $ap6);
-        $ap6->setAdditionalProductcategory($this->getReference('Specials'));
+        $ap6->setAdditionalProductCategory($this->getReference('Specials'));
         $manager->persist($ap6);
         $manager->flush();
 
@@ -112,7 +112,7 @@ class LoadAdditionalProductData extends AbstractFixture implements OrderedFixtur
         $ap7->setEnabled(1);
         $ap7->setHotel($this->getReference('testhotel'));
         $this->addReference('raftingtour', $ap7);
-        $ap7->setAdditionalProductcategory($this->getReference('Specials'));
+        $ap7->setAdditionalProductCategory($this->getReference('Specials'));
         $manager->persist($ap7);
         $manager->flush();
         
@@ -125,7 +125,7 @@ class LoadAdditionalProductData extends AbstractFixture implements OrderedFixtur
         $ap8->setEnabled(0);
         $ap8->setHotel($this->getReference('testhotel'));
         $this->addReference('notenabledspecial', $ap8);
-        $ap8->setAdditionalProductcategory($this->getReference('Specials'));
+        $ap8->setAdditionalProductCategory($this->getReference('Specials'));
         $manager->persist($ap8);
         $manager->flush();
     }

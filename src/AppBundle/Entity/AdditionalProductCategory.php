@@ -7,10 +7,10 @@ use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="additionalproductcategory")
+ * @ORM\Table(name="additionalProductCategory")
  */
-class AdditionalProductCategory
-{
+class AdditionalProductCategory {
+
     /**
      * @ORM\Column(type="integer")
      * @ORM\Id
@@ -39,7 +39,7 @@ class AdditionalProductCategory
     private $positionInSubMenu;
 
     /**
-     * @ORM\OneToMany(targetEntity="AdditionalProduct", mappedBy="additionalproductcategory")
+     * @ORM\OneToMany(targetEntity="AdditionalProduct", mappedBy="additionalProductCategory")
      */
     private $additionalProducts;
 
@@ -47,6 +47,7 @@ class AdditionalProductCategory
 
         $this->additionalProducts = new ArrayCollection();
     }
+
 
     /**
      * Get id

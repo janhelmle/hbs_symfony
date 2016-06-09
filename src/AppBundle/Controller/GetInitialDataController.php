@@ -97,7 +97,7 @@ class GetInitialDataController extends Controller {
                 a.pricingBasisText  
                 
                 FROM AppBundle:AdditionalProduct a
-                JOIN a.additionalproductcategory p
+                JOIN a.additionalProductCategory p
                 WHERE p.identifier = 'boardings'
                 AND a.enabled = TRUE
 		
@@ -116,7 +116,7 @@ class GetInitialDataController extends Controller {
                 a.pricingBasisText
                 
                 FROM AppBundle:AdditionalProduct a
-                JOIN a.additionalproductcategory p
+                JOIN a.additionalProductCategory p
                 WHERE p.identifier = 'specials'
                 AND a.enabled = TRUE
 		
