@@ -3,6 +3,8 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Validation;
 
 /**
  * @ORM\Entity(repositoryClass="AppBundle\Entity\PriceRepository")
@@ -23,6 +25,9 @@ class Price {
     private $date;
 
     /**
+     * @Assert\NotBlank()
+     * @Assert\Type(type="string")
+     * @Assert\GreaterThanOrEqual(value = 0)
      * @ORM\Column(type="decimal", scale=2 ,  nullable=false)
      */
     private $value;
@@ -89,7 +94,10 @@ class Price {
      */
     public function getValue()
     {
-        return $this->value;
+        $validator = Validation::createValidatorBuilder()->enableAnnotationMapping()->getValidator() ;
+        $errors = $validator->validate($this);
+        if($errors->count()>0) { throw new \Exception('Error. Zustand des Objekts ungueltig'); }
+        return (float) $this->value;
     }
 
     /**
@@ -115,4 +123,5 @@ class Price {
     {
         return $this->product;
     }
+
 }
