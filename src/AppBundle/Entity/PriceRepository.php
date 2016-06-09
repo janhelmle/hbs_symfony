@@ -22,11 +22,11 @@ class PriceRepository extends \Doctrine\ORM\EntityRepository {
         );
         $query->setParameter(1, $prod->getIdentifier());
 
-        $result = $query->getResult(); // Array of Price Objects
+        $prices = $query->getResult(); // Array of Price Objects
 
-        foreach ($result as $r) { // laufe durch ResultSet vom Neuesten zum Aeltesten
-            if ($r->getDate() <= $date) { // passenden Preis gefunden
-                return $r;
+        foreach ($prices as $price) { // laufe durch Price Array vom Neuesten zum Aeltesten
+            if ($price->getDate() <= $date) { // passenden Preis gefunden
+                return $price;
             }
         }
 
