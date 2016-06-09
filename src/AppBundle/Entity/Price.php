@@ -23,7 +23,7 @@ class Price {
     private $date;
 
     /**
-     * @ORM\Column(type="decimal", scale=2 ,  nullable=true)
+     * @ORM\Column(type="decimal", scale=2 ,  nullable=false)
      */
     private $value;
 
