@@ -139,6 +139,30 @@ class LoadPriceData extends AbstractFixture implements OrderedFixtureInterface {
         $manager->flush();
         unset($pr15);
         
+        $pr16 = new Price();
+        $pr16->setDate(new \DateTime("2016-01-01"));
+        $pr16->setValue(00.00);
+        $pr16->setProduct($this->getReference('notenabledroomtype'));
+        $manager->persist($pr16);
+        $manager->flush();
+        unset($pr16);
+        
+        $pr17 = new Price();
+        $pr17->setDate(new \DateTime("2016-01-01"));
+        $pr17->setValue(00.00);
+        $pr17->setProduct($this->getReference('notenabledboarding'));
+        $manager->persist($pr17);
+        $manager->flush();
+        unset($pr17);
+        
+        $pr18 = new Price();
+        $pr18->setDate(new \DateTime("2016-01-01"));
+        $pr18->setValue(00.00);
+        $pr18->setProduct($this->getReference('notenabledspecial'));
+        $manager->persist($pr18);
+        $manager->flush();
+        unset($pr18);
+        
     }
 
     public function getOrder() {

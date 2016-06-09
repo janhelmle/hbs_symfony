@@ -122,6 +122,22 @@ class LoadRoomTypeData extends AbstractFixture implements OrderedFixtureInterfac
         $manager->persist($rt7);
         $manager->flush();
         unset($rt7);
+        
+        $rt8 = new RoomType();
+        $rt8->setIdentifier("notenabledroomtype");
+        $rt8->setSubMenuText("Not Enabled RT");
+        $rt8->setListText("Not Enabled RoomType");
+        $rt8->setPricingBasis("night");
+        $rt8->setPricingBasisText("/Nacht");
+        $rt8->setCapacity(1);
+        $rt8->setQuantityOfPersons(1);
+        $rt8->setPositionInSubMenu(8);
+        $rt8->setEnabled(0);
+        $rt8->setHotel($this->getReference('testhotel'));
+        $this->addReference('notenabledroomtype', $rt8);
+        $manager->persist($rt8);
+        $manager->flush();
+        unset($rt8);
     }
 
     public function getOrder() {

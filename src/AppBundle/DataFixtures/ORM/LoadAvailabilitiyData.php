@@ -66,6 +66,14 @@ class LoadAvailabilityData extends AbstractFixture implements OrderedFixtureInte
         $manager->persist($av7);
         $manager->flush();
         unset($av7);
+        
+        $av8 = new Availability();
+        $av8->setDate(new \DateTime("2016-01-01"));
+        $av8->setQuantity(5);
+        $av8->setRoomType($this->getReference('notenabledroomtype'));
+        $manager->persist($av8);
+        $manager->flush();
+        unset($av8);
     }
 
     public function getOrder() {

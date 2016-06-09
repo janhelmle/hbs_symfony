@@ -63,6 +63,19 @@ class LoadAdditionalProductData extends AbstractFixture implements OrderedFixtur
         $ap4->setAdditionalProductcategory($this->getReference('Verpflegung'));
         $manager->persist($ap4);
         $manager->flush();
+        
+        $ap4a = new AdditionalProduct();
+        $ap4a->setIdentifier("notenabledboarding");
+        $ap4a->setListText("Not Enabled Boarding");
+        $ap4a->setPricingBasis("");
+        $ap4a->setPricingBasisText("");
+        $ap4a->setPositionInList(5);
+        $ap4a->setEnabled(0);
+        $ap4a->setHotel($this->getReference('testhotel'));
+        $this->addReference('notenabledboarding', $ap4a);
+        $ap4a->setAdditionalProductcategory($this->getReference('Verpflegung'));
+        $manager->persist($ap4a);
+        $manager->flush();
 
         $ap5 = new AdditionalProduct();
         $ap5->setIdentifier("champagnebreakfast");
@@ -101,6 +114,19 @@ class LoadAdditionalProductData extends AbstractFixture implements OrderedFixtur
         $this->addReference('raftingtour', $ap7);
         $ap7->setAdditionalProductcategory($this->getReference('Specials'));
         $manager->persist($ap7);
+        $manager->flush();
+        
+        $ap8 = new AdditionalProduct();
+        $ap8->setIdentifier("notenabledspecial");
+        $ap8->setListText("Not Enabled Special");
+        $ap8->setPricingBasis("person");
+        $ap8->setPricingBasisText("/Person");
+        $ap8->setPositionInList(4);
+        $ap8->setEnabled(0);
+        $ap8->setHotel($this->getReference('testhotel'));
+        $this->addReference('notenabledspecial', $ap8);
+        $ap8->setAdditionalProductcategory($this->getReference('Specials'));
+        $manager->persist($ap8);
         $manager->flush();
     }
 
