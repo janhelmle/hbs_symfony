@@ -20,11 +20,11 @@ class GetPricesAndAvailabilitiesController extends Controller {
 
         $dto = new stdClass(); // new Data Transfer Object
 
-        $checkInDate = $request->headers->get('checkInDate'); // 2016.04.26, 12:00
-        $checkOutDate = $request->headers->get('checkOutDate'); // 2016.04.27, 12:00
+        $checkInDateFromApp = $request->headers->get('checkInDate'); // 2016.04.26, 12:00
+        $checkOutDateFromApp = $request->headers->get('checkOutDate'); // 2016.04.27, 12:00
 
-        $checkInDateTime = DateTime::createFromFormat('Y.m.d, H:i', $checkInDate);
-        $checkOutDateTime = DateTime::createFromFormat('Y.m.d, H:i', $checkOutDate);
+        $checkInDateTime = DateTime::createFromFormat('Y.m.d, H:i', $checkInDateFromApp);
+        $checkOutDateTime = DateTime::createFromFormat('Y.m.d, H:i', $checkOutDateFromApp);
 
         if (
                 (!$checkInDateTime) OR ( !$checkOutDateTime)
@@ -61,8 +61,8 @@ class GetPricesAndAvailabilitiesController extends Controller {
             return $resp;
         };
 
-        $dto->checkInDate = $checkInDate;
-        $dto->checkOutDate = $checkOutDate;
+        $dto->checkInDate = $checkInDateFromApp;
+        $dto->checkOutDate = $checkOutDateFromApp;
 
         $roomTypes = $em->getRepository('AppBundle:RoomType')->findAllWhereCapacityGreaterZeroOrderedByPositionInSubMenu(); // array of RoomType objects
 
@@ -71,7 +71,7 @@ class GetPricesAndAvailabilitiesController extends Controller {
             $i->identifier = $rt->getIdentifier();
             $i->price = $em->getRepository('AppBundle:Price')
                     ->calculatePriceAveragePerProductAndDateInterval($rt, $checkInDateTime, $checkOutDateTime);
-            $i->quantity = $rt->getAvailabilities()[0]->getQuantity();
+            $i->quantity = $rt->getAvailabilities()[0]->getQuantity(); // TODO
             $dto->roomTypes[] = $i;
         }
 
@@ -156,8 +156,8 @@ class GetPricesAndAvailabilitiesController extends Controller {
         foreach ($roomTypes as $rt) {
             $i = new stdClass();
             $i->identifier = $rt->getIdentifier();
-            $i->price = $rt->getPrices()[0]->getValue();
-            $i->quantity = $rt->getAvailabilities()[0]->getQuantity();
+            $i->price = $rt->getPrices()[0]->getValue(); // TODO
+            $i->quantity = $rt->getAvailabilities()[0]->getQuantity(); // TODO
             $dto->roomTypes[] = $i;
         }
 
