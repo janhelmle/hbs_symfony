@@ -89,6 +89,7 @@ class CheckInOutDateTime {
      * Set checkInOutDateTime
      *
      * @param string $checkInDateTime
+     * @param string $checkOutDateTime
      *
      * @return CheckInOutDateTime
      */
