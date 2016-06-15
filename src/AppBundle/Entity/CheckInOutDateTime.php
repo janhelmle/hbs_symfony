@@ -118,7 +118,7 @@ class CheckInOutDateTime {
     }
 
     /**
-     * @Assert\IsTrue(message = "Error: Checkout time earlier than Checkin time")
+     * @Assert\IsTrue(message = "Error: CheckIn time later than CheckOut time")
      */
     public function isCheckOutDateTimeLaterCheckInDateTime() {
         if( ($this->getCheckInDateTime()->diff($this->getCheckOutDateTime())->invert) > 0 ) { return false ; }
