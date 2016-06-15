@@ -10,7 +10,7 @@ namespace AppBundle\Entity;
  */
 class AvailabilityRepository extends \Doctrine\ORM\EntityRepository {
 
-    public function findAvailability(CheckInOutDateTime $ciodt, RoomType $rt) {
+    public function findAvailability(CheckInOutDateTime $ciodt, RoomType $rt) { // returns integer
         $result = $this->getEntityManager()
                 ->createQuery("
                 SELECT 
@@ -32,9 +32,9 @@ class AvailabilityRepository extends \Doctrine\ORM\EntityRepository {
                 )
                 ->getSingleScalarResult();
         if (!$result) {
-            return $rt->getCapacity();
+            return intval($rt->getCapacity());
         }
-        return $result;
+        return intval($result);
     }
 
 }
