@@ -113,7 +113,9 @@ class CheckInOutDateTime {
      * @Assert\IsTrue(message = "Error: Timespan exceeds 365 Days")
      */
     public function isTimespanLegal() {
-        if($this->checkInDateTime->diff($this->checkOutDateTime)->days > 365) { return false ; }
+        if ($this->checkInDateTime->diff($this->checkOutDateTime)->days > 365) {
+            return false;
+        }
         return true;
     }
 
@@ -121,7 +123,9 @@ class CheckInOutDateTime {
      * @Assert\IsTrue(message = "Error: CheckIn time later than CheckOut time")
      */
     public function isCheckOutDateTimeLaterCheckInDateTime() {
-        if( ($this->getCheckInDateTime()->diff($this->getCheckOutDateTime())->invert) > 0 ) { return false ; }
+        if (($this->getCheckInDateTime()->diff($this->getCheckOutDateTime())->invert) > 0) {
+            return false;
+        }
         return true;
     }
 
