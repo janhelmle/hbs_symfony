@@ -103,10 +103,10 @@ class GetPricesAndAvailabilitiesControllerTest extends WebTestCase {
 	"price": "25.00"
         }]';
 
-        $this->assertJsonStringEqualsJsonString($client->getResponse()->getContent(), $expected);
+        $this->assertJsonStringEqualsJsonString($expected , $client->getResponse()->getContent());
     }
 
-    //  /api/v0.1/getinitialdata //
+    //  /api/v0.1/getpricesandavailabilities //
 
     public function testHeader_v0_1() {
         $client = static::createClient();
@@ -201,10 +201,10 @@ class GetPricesAndAvailabilitiesControllerTest extends WebTestCase {
 	}]
         }';
 
-        $this->assertJsonStringEqualsJsonString($client->getResponse()->getContent(), $expected);
+        $this->assertJsonStringEqualsJsonString($expected , $client->getResponse()->getContent());
     }
 
-    //  /api/v0.2/getinitialdata //
+    //  /api/v0.2/getpricesandavailabilities //
 
     public function testHeaderValidInput_v0_2() {
         $client = static::createClient(array(), array(
@@ -265,27 +265,27 @@ class GetPricesAndAvailabilitiesControllerTest extends WebTestCase {
 	}, {
 		"identifier": "doubleroom",
 		"price": 120,
-		"quantity": 4
+		"quantity": 6
 	}, {
 		"identifier": "twinroom",
 		"price": 130,
-		"quantity": 3
+		"quantity": 7
 	}, {
 		"identifier": "tripleroom",
 		"price": 140,
-		"quantity": 2
+		"quantity": 8
 	}, {
 		"identifier": "familyroom",
 		"price": 150,
-		"quantity": 1
+		"quantity": 4
 	}, {
 		"identifier": "apartmentsingle",
 		"price": 160,
-		"quantity": 1
+		"quantity": 3
 	}, {
 		"identifier": "apartmentdouble",
 		"price": 170,
-		"quantity": 5
+		"quantity": 2
 	}],
 	"boardings": [{
 		"identifier": "halfpension",
@@ -312,7 +312,7 @@ class GetPricesAndAvailabilitiesControllerTest extends WebTestCase {
 	}]
         }';
 
-        $this->assertJsonStringEqualsJsonString($client->getResponse()->getContent(), $expected);
+        $this->assertJsonStringEqualsJsonString($expected , $client->getResponse()->getContent());
     }
 
     public function testHeaderInValidInput_v0_2() {
