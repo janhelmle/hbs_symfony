@@ -19,11 +19,13 @@ class Availability {
     private $id;
 
     /**
+     * @Assert\DateTime()
      * @ORM\Column(type="datetime" , nullable=false)
      */
     private $date;
 
     /**
+     * @Assert\Type(type="int" , message="Error: Property quantity is of type int")
      * @ORM\Column(type="smallint" , nullable=false)
      */
     private $quantity;
