@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use stdClass;
 use DateTime;
+use AppBundle\Entity\CheckInOutDateTime;
 
 class GetPricesAndAvailabilitiesController extends Controller {
 
@@ -22,7 +23,7 @@ class GetPricesAndAvailabilitiesController extends Controller {
 
         $checkInDateFromApp = $request->headers->get('checkInDate'); // 2016.04.26, 12:00
         $checkOutDateFromApp = $request->headers->get('checkOutDate'); // 2016.04.27, 12:00
-
+                
         $checkInDateTime = DateTime::createFromFormat('Y.m.d, H:i', $checkInDateFromApp);
         $checkOutDateTime = DateTime::createFromFormat('Y.m.d, H:i', $checkOutDateFromApp);
 
@@ -60,6 +61,12 @@ class GetPricesAndAvailabilitiesController extends Controller {
             $resp->headers->set('Content-Type', 'Content-Type: text/html; charset=utf-8');
             return $resp;
         };
+        
+        $ciodt = new \AppBundle\Entity\CheckInOutDateTime() ;
+        $ciodt->setCheckInDateTime($checkInDateTime)->setCheckOutDateTime($checkOutDateTime);
+        
+        $validator = $this->get('validator');
+        $errors = $validator->validate($ciodt);
 
         $dto->checkInDate = $checkInDateFromApp;
         $dto->checkOutDate = $checkOutDateFromApp;
@@ -71,11 +78,10 @@ class GetPricesAndAvailabilitiesController extends Controller {
             $i->identifier = $rt->getIdentifier();
             $i->price = $em->getRepository('AppBundle:Price')
                     ->calculatePriceAveragePerProductAndDateInterval($rt, $checkInDateTime, $checkOutDateTime);
-            $i->quantity = $rt->getAvailabilities()[0]->getQuantity(); // TODO
+            $i->quantity = $em->getRepository('AppBundle:Availability')->findAvailability($ciodt,$rt);
             $dto->roomTypes[] = $i;
         }
-
-        
+                
         $boardings = $em->getRepository('AppBundle:AdditionalProduct')->findAllBoardingsOrderedByPositionInList(); // array of AdditionalProduct objects
 
         foreach ($boardings as $b) {
@@ -97,10 +103,10 @@ class GetPricesAndAvailabilitiesController extends Controller {
         }
 
         $pandaJSON = json_encode($dto, 320); // 320 : 0000000101000000 = 256 + 64 : JSON_UNESCAPED_SLASHES => 64 + JSON_UNESCAPED_UNICODE => 256
-
+        
         $resp = new Response($pandaJSON);
         $resp->headers->set('Content-Type', 'application/json ; charset=utf-8');
-
+        
         return $resp;
     }
 
