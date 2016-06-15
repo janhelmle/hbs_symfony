@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="AppBundle\Entity\AvailabilityRepository")
@@ -18,12 +19,12 @@ class Availability {
     private $id;
 
     /**
-     * @ORM\Column(type="datetime" , nullable=true)
+     * @ORM\Column(type="datetime" , nullable=false)
      */
     private $date;
 
     /**
-     * @ORM\Column(type="smallint" , nullable=true)
+     * @ORM\Column(type="smallint" , nullable=false)
      */
     private $quantity;
 
@@ -114,5 +115,15 @@ class Availability {
     public function getRoomType()
     {
         return $this->roomType;
+    }
+    
+    /**
+     * @Assert\IsTrue(message = "Error: Quantity greater than Capacity")
+     */
+    public function isAvailabilityLegal() {
+        if ($this->quantity > $this->roomType->getCapacity()) {
+            return false;
+        }
+        return true;
     }
 }
