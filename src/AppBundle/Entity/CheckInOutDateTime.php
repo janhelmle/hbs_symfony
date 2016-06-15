@@ -110,10 +110,10 @@ class CheckInOutDateTime {
     }
 
     /**
-     * @Assert\IsTrue(message = "The password cannot match your first name")
+     * @Assert\IsTrue(message = "Error: Timespan exceeds 365 Days")
      */
-    public function isCheckInDateTimeLegal() {
-        
+    public function isTimespanLegal() {
+        if($this->checkInDateTime->diff($this->checkOutDateTime)->days > 365) { return false ; }
         return true;
     }
 
