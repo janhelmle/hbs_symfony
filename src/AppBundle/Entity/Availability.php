@@ -25,7 +25,8 @@ class Availability {
     private $date;
 
     /**
-     * @Assert\Type(type="int" , message="Error: Property quantity is of type int")
+     * @Assert\GreaterThanOrEqual(value = 0)
+     * @Assert\Type(type="int" , message="Error: Invalid Type")
      * @ORM\Column(type="smallint" , nullable=false)
      */
     private $quantity;
