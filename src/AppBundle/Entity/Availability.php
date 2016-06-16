@@ -127,6 +127,10 @@ class Availability {
         if ($this->quantity > $this->roomType->getCapacity()) {
             return false;
         }
+        if ($this->quantity < 0) {
+            return false;
+        }
         return true;
     }
+
 }
