@@ -20,13 +20,13 @@ class Price {
     private $id; // integer
 
     /**
+     * @Assert\DateTime()
      * @ORM\Column(type="datetime" , nullable=false)
      */
     private $date;
 
     /**
      * @Assert\NotBlank()
-     * @Assert\Type(type="string")
      * @Assert\GreaterThanOrEqual(value = 0)
      * @ORM\Column(type="decimal", scale=2 ,  nullable=false)
      */
