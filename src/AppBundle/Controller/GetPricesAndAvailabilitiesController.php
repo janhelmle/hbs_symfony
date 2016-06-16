@@ -228,27 +228,32 @@ class GetPricesAndAvailabilitiesController extends Controller {
 
         $em = $this->getDoctrine()->getManager();
 
-        $query = $em->createQuery('
+        $query = $em->createQuery("
                 SELECT 
                 
-                    prod.identifier ,
-                    pri.value AS price
+                    ap.identifier ,
+                    MAX(pri.value) AS price
                 
-                FROM AppBundle:Price pri
+                FROM AppBundle:AdditionalProduct ap
                 
-                JOIN pri.product prod
+                JOIN ap.prices pri
                 
-                WHERE prod INSTANCE OF \AppBundle\Entity\AdditionalProduct
+                JOIN ap.additionalProductCategory apc
                 
-                AND prod.enabled = TRUE
+                WHERE ap.enabled = TRUE
                 
-                ');
+                AND pri.date < '2099.01.01'
+                
+                GROUP BY ap.identifier
+                
+                ORDER BY apc.positionInSubMenu , ap.positionInList
+                
+                ");
 
         $additionalproducts = $query->getResult();
 
 
         $query = $em->createQuery("
-            
                 SELECT 
                 
                     rt.identifier ,
@@ -271,7 +276,7 @@ class GetPricesAndAvailabilitiesController extends Controller {
                 
                 GROUP BY rt.identifier
                 
-                ORDER BY rt.id
+                ORDER BY rt.positionInSubMenu
                 
                 ");
 
