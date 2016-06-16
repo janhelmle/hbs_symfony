@@ -46,39 +46,31 @@ class GetPricesAndAvailabilitiesControllerTest extends WebTestCase {
 
         $expected = '[{
 	"identifier": "singleroom",
-	"quantity": 5,
-	"price": "110.00"
-        }, {
-	"identifier": "singleroom",
-	"quantity": 5,
-	"price": "120.00"
-        }, {
-	"identifier": "singleroom",
-	"quantity": 5,
+	"quantity": "5",
 	"price": "130.00"
         }, {
 	"identifier": "doubleroom",
-	"quantity": 4,
+	"quantity": "4",
 	"price": "120.00"
         }, {
 	"identifier": "twinroom",
-	"quantity": 3,
+	"quantity": "3",
 	"price": "130.00"
         }, {
 	"identifier": "tripleroom",
-	"quantity": 2,
+	"quantity": "2",
 	"price": "140.00"
         }, {
 	"identifier": "familyroom",
-	"quantity": 1,
+	"quantity": "1",
 	"price": "150.00"
         }, {
 	"identifier": "apartmentsingle",
-	"quantity": 1,
+	"quantity": "1",
 	"price": "160.00"
         }, {
 	"identifier": "apartmentdouble",
-	"quantity": 5,
+	"quantity": "5",
 	"price": "170.00"
         }, {
 	"identifier": "halfpension",
@@ -103,7 +95,7 @@ class GetPricesAndAvailabilitiesControllerTest extends WebTestCase {
 	"price": "25.00"
         }]';
 
-        $this->assertJsonStringEqualsJsonString($expected , $client->getResponse()->getContent());
+        $this->assertJsonStringEqualsJsonString($expected, $client->getResponse()->getContent());
     }
 
     //  /api/v0.1/getpricesandavailabilities //
@@ -201,7 +193,7 @@ class GetPricesAndAvailabilitiesControllerTest extends WebTestCase {
 	}]
         }';
 
-        $this->assertJsonStringEqualsJsonString($expected , $client->getResponse()->getContent());
+        $this->assertJsonStringEqualsJsonString($expected, $client->getResponse()->getContent());
     }
 
     //  /api/v0.2/getpricesandavailabilities //
@@ -312,7 +304,7 @@ class GetPricesAndAvailabilitiesControllerTest extends WebTestCase {
 	}]
         }';
 
-        $this->assertJsonStringEqualsJsonString($expected , $client->getResponse()->getContent());
+        $this->assertJsonStringEqualsJsonString($expected, $client->getResponse()->getContent());
     }
 
     public function testHeaderInValidInput_v0_2() {
@@ -377,7 +369,7 @@ class GetPricesAndAvailabilitiesControllerTest extends WebTestCase {
 
         $this->assertContains('Error', $client->getResponse()->getContent());
     }
-    
+
     public function testCheckInDateEqualsCheckOutDate_v0_2() {
         $client = static::createClient(array(), array(
                     'HTTP_checkInDate' => '2016.01.16, 12:00',
@@ -388,4 +380,5 @@ class GetPricesAndAvailabilitiesControllerTest extends WebTestCase {
 
         $this->assertContains('Error', $client->getResponse()->getContent());
     }
+
 }

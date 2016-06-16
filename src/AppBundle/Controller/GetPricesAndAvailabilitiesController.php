@@ -247,13 +247,13 @@ class GetPricesAndAvailabilitiesController extends Controller {
         $additionalproducts = $query->getResult();
 
 
-        $query = $em->createQuery('
+        $query = $em->createQuery("
             
                 SELECT 
                 
                     rt.identifier ,
-                    av.quantity ,
-                    pr.value AS price
+                    MIN(av.quantity) AS quantity ,
+                    MAX(pr.value) AS price
                 
                 FROM AppBundle:RoomType rt
                 
@@ -265,7 +265,15 @@ class GetPricesAndAvailabilitiesController extends Controller {
                 
                 AND rt.enabled = TRUE
                 
-                ');
+                AND av.date < '2099.01.01' 
+                
+                AND pr.date < '2099.01.01'
+                
+                GROUP BY rt.identifier
+                
+                ORDER BY rt.id
+                
+                ");
 
         $roomtypes = $query->getResult();
 
