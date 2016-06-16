@@ -122,7 +122,7 @@ class Availability {
     /**
      * @Assert\IsTrue(message = "Error: Quantity greater than Capacity")
      */
-    public function isAvailabilityLegal() {
+    public function isQuantityLegal() {
         if ($this->quantity > $this->roomType->getCapacity()) {
             return false;
         }

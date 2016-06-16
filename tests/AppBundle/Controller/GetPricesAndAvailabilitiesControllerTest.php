@@ -39,7 +39,7 @@ class GetPricesAndAvailabilitiesControllerTest extends WebTestCase {
         $this->assertNotEmpty($client->getResponse()->getContent());
     }
 
-    public function testJsonContent_v0() {
+    public function testJsonContent_v0() { // TODO
         $client = static::createClient();
 
         $crawler = $client->request('GET', '/api/v0/getpricesandavailabilities');
