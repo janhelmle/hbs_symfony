@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="AppBundle\Entity\HotelRepository")
@@ -19,12 +20,14 @@ class Hotel {
     private $id;
 
     /**
+     * @Assert\Type(type="string")
      * @ORM\Column(type="string" , length=100 , nullable=false)
      */
     private $identifier;
 
     /**
-     * @ORM\Column(type="string" , length=200 , nullable=true)
+     * @Assert\Email()
+     * @ORM\Column(type="string" , length=200 , nullable=false)
      */
     private $email;
 
