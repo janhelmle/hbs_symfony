@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="AppBundle\Entity\ProductRepository")
@@ -22,27 +23,32 @@ abstract class Product {
     private $id;
 
     /**
+     * @Assert\Type(type="string")
      * @ORM\Column(type="string" , length=100 , nullable=false , unique=true)
      */
     private $identifier;
 
     /**
-     * @ORM\Column(type="string" , length=100 , nullable=true)
+     * @Assert\Type(type="string")
+     * @ORM\Column(type="string" , length=100 , nullable=false , unique=true)
      */
     private $listText; // fuer list
 
     /**
-     * @ORM\Column(type="string" , length=100 , nullable=true)
+     * @Assert\Type(type="string")
+     * @ORM\Column(type="string" , length=100 , nullable=false)
      */
     private $pricingBasis;
 
     /**
+     * @Assert\Type(type="string")
      * @ORM\Column(type="string" , length=100 , nullable=true)
      */
     private $pricingBasisText;
     
     /**
-     * @ORM\Column(type="boolean", nullable=true)
+     * @Assert\Type(type="bool")
+     * @ORM\Column(type="boolean", nullable=false)
      */
     private $enabled;
     
