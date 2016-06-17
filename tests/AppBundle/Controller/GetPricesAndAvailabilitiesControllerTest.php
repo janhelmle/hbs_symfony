@@ -228,7 +228,7 @@ class GetPricesAndAvailabilitiesControllerTest extends WebTestCase {
         );
     }
 
-    public function testContentNotEmptyValidInput_v0_2() {
+    public function testResponseNotEmptyValidInput_v0_2() {
         $client = static::createClient(array(), array(
                     'HTTP_checkInDate' => '2016.01.14, 12:00',
                     'HTTP_checkOutDate' => '2016.01.16, 12:00'
@@ -239,7 +239,7 @@ class GetPricesAndAvailabilitiesControllerTest extends WebTestCase {
         $this->assertNotEmpty($client->getResponse()->getContent());
     }
 
-    public function testJsonContentValidInput_v0_2() {
+    public function testJsonResponseValidInput_v0_2() {
         $client = static::createClient(array(), array(
                     'HTTP_checkInDate' => '2016.01.14, 12:00',
                     'HTTP_checkOutDate' => '2016.01.16, 12:00'
@@ -307,7 +307,7 @@ class GetPricesAndAvailabilitiesControllerTest extends WebTestCase {
         $this->assertJsonStringEqualsJsonString($expected, $client->getResponse()->getContent());
     }
 
-    public function testHeaderInValidInput_v0_2() {
+    public function testHeaderInvalidInput_v0_2() {
         $client = static::createClient(array(), array(
                     'HTTP_checkInDate' => '2016.01.14, 12:0',
                     'HTTP_checkOutDate' => '2016.01.16, 12:00'
@@ -323,7 +323,7 @@ class GetPricesAndAvailabilitiesControllerTest extends WebTestCase {
         );
     }
 
-    public function testStatusCodeInValidInput_v0_2() {
+    public function testStatusCodeInvalidInput_v0_2() {
         $client = static::createClient(array(), array(
                     'HTTP_checkInDate' => '2016.01.14, 12:0',
                     'HTTP_checkOutDate' => '2016.01.16, 12:00'
@@ -337,7 +337,7 @@ class GetPricesAndAvailabilitiesControllerTest extends WebTestCase {
         );
     }
 
-    public function testContentNotEmptyInValidInput_v0_2() {
+    public function testResponseNotEmptyInvalidInput_v0_2() {
         $client = static::createClient(array(), array(
                     'HTTP_checkInDate' => '2016.01.14, 12:0',
                     'HTTP_checkOutDate' => '2016.01.16, 12:00'
@@ -348,7 +348,7 @@ class GetPricesAndAvailabilitiesControllerTest extends WebTestCase {
         $this->assertNotEmpty($client->getResponse()->getContent());
     }
 
-    public function testInValidInput_v0_2() {
+    public function testInvalidInput_v0_2() {
         $client = static::createClient(array(), array(
                     'HTTP_checkInDate' => '2016.01.14, 12:0',
                     'HTTP_checkOutDate' => '2016.01.16, 12:00'
