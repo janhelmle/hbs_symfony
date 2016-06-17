@@ -93,15 +93,20 @@ class CheckInOutDateTime {
      *
      * @return CheckInOutDateTime
      */
-    public function setCheckInOutDateTime($checkInDateTime, $checkOutDateTime) {
+    public function setCheckInOutDateTime($checkInDateTime, $checkOutDateTime) { // Input : string
         $checkInDateTimeTrimmed = trim($checkInDateTime);
         $checkOutDateTimeTrimmed = trim($checkOutDateTime);
 
         if (
-                !(preg_match('/^(19|20)\d{2}\.(0|1)\d\.[0-3]\d,\s[0-2]\d:[0-5]\d$/', $checkInDateTimeTrimmed)) || // test
+                !(preg_match('/^(19|20)\d{2}\.(0|1)\d\.[0-3]\d,\s[0-2]\d:[0-5]\d$/', $checkInDateTimeTrimmed)) || // e.g. '2016.04.26, 12:00'
                 !(preg_match('/^(19|20)\d{2}\.(0|1)\d\.[0-3]\d,\s[0-2]\d:[0-5]\d$/', $checkOutDateTimeTrimmed))
         ) {
-            throw new Exception("Error. Malformed request syntax. Please use header keys 'checkInDate' and 'checkOutDate' with values in this form : 'Y.m.d, H:i' , e.g. '2016.04.26, 12:00'");
+            throw new \InvalidArgumentException("Error. Malformed request syntax. Please use header keys 'checkInDate' and 'checkOutDate' with values in this form : 'Y.m.d, H:i' , e.g. '2016.04.26, 12:00'");
+        }
+        if (
+                $checkInDateTimeTrimmed >= $checkOutDateTimeTrimmed
+        ) {
+            throw new \InvalidArgumentException("Error: checkInDate >= checkOutDate. Please try again with the correct settings.");
         }
 
         $this->checkInDateTime = DateTime::createFromFormat('Y.m.d, H:i', $checkInDateTimeTrimmed);
