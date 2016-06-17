@@ -348,7 +348,7 @@ class GetPricesAndAvailabilitiesControllerTest extends WebTestCase {
         $this->assertNotEmpty($client->getResponse()->getContent());
     }
 
-    public function testInvalidInput_v0_2() {
+    public function testResponseContainsErrorInvalidInput_v0_2() {
         $client = static::createClient(array(), array(
                     'HTTP_checkInDate' => '2016.01.14, 12:0',
                     'HTTP_checkOutDate' => '2016.01.16, 12:00'
@@ -359,7 +359,7 @@ class GetPricesAndAvailabilitiesControllerTest extends WebTestCase {
         $this->assertContains('Error', $client->getResponse()->getContent());
     }
 
-    public function testCheckInDateGreaterCheckOutDate_v0_2() {
+    public function testResponseContainsErrorCheckInDateGreaterCheckOutDate_v0_2() {
         $client = static::createClient(array(), array(
                     'HTTP_checkInDate' => '2016.01.16, 12:00',
                     'HTTP_checkOutDate' => '2016.01.14, 12:00'
