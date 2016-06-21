@@ -238,6 +238,21 @@ class GetPricesAndAvailabilitiesControllerTest extends WebTestCase {
 
         $this->assertNotEmpty($client->getResponse()->getContent());
     }
+    
+    public function testResponseValidJsonValidInput_v0_2() {
+        $client = static::createClient(array(), array(
+                    'HTTP_checkInDate' => '2016.01.14, 12:00',
+                    'HTTP_checkOutDate' => '2016.01.16, 12:00'
+        ));
+
+        $crawler = $client->request('GET', '/api/v0.2/getpricesandavailabilities');
+        
+        $content = $client->getResponse()->getContent() ;
+        
+        $jsonDecodedContent = json_decode($content); 
+
+        $this->assertTrue(json_last_error() == 'JSON_ERROR_NONE');
+    }
 
     public function testResponseJsonContentValidInput_v0_2() {
         $client = static::createClient(array(), array(
