@@ -22,12 +22,14 @@ class CheckInOutDateTime {
 
     /**
      * @Assert\DateTime()
+     * @Assert\NotNull()
      * @ORM\Column(type="datetime" , nullable=false)
      */
     private $checkInDateTime;
 
     /**
      * @Assert\DateTime()
+     * @Assert\NotNull()
      * @ORM\Column(type="datetime" , nullable=false)
      */
     private $checkOutDateTime;
