@@ -198,7 +198,7 @@ class GetPricesAndAvailabilitiesControllerTest extends WebTestCase {
 
     //  /api/v0.2/getpricesandavailabilities //
 
-    public function testHeaderValidInput_v0_2() {
+    public function testResponseHeaderValidInput_v0_2() {
         $client = static::createClient(array(), array(
                     'HTTP_checkInDate' => '2016.01.14, 12:00',
                     'HTTP_checkOutDate' => '2016.01.16, 12:00'
@@ -214,7 +214,7 @@ class GetPricesAndAvailabilitiesControllerTest extends WebTestCase {
         );
     }
 
-    public function testStatusCodeValidInput_v0_2() {
+    public function testResponseStatusCodeValidInput_v0_2() {
         $client = static::createClient(array(), array(
                     'HTTP_checkInDate' => '2016.01.14, 12:00',
                     'HTTP_checkOutDate' => '2016.01.16, 12:00'
@@ -223,7 +223,7 @@ class GetPricesAndAvailabilitiesControllerTest extends WebTestCase {
         $crawler = $client->request('GET', '/api/v0.2/getpricesandavailabilities');
 
         $this->assertEquals(
-                200, // or Symfony\Component\HttpFoundation\Response::HTTP_OK
+                200, 
                 $client->getResponse()->getStatusCode()
         );
     }
@@ -239,7 +239,7 @@ class GetPricesAndAvailabilitiesControllerTest extends WebTestCase {
         $this->assertNotEmpty($client->getResponse()->getContent());
     }
 
-    public function testJsonResponseValidInput_v0_2() {
+    public function testResponseJsonContentValidInput_v0_2() {
         $client = static::createClient(array(), array(
                     'HTTP_checkInDate' => '2016.01.14, 12:00',
                     'HTTP_checkOutDate' => '2016.01.16, 12:00'
@@ -307,7 +307,7 @@ class GetPricesAndAvailabilitiesControllerTest extends WebTestCase {
         $this->assertJsonStringEqualsJsonString($expected, $client->getResponse()->getContent());
     }
 
-    public function testHeaderInvalidInput_v0_2() {
+    public function testResponseHeaderInvalidInput_v0_2() {
         $client = static::createClient(array(), array(
                     'HTTP_checkInDate' => '2016.01.14, 12:0',
                     'HTTP_checkOutDate' => '2016.01.16, 12:00'
@@ -323,7 +323,7 @@ class GetPricesAndAvailabilitiesControllerTest extends WebTestCase {
         );
     }
 
-    public function testStatusCodeInvalidInput_v0_2() {
+    public function testResponseStatusCodeInvalidInput_v0_2() {
         $client = static::createClient(array(), array(
                     'HTTP_checkInDate' => '2016.01.14, 12:0',
                     'HTTP_checkOutDate' => '2016.01.16, 12:00'
@@ -370,7 +370,7 @@ class GetPricesAndAvailabilitiesControllerTest extends WebTestCase {
         $this->assertContains('Error', $client->getResponse()->getContent());
     }
 
-    public function testCheckInDateEqualsCheckOutDate_v0_2() {
+    public function testResponseContainsErrorCheckInDateEqualsCheckOutDate_v0_2() {
         $client = static::createClient(array(), array(
                     'HTTP_checkInDate' => '2016.01.16, 12:00',
                     'HTTP_checkOutDate' => '2016.01.16, 12:00'
