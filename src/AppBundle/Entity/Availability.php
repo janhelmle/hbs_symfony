@@ -20,13 +20,14 @@ class Availability {
 
     /**
      * @Assert\DateTime()
+     * @Assert\NotNull()
      * @ORM\Column(type="datetime" , nullable=false)
      */
     private $date;
 
     /**
      * @Assert\GreaterThanOrEqual(value = 0)
-     * @Assert\Type(type="int" , message="Error: Invalid Type")
+     * @Assert\Type(type="int")
      * @ORM\Column(type="smallint" , nullable=false)
      */
     private $quantity;

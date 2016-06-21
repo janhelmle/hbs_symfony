@@ -21,6 +21,7 @@ class Price {
 
     /**
      * @Assert\DateTime()
+     * @Assert\NotNull()
      * @ORM\Column(type="datetime" , nullable=false)
      */
     private $date;
@@ -28,7 +29,7 @@ class Price {
     /**
      * @Assert\NotBlank()
      * @Assert\GreaterThanOrEqual(value = 0)
-     * @ORM\Column(type="decimal", scale=2 ,  nullable=false)
+     * @ORM\Column(type="decimal", scale=2 , precision=7 , nullable=false)
      */
     private $value;
 
