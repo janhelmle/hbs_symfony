@@ -216,8 +216,8 @@ class GetPricesAndAvailabilitiesControllerTest extends WebTestCase {
 
     public function testResponseStatusCodeValidInput_v0_2() {
         $client = static::createClient(array(), array(
-                    'HTTP_checkInDate' => '2016.01.14, 12:00',
-                    'HTTP_checkOutDate' => '2016.01.16, 12:00'
+                    'HTTP_checkInDate' => '2099.01.14, 12:00',
+                    'HTTP_checkOutDate' => '2099.01.16, 12:00'
         ));
 
         $crawler = $client->request('GET', '/api/v0.2/getpricesandavailabilities');
@@ -230,8 +230,8 @@ class GetPricesAndAvailabilitiesControllerTest extends WebTestCase {
 
     public function testResponseNotEmptyValidInput_v0_2() {
         $client = static::createClient(array(), array(
-                    'HTTP_checkInDate' => '2016.01.14, 12:00',
-                    'HTTP_checkOutDate' => '2016.01.16, 12:00'
+                    'HTTP_checkInDate' => '2099.01.14, 12:00',
+                    'HTTP_checkOutDate' => '2099.01.16, 12:00'
         ));
 
         $crawler = $client->request('GET', '/api/v0.2/getpricesandavailabilities');
@@ -241,8 +241,8 @@ class GetPricesAndAvailabilitiesControllerTest extends WebTestCase {
     
     public function testResponseValidJsonValidInput_v0_2() {
         $client = static::createClient(array(), array(
-                    'HTTP_checkInDate' => '2016.01.14, 12:00',
-                    'HTTP_checkOutDate' => '2016.01.16, 12:00'
+                    'HTTP_checkInDate' => '2099.01.14, 12:00',
+                    'HTTP_checkOutDate' => '2099.01.16, 12:00'
         ));
 
         $crawler = $client->request('GET', '/api/v0.2/getpricesandavailabilities');
@@ -324,8 +324,8 @@ class GetPricesAndAvailabilitiesControllerTest extends WebTestCase {
 
     public function testResponseHeaderInvalidInput_v0_2() {
         $client = static::createClient(array(), array(
-                    'HTTP_checkInDate' => '2016.01.14, 12:0',
-                    'HTTP_checkOutDate' => '2016.01.16, 12:00'
+                    'HTTP_checkInDate' => '2099.01.14, 12:0',
+                    'HTTP_checkOutDate' => '2099.01.16, 12:00'
         ));
 
 
@@ -340,8 +340,8 @@ class GetPricesAndAvailabilitiesControllerTest extends WebTestCase {
 
     public function testResponseStatusCodeInvalidInput_v0_2() {
         $client = static::createClient(array(), array(
-                    'HTTP_checkInDate' => '2016.01.14, 12:0',
-                    'HTTP_checkOutDate' => '2016.01.16, 12:00'
+                    'HTTP_checkInDate' => '2099.01.14, 12:0',
+                    'HTTP_checkOutDate' => '2099.01.16, 12:00'
         ));
 
         $crawler = $client->request('GET', '/api/v0.2/getpricesandavailabilities');
@@ -354,8 +354,8 @@ class GetPricesAndAvailabilitiesControllerTest extends WebTestCase {
 
     public function testResponseNotEmptyInvalidInput_v0_2() {
         $client = static::createClient(array(), array(
-                    'HTTP_checkInDate' => '2016.01.14, 12:0',
-                    'HTTP_checkOutDate' => '2016.01.16, 12:00'
+                    'HTTP_checkInDate' => '2099.01.14, 12:0',
+                    'HTTP_checkOutDate' => '2099.01.16, 12:00'
         ));
 
         $crawler = $client->request('GET', '/api/v0.2/getpricesandavailabilities');
@@ -365,8 +365,8 @@ class GetPricesAndAvailabilitiesControllerTest extends WebTestCase {
 
     public function testResponseContainsErrorInvalidInput_v0_2() {
         $client = static::createClient(array(), array(
-                    'HTTP_checkInDate' => '2016.01.14, 12:0',
-                    'HTTP_checkOutDate' => '2016.01.16, 12:00'
+                    'HTTP_checkInDate' => '2099.01.14, 12:0',
+                    'HTTP_checkOutDate' => '2099.01.16, 12:00'
         ));
 
         $crawler = $client->request('GET', '/api/v0.2/getpricesandavailabilities');
@@ -376,8 +376,8 @@ class GetPricesAndAvailabilitiesControllerTest extends WebTestCase {
 
     public function testResponseContainsErrorCheckInDateGreaterCheckOutDate_v0_2() {
         $client = static::createClient(array(), array(
-                    'HTTP_checkInDate' => '2016.01.16, 12:00',
-                    'HTTP_checkOutDate' => '2016.01.14, 12:00'
+                    'HTTP_checkInDate' => '2099.01.16, 12:00',
+                    'HTTP_checkOutDate' => '2099.01.14, 12:00'
         ));
 
         $crawler = $client->request('GET', '/api/v0.2/getpricesandavailabilities');
@@ -387,8 +387,8 @@ class GetPricesAndAvailabilitiesControllerTest extends WebTestCase {
 
     public function testResponseContainsErrorCheckInDateEqualsCheckOutDate_v0_2() {
         $client = static::createClient(array(), array(
-                    'HTTP_checkInDate' => '2016.01.16, 12:00',
-                    'HTTP_checkOutDate' => '2016.01.16, 12:00'
+                    'HTTP_checkInDate' => '2099.01.16, 12:00',
+                    'HTTP_checkOutDate' => '2099.01.16, 12:00'
         ));
 
         $crawler = $client->request('GET', '/api/v0.2/getpricesandavailabilities');
