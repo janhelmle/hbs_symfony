@@ -4,7 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
-use Exception;
+use Symfony\Component\Validator\Context\ExecutionContextInterface;
 use DateTime;
 
 /**
@@ -23,6 +23,7 @@ class CheckInOutDateTime {
     /**
      * @Assert\DateTime()
      * @Assert\NotNull()
+     * @Assert\NotBlank()
      * @ORM\Column(type="datetime" , nullable=false)
      */
     private $checkInDateTime;
@@ -30,6 +31,7 @@ class CheckInOutDateTime {
     /**
      * @Assert\DateTime()
      * @Assert\NotNull()
+     * @Assert\NotBlank()
      * @ORM\Column(type="datetime" , nullable=false)
      */
     private $checkOutDateTime;
@@ -50,7 +52,7 @@ class CheckInOutDateTime {
      *
      * @return CheckInOutDateTime
      */
-    public function setCheckInDateTime($checkInDateTime) {
+    public function setCheckInDateTime(DateTime $checkInDateTime) {
         $this->checkInDateTime = $checkInDateTime;
 
         return $this;
@@ -72,7 +74,7 @@ class CheckInOutDateTime {
      *
      * @return CheckInOutDateTime
      */
-    public function setCheckOutDateTime($checkOutDateTime) {
+    public function setCheckOutDateTime(DateTime $checkOutDateTime) {
         $this->checkOutDateTime = $checkOutDateTime;
 
         return $this;
@@ -96,45 +98,135 @@ class CheckInOutDateTime {
      * @return CheckInOutDateTime
      */
     public function setCheckInOutDateTime($checkInDateTime, $checkOutDateTime) { // Input : string
-        $checkInDateTimeTrimmed = trim($checkInDateTime);
-        $checkOutDateTimeTrimmed = trim($checkOutDateTime);
-
-        if (
-                !(preg_match('/^(19|20)\d{2}\.(0|1)\d\.[0-3]\d,\s[0-2]\d:[0-5]\d$/', $checkInDateTimeTrimmed)) || // e.g. '2016.04.26, 12:00'
-                !(preg_match('/^(19|20)\d{2}\.(0|1)\d\.[0-3]\d,\s[0-2]\d:[0-5]\d$/', $checkOutDateTimeTrimmed))
-        ) {
-            throw new \InvalidArgumentException("Error. Malformed request syntax. Please use header keys 'checkInDate' and 'checkOutDate' with values in this form : 'Y.m.d, H:i' , e.g. '2016.04.26, 12:00'");
+        // test type : string or datetime
+        if ($checkInDateTime && $checkOutDateTime) {
+            if (($checkInDateTime instanceof DateTime) && ($checkOutDateTime instanceof DateTime)) {
+                $this->setCheckInDateTime($checkInDateTime);
+                $this->setCheckOutDateTime($checkOutDateTime);
+            }
+            if (is_string($checkInDateTime) && is_string($checkOutDateTime)) {
+                $checkInDateTimeTrimmed = trim($checkInDateTime);
+                $checkOutDateTimeTrimmed = trim($checkOutDateTime);
+                $this->checkInDateTime = DateTime::createFromFormat('Y.m.d, H:i', $checkInDateTimeTrimmed);
+                $this->checkOutDateTime = DateTime::createFromFormat('Y.m.d, H:i', $checkOutDateTimeTrimmed);
+            }
+//        if (
+//                !(preg_match('/^(19|20)\d{2}\.(0|1)\d\.[0-3]\d,\s[0-2]\d:[0-5]\d$/', $checkInDateTimeTrimmed)) || // e.g. '2016.04.26, 12:00'
+//                !(preg_match('/^(19|20)\d{2}\.(0|1)\d\.[0-3]\d,\s[0-2]\d:[0-5]\d$/', $checkOutDateTimeTrimmed))
+//        ) {
+//            throw new \InvalidArgumentException("Error. Malformed request syntax. Please use header keys 'checkInDate' and 'checkOutDate' with values in this form : 'Y.m.d, H:i' , e.g. '2016.04.26, 12:00'");
+//        }
+//        if (
+//                $checkInDateTimeTrimmed >= $checkOutDateTimeTrimmed
+//        ) {
+//            throw new \InvalidArgumentException("Error: checkInDate >= checkOutDate. Please try again with the correct settings.");
+//        }
         }
-        if (
-                $checkInDateTimeTrimmed >= $checkOutDateTimeTrimmed
-        ) {
-            throw new \InvalidArgumentException("Error: checkInDate >= checkOutDate. Please try again with the correct settings.");
-        }
-
-        $this->checkInDateTime = DateTime::createFromFormat('Y.m.d, H:i', $checkInDateTimeTrimmed);
-        $this->checkOutDateTime = DateTime::createFromFormat('Y.m.d, H:i', $checkOutDateTimeTrimmed);
-
         return $this;
     }
 
-    /**
-     * @Assert\IsTrue(message = "Error: Timespan exceeds 365 Days")
-     */
-    public function isTimespanLegal() {
-        if ($this->checkInDateTime->diff($this->checkOutDateTime)->days > 365) {
-            return false;
-        }
-        return true;
-    }
+//    /**
+//     * @Assert\IsTrue()
+//     */
+//    public function isCheckInDateTimeCorrectType() {
+//        if ($this->checkInDateTime) {
+//            if (get_class($this->checkInDateTime) == 'DateTime') {
+//                return true;
+//            }
+//        }
+//        return false;
+//    }
+//    public function isTimespanLegal() { // wenn beide datetime
+//        if ($this->checkInDateTime->diff($this->checkOutDateTime)->days > 365) {
+//            return false;
+//        }
+//        return true;
+//    }
+//
+//    public function isCheckOutDateTimeLaterCheckInDateTime() { // wenn beide datetime
+//        if (($this->checkInDateTime->diff($this->checkOutDateTime)->invert) > 0) {
+//            return false;
+//        }
+//        return true;
+//    }
+//    public function isCheckInDateTimeEqualOrLaterNow() {
+//        $now = new DateTime('now');
+//        if ($this->checkInDateTime < $now) {
+//            return false;
+//        }
+//        return true;
+//    }
+//
+//    public function isCheckOutDateTimeEqualOrLaterNow() {
+//        $now = new DateTime('now');
+//        if ($this->checkOutDateTime < $now) {
+//            return false;
+//        }
+//        return true;
+//    }
+//
+//    public function getGroupSequence()
+//    {
+//        $groups = array('CheckInOutDateTime');
+//
+//        if ($this->isStrict()) {
+//            $groups[] = 'Strict';
+//        }
+//
+//        return $groups;
+//    }
 
     /**
-     * @Assert\IsTrue(message = "Error: CheckIn time later than CheckOut time")
+     * @Assert\Callback
      */
-    public function isCheckOutDateTimeLaterCheckInDateTime() {
-        if (($this->getCheckInDateTime()->diff($this->getCheckOutDateTime())->invert) > 0) {
-            return false;
+    public function validate(ExecutionContextInterface $context, $payload = NULL) {
+        if (!$this->checkInDateTime) { // ist NULL
+            $context->buildViolation('checkInDateTime is NULL')
+                    ->atPath('checkInDateTime')
+                    ->addViolation();
         }
-        return true;
+
+        if (!$this->checkOutDateTime) { // ist NULL
+            $context->buildViolation('checkOutDateTime is NULL')
+                    ->atPath('checkOutDateTime')
+                    ->addViolation();
+        }
+        if ($this->checkInDateTime && $this->checkOutDateTime) { // Typen Korrekt
+            // checkIn >= checkOut
+            if ($this->checkInDateTime >= $this->checkOutDateTime) {
+                $context->buildViolation('CheckOut earlier or equal CheckIn')
+                        ->atPath('checkOutDateTime')
+                        ->addViolation();
+            }
+            // Timespan > 365 Tage
+            if ($this->checkInDateTime->diff($this->checkOutDateTime)->days > 365) {
+                $context->buildViolation('Timespan Too Large')
+                        ->atPath('checkOutDateTime')
+                        ->addViolation();
+            }
+            // checkIn < now
+            $now = new DateTime('now');
+            if ($this->checkInDateTime < $now) {
+                $context->buildViolation('CheckIn earlier than now')
+                        ->atPath('checkInDateTime')
+                        ->addViolation();
+            }
+            // checkOut < now
+            if ($this->checkOutDateTime < $now) { // checkOut < now
+                $context->buildViolation('CheckOut earlier than now')
+                        ->atPath('checkOutDateTime')
+                        ->addViolation();
+            }
+            // Timespan < 1 Tag
+            if (
+                    ($this->checkInDateTime->diff($this->checkOutDateTime)->days < 1) &&
+                    ($this->checkInDateTime->diff($this->checkOutDateTime)->days >= 0)
+            ) {
+                $context->buildViolation('Timespan Too Small')
+                        ->atPath('checkOutDateTime')
+                        ->addViolation();
+            }
+        }
     }
 
 }
