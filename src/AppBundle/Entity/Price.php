@@ -8,7 +8,7 @@ use Symfony\Component\Validator\Validation;
 
 /**
  * @ORM\Entity(repositoryClass="AppBundle\Entity\PriceRepository")
- * @ORM\Table(name="price")
+ * @ORM\Table(name="price" , indexes={ @ORM\Index(name="date_idx", columns={"date"}) })
  */
 class Price {
 
@@ -39,14 +39,12 @@ class Price {
      */
     private $product;
 
-
     /**
      * Get id
      *
      * @return integer
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -57,10 +55,9 @@ class Price {
      *
      * @return Price
      */
-    public function setDate($date)
-    {
+    public function setDate($date) {
         $this->date = $date;
-    
+
         return $this;
     }
 
@@ -69,8 +66,7 @@ class Price {
      *
      * @return \DateTime
      */
-    public function getDate()
-    {
+    public function getDate() {
         return $this->date;
     }
 
@@ -81,10 +77,9 @@ class Price {
      *
      * @return Price
      */
-    public function setValue($value)
-    {
+    public function setValue($value) {
         $this->value = $value;
-    
+
         return $this;
     }
 
@@ -93,11 +88,12 @@ class Price {
      *
      * @return string
      */
-    public function getValue()
-    {
-        $validator = Validation::createValidatorBuilder()->enableAnnotationMapping()->getValidator() ;
+    public function getValue() {
+        $validator = Validation::createValidatorBuilder()->enableAnnotationMapping()->getValidator();
         $errors = $validator->validate($this);
-        if($errors->count()>0) { throw new \Exception('Error. Zustand des Objekts ungueltig'); }
+        if ($errors->count() > 0) {
+            throw new \Exception('Error. Zustand des Objekts ungueltig');
+        }
         return (float) $this->value;
     }
 
@@ -108,10 +104,9 @@ class Price {
      *
      * @return Price
      */
-    public function setProduct(\AppBundle\Entity\Product $product = null)
-    {
+    public function setProduct(\AppBundle\Entity\Product $product = null) {
         $this->product = $product;
-    
+
         return $this;
     }
 
@@ -120,8 +115,7 @@ class Price {
      *
      * @return \AppBundle\Entity\Product
      */
-    public function getProduct()
-    {
+    public function getProduct() {
         return $this->product;
     }
 
