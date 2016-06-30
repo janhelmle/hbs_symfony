@@ -7,7 +7,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="AppBundle\Entity\AvailabilityRepository")
- * @ORM\Table(name="availability")
+ * @ORM\Table(name="availability" , indexes={ @ORM\Index(name="date_idx", columns={"date"}) })
  */
 class Availability {
 
@@ -38,14 +38,12 @@ class Availability {
      */
     private $roomType;
 
-
     /**
      * Get id
      *
      * @return integer
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -56,10 +54,9 @@ class Availability {
      *
      * @return Availability
      */
-    public function setDate($date)
-    {
+    public function setDate($date) {
         $this->date = $date;
-    
+
         return $this;
     }
 
@@ -68,8 +65,7 @@ class Availability {
      *
      * @return \DateTime
      */
-    public function getDate()
-    {
+    public function getDate() {
         return $this->date;
     }
 
@@ -80,10 +76,9 @@ class Availability {
      *
      * @return Availability
      */
-    public function setQuantity($quantity)
-    {
+    public function setQuantity($quantity) {
         $this->quantity = $quantity;
-    
+
         return $this;
     }
 
@@ -92,8 +87,7 @@ class Availability {
      *
      * @return integer
      */
-    public function getQuantity()
-    {
+    public function getQuantity() {
         return $this->quantity;
     }
 
@@ -104,10 +98,9 @@ class Availability {
      *
      * @return Availability
      */
-    public function setRoomType(\AppBundle\Entity\RoomType $roomType = null)
-    {
+    public function setRoomType(\AppBundle\Entity\RoomType $roomType = null) {
         $this->roomType = $roomType;
-    
+
         return $this;
     }
 
@@ -116,11 +109,10 @@ class Availability {
      *
      * @return \AppBundle\Entity\RoomType
      */
-    public function getRoomType()
-    {
+    public function getRoomType() {
         return $this->roomType;
     }
-    
+
     /**
      * @Assert\IsTrue(message = "Error: Quantity greater than Capacity")
      */
