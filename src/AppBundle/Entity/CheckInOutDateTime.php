@@ -97,7 +97,7 @@ class CheckInOutDateTime {
      *
      * @return CheckInOutDateTime
      */
-    public function setCheckInOutDateTime($checkInDateTime, $checkOutDateTime) { // Input : string
+    public function setCheckInOutDateTime($checkInDateTime, $checkOutDateTime) { // Input : string or DateTime
         // test type : string or datetime
         if ($checkInDateTime && $checkOutDateTime) {
             if (($checkInDateTime instanceof DateTime) && ($checkOutDateTime instanceof DateTime)) {
@@ -223,6 +223,18 @@ class CheckInOutDateTime {
                     ($this->checkInDateTime->diff($this->checkOutDateTime)->days >= 0)
             ) {
                 $context->buildViolation('Timespan Too Small')
+                        ->atPath('checkOutDateTime')
+                        ->addViolation();
+            }
+            // In > 2099
+            if ($this->checkInDateTime > new DateTime("2099-12-31 23:59:59.000000")) { //
+                $context->buildViolation('CheckIn Later 2099-12-31')
+                        ->atPath('checkInDateTime')
+                        ->addViolation();
+            }
+            // Out > 2099
+            if ($this->checkOutDateTime > new DateTime("2099-12-31 23:59:59.000000")) { //
+                $context->buildViolation('CheckOut Later 2099-12-31')
                         ->atPath('checkOutDateTime')
                         ->addViolation();
             }
