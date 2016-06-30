@@ -82,7 +82,29 @@ class CheckInOutDateTimeTest extends \PHPUnit_Framework_TestCase {
         $this->assertGreaterThan(0, count($errors));
     }
 
-    // null, null
+    // In < 2100 , Out > 2099 : F
+    public function testOutDateTimeLater2099() {
+        $ciodt1 = new CheckInOutDateTime();
+        $in = new DateTime("2099-12-31 12:00:00.000000");
+        $out = new DateTime("2100-01-02 12:00:00.000000");
+        $ciodt1->setCheckInOutDateTime($in, $out);
+        $validator = Validation::createValidatorBuilder()->enableAnnotationMapping()->getValidator();
+        $errors = $validator->validate($ciodt1);
+        $this->assertGreaterThan(0, count($errors));
+    }
+
+    // In > 2099 , Out > 2099 : F
+    public function testInDateTimeLater2099OutDateTimeLater2099() {
+        $ciodt1 = new CheckInOutDateTime();
+        $in = new DateTime("2100-01-01 12:00:00.000000");
+        $out = new DateTime("2100-01-02 12:00:00.000000");
+        $ciodt1->setCheckInOutDateTime($in, $out);
+        $validator = Validation::createValidatorBuilder()->enableAnnotationMapping()->getValidator();
+        $errors = $validator->validate($ciodt1);
+        $this->assertGreaterThan(0, count($errors));
+    }
+
+    // null, null : F
     public function testCheckInNullCheckOutNull() {
         $ciodt1 = new CheckInOutDateTime();
         $validator = Validation::createValidatorBuilder()->enableAnnotationMapping()->getValidator();
