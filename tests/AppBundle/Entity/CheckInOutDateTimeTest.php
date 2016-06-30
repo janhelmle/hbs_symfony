@@ -16,10 +16,10 @@ class CheckInOutDateTimeTest extends \PHPUnit_Framework_TestCase {
         $this->assertInstanceOf(CheckInOutDateTime::class, $ciodt1);
     }
 
-    // DateTime(now) < DateTime(now+7)
+    // DateTime(now) < DateTime(now+7) : ok
     public function testCheckInDateTimeValidCheckOutDateTimeValid() {
         $ciodt1 = new CheckInOutDateTime();
-        $in = new DateTime('now');
+        $in = (new DateTime('now'))->add(new DateInterval('P1D')); // 1 Day
         $out = (new DateTime('now'))->add(new DateInterval('P7D')); // 1 Week
         $ciodt1->setCheckInOutDateTime($in, $out);
         $validator = Validation::createValidatorBuilder()->enableAnnotationMapping()->getValidator();
