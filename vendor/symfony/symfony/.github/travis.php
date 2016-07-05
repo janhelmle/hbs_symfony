@@ -1,19 +1,24 @@
 <?php
 
 if (4 > $_SERVER['argc']) {
-    echo "Usage: branch dir1 dir2 ... dirN\n";
+    echo "Usage: branch version dir1 dir2 ... dirN\n";
     exit(1);
 }
+chdir(dirname(__DIR__));
 
 $dirs = $_SERVER['argv'];
 array_shift($dirs);
 $branch = array_shift($dirs);
+$version = array_shift($dirs);
 
 $packages = array();
 $flags = PHP_VERSION_ID >= 50400 ? JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE : 0;
 
 foreach ($dirs as $dir) {
-    if (!`git diff --name-only $branch...HEAD -- $dir`) {
+    if (!system("git diff --name-only $branch...HEAD -- $dir", $exitStatus)) {
+        if ($exitStatus) {
+            exit($exitStatus);
+        }
         continue;
     }
     echo "$dir\n";
@@ -26,15 +31,15 @@ foreach ($dirs as $dir) {
 
     $package->repositories = array(array(
         'type' => 'composer',
-        'url' => 'file://'.__DIR__.'/',
+        'url' => 'file://'.dirname(__DIR__).'/',
     ));
     $json = rtrim(json_encode(array('repositories' => $package->repositories), $flags), "\n}").','.substr($json, 1);
     file_put_contents($dir.'/composer.json', $json);
     passthru("cd $dir && tar -cf package.tar --exclude='package.tar' *");
 
-    $package->version = 'master' !== $branch ? $branch.'.x-dev' : 'dev-master';
+    $package->version = 'master' !== $version ? $version.'.999' : 'dev-master';
     $package->dist['type'] = 'tar';
-    $package->dist['url'] = 'file://'.__DIR__."/$dir/package.tar";
+    $package->dist['url'] = 'file://'.dirname(__DIR__)."/$dir/package.tar";
 
     $packages[$package->name][$package->version] = $package;
 
