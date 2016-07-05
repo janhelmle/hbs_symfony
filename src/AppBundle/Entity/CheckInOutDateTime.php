@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\Context\ExecutionContextInterface;
 use DateTime;
+use Exception;
 
 /**
  * @ORM\Entity
@@ -26,7 +27,7 @@ class CheckInOutDateTime {
      * @Assert\NotBlank()
      * @ORM\Column(type="datetime" , nullable=false)
      */
-    private $checkInDateTime;
+    private $checkInDateTime = null;
 
     /**
      * @Assert\DateTime()
@@ -34,7 +35,7 @@ class CheckInOutDateTime {
      * @Assert\NotBlank()
      * @ORM\Column(type="datetime" , nullable=false)
      */
-    private $checkOutDateTime;
+    private $checkOutDateTime = null;
 
     /**
      * Get id
@@ -97,19 +98,33 @@ class CheckInOutDateTime {
      *
      * @return CheckInOutDateTime
      */
-    public function setCheckInOutDateTime($checkInDateTime, $checkOutDateTime) { // Input : string or DateTime
+    public function setCheckInOutDateTime($checkInDateTime = null, $checkOutDateTime = null) { // Input : string or DateTime
         // test type : string or datetime
         if ($checkInDateTime && $checkOutDateTime) {
+
             if (($checkInDateTime instanceof DateTime) && ($checkOutDateTime instanceof DateTime)) {
                 $this->setCheckInDateTime($checkInDateTime);
                 $this->setCheckOutDateTime($checkOutDateTime);
             }
+
             if (is_string($checkInDateTime) && is_string($checkOutDateTime)) {
+
                 $checkInDateTimeTrimmed = trim($checkInDateTime);
                 $checkOutDateTimeTrimmed = trim($checkOutDateTime);
+
                 $this->checkInDateTime = DateTime::createFromFormat('Y.m.d, H:i', $checkInDateTimeTrimmed);
+                if (DateTime::getLastErrors()["warning_count"] || DateTime::getLastErrors()["error_count"]) {
+                    $this->checkInDateTime = null;
+                    throw new Exception("Can't parse CheckIn");
+                }
                 $this->checkOutDateTime = DateTime::createFromFormat('Y.m.d, H:i', $checkOutDateTimeTrimmed);
+                if (DateTime::getLastErrors()["warning_count"] || DateTime::getLastErrors()["error_count"]) {
+                    $this->checkOutDateTime = null;
+                    throw new Exception("Can't parse CheckOut");
+                }
             }
+
+
 //        if (
 //                !(preg_match('/^(19|20)\d{2}\.(0|1)\d\.[0-3]\d,\s[0-2]\d:[0-5]\d$/', $checkInDateTimeTrimmed)) || // e.g. '2016.04.26, 12:00'
 //                !(preg_match('/^(19|20)\d{2}\.(0|1)\d\.[0-3]\d,\s[0-2]\d:[0-5]\d$/', $checkOutDateTimeTrimmed))
@@ -122,6 +137,7 @@ class CheckInOutDateTime {
 //            throw new \InvalidArgumentException("Error: checkInDate >= checkOutDate. Please try again with the correct settings.");
 //        }
         }
+
         return $this;
     }
 
@@ -180,17 +196,18 @@ class CheckInOutDateTime {
      * @Assert\Callback
      */
     public function validate(ExecutionContextInterface $context, $payload = NULL) {
-        if (!$this->checkInDateTime) { // ist NULL
+        if (is_null($this->checkInDateTime)) { // ist NULL
             $context->buildViolation('checkInDateTime is NULL')
                     ->atPath('checkInDateTime')
                     ->addViolation();
         }
 
-        if (!$this->checkOutDateTime) { // ist NULL
+        if (is_null($this->checkOutDateTime)) { // ist NULL
             $context->buildViolation('checkOutDateTime is NULL')
                     ->atPath('checkOutDateTime')
                     ->addViolation();
         }
+
         if ($this->checkInDateTime && $this->checkOutDateTime) { // Typen Korrekt
             // checkIn >= checkOut
             if ($this->checkInDateTime >= $this->checkOutDateTime) {
