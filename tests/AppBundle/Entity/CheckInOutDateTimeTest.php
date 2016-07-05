@@ -82,7 +82,7 @@ class CheckInOutDateTimeTest extends \PHPUnit_Framework_TestCase {
         $this->assertGreaterThan(0, count($errors));
     }
 
-    // In < 2100 , Out > 2099 : F
+    // DateTime In < 2100 , DateTime Out > 2099 : F
     public function testOutDateTimeLater2099() {
         $ciodt1 = new CheckInOutDateTime();
         $in = new DateTime("2099-12-31 12:00:00.000000");
@@ -93,7 +93,7 @@ class CheckInOutDateTimeTest extends \PHPUnit_Framework_TestCase {
         $this->assertGreaterThan(0, count($errors));
     }
 
-    // In > 2099 , Out > 2099 : F
+    // DateTime In > 2099 , DateTime Out > 2099 : F
     public function testInDateTimeLater2099OutDateTimeLater2099() {
         $ciodt1 = new CheckInOutDateTime();
         $in = new DateTime("2100-01-01 12:00:00.000000");
@@ -135,6 +135,33 @@ class CheckInOutDateTimeTest extends \PHPUnit_Framework_TestCase {
         $ciodt1 = new CheckInOutDateTime();
         $ciodt1->setCheckInDateTime('invalid');
         $ciodt1->setCheckOutDateTime('invalid');
+    }
+
+    /**
+     * @expectedException Exception
+     * @expectedExceptionMessage Can't parse CheckIn
+     */
+    public function testCheckInInvalidStringCheckOutValidString() {
+        $ciodt1 = new CheckInOutDateTime();
+        $ciodt1->setCheckInOutDateTime('x', '2099.01.01, 12:00');
+    }
+
+    /**
+     * @expectedException Exception
+     * @expectedExceptionMessage Can't parse CheckOut
+     */
+    public function testCheckInValidStringCheckOutInvalidString() {
+        $ciodt1 = new CheckInOutDateTime();
+        $ciodt1->setCheckInOutDateTime('2099.01.01, 12:00', 'x');
+    }
+
+    /**
+     * @expectedException Exception
+     * @expectedExceptionMessage Can't parse CheckIn
+     */
+    public function testCheckInInvalidStringCheckOutInvalidString() {
+        $ciodt1 = new CheckInOutDateTime();
+        $ciodt1->setCheckInOutDateTime('x', 'x');
     }
 
 }
