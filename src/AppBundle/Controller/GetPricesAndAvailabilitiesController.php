@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Response;
 use stdClass;
 use DateTime;
 use AppBundle\Entity\CheckInOutDateTime;
+use Exception;
 
 class GetPricesAndAvailabilitiesController extends Controller {
 
@@ -21,14 +22,28 @@ class GetPricesAndAvailabilitiesController extends Controller {
 
         $dto = new stdClass(); // new Data Transfer Object
 
-        $checkInDateFromApp = $request->headers->get('checkInDate'); // 2016.04.26, 12:00
-        $checkOutDateFromApp = $request->headers->get('checkOutDate'); // 2016.04.27, 12:00
+        if ($request->headers->has('checkInDate')) {
+            $checkInDateFromApp = $request->headers->get('checkInDate'); // 2016.04.26, 12:00
+        } else {
+            $checkInDateFromApp = 'null'; // string
+        }
 
-        // $checkInDateFromApp = '2016.07.26, 12:00';
-        // $checkOutDateFromApp = '2016.07.27, 12:00';
+        if ($request->headers->has('checkOutDate')) {
+            $checkOutDateFromApp = $request->headers->get('checkOutDate'); // 2016.04.27, 12:00
+        } else {
+            $checkOutDateFromApp = 'null'; // string
+        }
+
+//        $checkInDateFromApp = '2016.07.20, 12:00';
+//        $checkOutDateFromApp = '2017.07.26, 12:00';
 
         $ciodt = new CheckInOutDateTime();
-        $ciodt->setCheckInOutDateTime($checkInDateFromApp, $checkOutDateFromApp);
+
+        try {
+            $ciodt->setCheckInOutDateTime($checkInDateFromApp, $checkOutDateFromApp);
+        } catch (Exception $ex) {
+            return (new Response($ex->getMessage()))->setStatusCode(Response::HTTP_BAD_REQUEST);
+        }
 
         $validator = $this->get('validator');
         $errors = $validator->validate($ciodt);
