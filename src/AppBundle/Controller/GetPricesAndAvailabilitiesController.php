@@ -99,7 +99,7 @@ class GetPricesAndAvailabilitiesController extends Controller {
     /**
      * @Route("/api/v0.2/getpricesandavailabilities", name="getpricesandavailabilities_v_0.2")
      */
-    public function getPricesAndAvailabilitiesAction_v_02(Request $request) {
+    public function getPricesAndAvailabilities_v_02_Action(Request $request) {
 
         $em = $this->getDoctrine()->getManager();
 
@@ -112,7 +112,7 @@ class GetPricesAndAvailabilitiesController extends Controller {
         $checkOutDateTime = DateTime::createFromFormat('Y.m.d, H:i', $checkOutDateFromApp);
 
         if (
-                (!$checkInDateTime) OR ( !$checkOutDateTime)
+                (!$checkInDateTime) || (!$checkOutDateTime)
         ) {
             $resp = new Response(
                     "Error. Malformed request syntax. "
@@ -197,7 +197,7 @@ class GetPricesAndAvailabilitiesController extends Controller {
     /**
      * @Route("/api/v0.1/getpricesandavailabilities", name="getpricesandavailabilities_v_0.1")
      */
-    public function getPricesAndAvailabilitiesAction_v_01(Request $request) {
+    public function getPricesAndAvailabilities_v_01_Action(Request $request) {
 
         $em = $this->getDoctrine()->getManager();
 
@@ -308,7 +308,7 @@ class GetPricesAndAvailabilitiesController extends Controller {
     /**
      * @Route("/api/v0/getpricesandavailabilities", name="getpricesandavailabilities_v_0")
      */
-    public function getPricesAndAvailabilitiesAction_v_0(Request $request) {
+    public function getPricesAndAvailabilities_v_0_Action(Request $request) {
 
         $em = $this->getDoctrine()->getManager();
 
