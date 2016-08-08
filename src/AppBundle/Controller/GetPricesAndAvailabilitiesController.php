@@ -16,7 +16,7 @@ class GetPricesAndAvailabilitiesController extends Controller {
     /**
      * @Route("/api/v0.3/getpricesandavailabilities", name="getpricesandavailabilities_v_0.3")
      */
-    public function getPricesAndAvailabilitiesAction_v_03(Request $request) {
+    public function getPricesAndAvailabilities_v_03_Action(Request $request) {
 
         $em = $this->getDoctrine()->getManager();
 
