@@ -211,7 +211,7 @@ class GetPricesAndAvailabilitiesController extends Controller {
         $checkOutDateTime = DateTime::createFromFormat('Y.m.d, H:i', $checkOutDate);
 
         if (
-                !$checkInDateTime OR ! $checkOutDateTime
+                !$checkInDateTime || ! $checkOutDateTime
         ) {
 
 
