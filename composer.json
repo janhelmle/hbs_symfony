@@ -1,5 +1,6 @@
 {
     "name": "jan/jetzaber",
+    "description": "mam hbs",
     "license": "proprietary",
     "type": "project",
     "autoload": {
