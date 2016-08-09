@@ -14,7 +14,7 @@ class GetTotalPriceController extends Controller {
     /**
      * @Route("/api/v0/getTotalPrice", name="getTotalPrice_v_0")
      */
-    public function getTotalPriceAction_v_0(Request $request) {
+    public function getTotalPrice_v_0_Action(Request $request) {
 
         $input = $request->getContent();
 

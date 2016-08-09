@@ -22,7 +22,7 @@ class PostOrderController extends Controller {
     /**
      * @Route("/api/v0/postOrder", name="postOrder_v_0")
      */
-    public function postOrderAction_v_0(Request $request) {
+    public function postOrder_v_0_Action(Request $request) {
 
         $input = $request->getContent();
 
