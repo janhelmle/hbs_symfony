@@ -200,8 +200,8 @@ class GetPricesAndAvailabilitiesControllerTest extends WebTestCase {
 
     public function testResponseHeaderValidInput_v0_2() {
         $client = static::createClient(array(), array(
-                    'HTTP_checkInDate' => '2016.01.14, 12:00',
-                    'HTTP_checkOutDate' => '2016.01.16, 12:00'
+                    'HTTP_checkInDate' => '2017.01.14, 12:00',
+                    'HTTP_checkOutDate' => '2017.01.16, 12:00'
         ));
 
 
@@ -223,8 +223,7 @@ class GetPricesAndAvailabilitiesControllerTest extends WebTestCase {
         $crawler = $client->request('GET', '/api/v0.2/getpricesandavailabilities');
 
         $this->assertEquals(
-                200, 
-                $client->getResponse()->getStatusCode()
+                200, $client->getResponse()->getStatusCode()
         );
     }
 
@@ -238,7 +237,7 @@ class GetPricesAndAvailabilitiesControllerTest extends WebTestCase {
 
         $this->assertNotEmpty($client->getResponse()->getContent());
     }
-    
+
     public function testResponseValidJsonValidInput_v0_2() {
         $client = static::createClient(array(), array(
                     'HTTP_checkInDate' => '2099.01.14, 12:00',
@@ -246,28 +245,28 @@ class GetPricesAndAvailabilitiesControllerTest extends WebTestCase {
         ));
 
         $crawler = $client->request('GET', '/api/v0.2/getpricesandavailabilities');
-        
-        $content = $client->getResponse()->getContent() ;
-        
-        $jsonDecodedContent = json_decode($content); 
+
+        $content = $client->getResponse()->getContent();
+
+        $jsonDecodedContent = json_decode($content);
 
         $this->assertTrue(json_last_error() == 'JSON_ERROR_NONE');
     }
 
     public function testResponseJsonContentValidInput_v0_2() {
         $client = static::createClient(array(), array(
-                    'HTTP_checkInDate' => '2016.01.14, 12:00',
-                    'HTTP_checkOutDate' => '2016.01.16, 12:00'
+                    'HTTP_checkInDate' => '2017.01.14, 12:00',
+                    'HTTP_checkOutDate' => '2017.01.16, 12:00'
         ));
 
         $crawler = $client->request('GET', '/api/v0.2/getpricesandavailabilities');
 
         $expected = '{
-	"checkInDate": "2016.01.14, 12:00",
-	"checkOutDate": "2016.01.16, 12:00",
+	"checkInDate": "2017.01.14, 12:00",
+	"checkOutDate": "2017.01.16, 12:00",
 	"roomTypes": [{
 		"identifier": "singleroom",
-		"price": 115,
+		"price": 130,
 		"quantity": 5
 	}, {
 		"identifier": "doubleroom",
@@ -317,7 +316,7 @@ class GetPricesAndAvailabilitiesControllerTest extends WebTestCase {
 		"identifier": "raftingtour",
 		"price": 25
 	}]
-        }';
+    }';
 
         $this->assertJsonStringEqualsJsonString($expected, $client->getResponse()->getContent());
     }

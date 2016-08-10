@@ -151,6 +151,10 @@ class GetPricesAndAvailabilitiesController extends Controller {
 
         $validator = $this->get('validator');
         $errors = $validator->validate($ciodt);
+        
+        if (count($errors) > 0) {
+            return (new Response((string) $errors))->setStatusCode(Response::HTTP_BAD_REQUEST); // ->headers->set('Content-Type', 'text/html ; charset=utf-8');
+        }
 
         $dto->checkInDate = $checkInDateFromApp;
         $dto->checkOutDate = $checkOutDateFromApp;
