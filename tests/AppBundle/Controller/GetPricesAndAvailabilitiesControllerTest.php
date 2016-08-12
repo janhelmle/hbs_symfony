@@ -46,53 +46,33 @@ class GetPricesAndAvailabilitiesControllerTest extends WebTestCase {
 
         $expected = '[{
 	"identifier": "singleroom",
-	"quantity": "5",
-	"price": "130.00"
+	"quantity": "8",
+	"price": "31.00"
         }, {
 	"identifier": "doubleroom",
-	"quantity": "4",
-	"price": "120.00"
-        }, {
-	"identifier": "twinroom",
-	"quantity": "3",
-	"price": "130.00"
-        }, {
-	"identifier": "tripleroom",
-	"quantity": "2",
-	"price": "140.00"
-        }, {
-	"identifier": "familyroom",
-	"quantity": "1",
-	"price": "150.00"
-        }, {
-	"identifier": "apartmentsingle",
-	"quantity": "1",
-	"price": "160.00"
-        }, {
-	"identifier": "apartmentdouble",
-	"quantity": "5",
-	"price": "170.00"
+	"quantity": "7",
+	"price": "37.00"
         }, {
 	"identifier": "halfpension",
-	"price": "12.50"
+	"price": "61.00"
         }, {
 	"identifier": "fullpension",
-	"price": "25.00"
+	"price": "67.00"
         }, {
 	"identifier": "breakfast",
-	"price": "8.00"
+	"price": "71.00"
         }, {
 	"identifier": "noboarding",
-	"price": "0.00"
+	"price": "73.00"
         }, {
 	"identifier": "champagnebreakfast",
-	"price": "12.50"
+	"price": "79.00"
         }, {
 	"identifier": "rosesinrooms",
-	"price": "30.00"
+	"price": "83.00"
         }, {
 	"identifier": "raftingtour",
-	"price": "25.00"
+	"price": "89.00"
         }]';
 
         $this->assertJsonStringEqualsJsonString($expected, $client->getResponse()->getContent());

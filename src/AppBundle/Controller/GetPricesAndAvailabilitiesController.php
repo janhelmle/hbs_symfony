@@ -330,7 +330,7 @@ class GetPricesAndAvailabilitiesController extends Controller {
 
                 WHERE ap.enabled = TRUE
 
-                AND pri.date < '2099.01.01'
+                AND pri.date >= '2099.01.01'
 
                 GROUP BY ap.identifier
 
@@ -358,9 +358,9 @@ class GetPricesAndAvailabilitiesController extends Controller {
 
                 AND rt.enabled = TRUE
 
-                AND av.date < '2099.01.01'
+                AND av.date >= '2099.01.01'
 
-                AND pr.date < '2099.01.01'
+                AND pr.date >= '2099.01.01'
 
                 GROUP BY rt.identifier
 

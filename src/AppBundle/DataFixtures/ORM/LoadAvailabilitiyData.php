@@ -77,7 +77,7 @@ class LoadAvailabilityData extends AbstractFixture implements OrderedFixtureInte
 
         $av10 = new Availability();
         $av10->setDate(new \DateTime("2099-01-01 12:00:00"));
-        $av10->setQuantity(6);
+        $av10->setQuantity(8);
         $av10->setRoomType($this->getReference('singleroom'));
         $manager->persist($av10);
         $manager->flush();
@@ -85,8 +85,8 @@ class LoadAvailabilityData extends AbstractFixture implements OrderedFixtureInte
 
         $av11 = new Availability();
         $av11->setDate(new \DateTime("2099-01-02 12:00:00"));
-        $av11->setQuantity(4);
-        $av11->setRoomType($this->getReference('singleroom'));
+        $av11->setQuantity(7);
+        $av11->setRoomType($this->getReference('doubleroom'));
         $manager->persist($av11);
         $manager->flush();
         unset($av11);
