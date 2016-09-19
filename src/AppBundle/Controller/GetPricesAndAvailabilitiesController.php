@@ -205,8 +205,8 @@ class GetPricesAndAvailabilitiesController extends Controller {
 
         $em = $this->getDoctrine()->getManager();
 
-        $checkInDate = $request->headers->get('checkInDate'); // 2016.04.26, 12:00
-        $checkOutDate = $request->headers->get('checkOutDate'); // 2016.04.27, 12:00
+        $checkInDate = $request->headers->get('checkInDate'); // 2099.01.26, 12:00
+        $checkOutDate = $request->headers->get('checkOutDate'); // 2099.01.27, 12:00
 
         $checkInDate = '2099.01.26, 12:00';
         $checkOutDate = '2099.01.27, 12:00';
