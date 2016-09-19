@@ -117,61 +117,61 @@ class GetPricesAndAvailabilitiesControllerTest extends WebTestCase {
         $crawler = $client->request('GET', '/api/v0.1/getpricesandavailabilities');
 
         $expected = '{
-	"checkInDate": "2016.04.26, 12:00",
-	"checkOutDate": "2016.04.27, 12:00",
+	"checkInDate": "2099.01.26, 12:00",
+	"checkOutDate": "2099.01.27, 12:00",
 	"roomTypes": [{
 		"identifier": "singleroom",
-		"price": "110.00",
-		"quantity": 5
+		"price": 110,
+		"quantity": 10
 	}, {
 		"identifier": "doubleroom",
-		"price": "120.00",
-		"quantity": 4
+		"price": 120,
+		"quantity": 9
 	}, {
 		"identifier": "twinroom",
-		"price": "130.00",
-		"quantity": 3
+		"price": 130,
+		"quantity": 8
 	}, {
 		"identifier": "tripleroom",
-		"price": "140.00",
-		"quantity": 2
+		"price": 140,
+		"quantity": 7
 	}, {
 		"identifier": "familyroom",
-		"price": "150.00",
-		"quantity": 1
+		"price": 150,
+		"quantity": 6
 	}, {
 		"identifier": "apartmentsingle",
-		"price": "160.00",
-		"quantity": 1
+		"price": 160,
+		"quantity": 5
 	}, {
 		"identifier": "apartmentdouble",
-		"price": "170.00",
-		"quantity": 5
+		"price": 170,
+		"quantity": 4
 	}],
 	"boardings": [{
 		"identifier": "halfpension",
-		"price": "12.50"
+		"price": 12.5
 	}, {
 		"identifier": "fullpension",
-		"price": "25.00"
+		"price": 25
 	}, {
 		"identifier": "breakfast",
-		"price": "8.00"
+		"price": 8
 	}, {
 		"identifier": "noboarding",
-		"price": "0.00"
+		"price": 0
 	}],
 	"specials": [{
 		"identifier": "champagnebreakfast",
-		"price": "12.50"
+		"price": 12.5
 	}, {
 		"identifier": "rosesinrooms",
-		"price": "30.00"
+		"price": 30
 	}, {
 		"identifier": "raftingtour",
-		"price": "25.00"
+		"price": 25
 	}]
-        }';
+}';
 
         $this->assertJsonStringEqualsJsonString($expected, $client->getResponse()->getContent());
     }
@@ -235,68 +235,68 @@ class GetPricesAndAvailabilitiesControllerTest extends WebTestCase {
 
     public function testResponseJsonContentValidInput_v0_2() {
         $client = static::createClient(array(), array(
-                    'HTTP_checkInDate' => '2017.01.14, 12:00',
-                    'HTTP_checkOutDate' => '2017.01.16, 12:00'
+                    'HTTP_checkInDate' => '2099.01.14, 12:00',
+                    'HTTP_checkOutDate' => '2099.01.16, 12:00'
         ));
 
         $crawler = $client->request('GET', '/api/v0.2/getpricesandavailabilities');
 
         $expected = '{
-	"checkInDate": "2017.01.14, 12:00",
-	"checkOutDate": "2017.01.16, 12:00",
+	"checkInDate": "2099.01.14, 12:00",
+	"checkOutDate": "2099.01.16, 12:00",
 	"roomTypes": [{
 		"identifier": "singleroom",
-		"price": 130,
-		"quantity": 5
+		"price": 31,
+		"quantity": 11
 	}, {
 		"identifier": "doubleroom",
-		"price": 120,
-		"quantity": 6
+		"price": 37,
+		"quantity": 10
 	}, {
 		"identifier": "twinroom",
-		"price": 130,
-		"quantity": 7
+		"price": 41,
+		"quantity": 9
 	}, {
 		"identifier": "tripleroom",
-		"price": 140,
+		"price": 43,
 		"quantity": 8
 	}, {
 		"identifier": "familyroom",
-		"price": 150,
-		"quantity": 4
+		"price": 47,
+		"quantity": 7
 	}, {
 		"identifier": "apartmentsingle",
-		"price": 160,
-		"quantity": 3
+		"price": 53,
+		"quantity": 6
 	}, {
 		"identifier": "apartmentdouble",
-		"price": 170,
-		"quantity": 2
+		"price": 59,
+		"quantity": 5
 	}],
 	"boardings": [{
 		"identifier": "halfpension",
-		"price": 12.5
+		"price": 61
 	}, {
 		"identifier": "fullpension",
-		"price": 25
+		"price": 67
 	}, {
 		"identifier": "breakfast",
-		"price": 8
+		"price": 71
 	}, {
 		"identifier": "noboarding",
-		"price": 0
+		"price": 73
 	}],
 	"specials": [{
 		"identifier": "champagnebreakfast",
-		"price": 12.5
+		"price": 79
 	}, {
 		"identifier": "rosesinrooms",
-		"price": 30
+		"price": 83
 	}, {
 		"identifier": "raftingtour",
-		"price": 25
+		"price": 89
 	}]
-    }';
+}';
 
         $this->assertJsonStringEqualsJsonString($expected, $client->getResponse()->getContent());
     }
