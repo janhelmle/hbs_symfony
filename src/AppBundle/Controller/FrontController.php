@@ -22,15 +22,15 @@ class FrontController extends Controller {
         return $this->forward('AppBundle\Controller\MamInternal\GetPricesAndAvailabilitiesController::getPricesAndAvailabilities_v_03_Action');
     }
 
-    // dummy - needs to give parameters
+    // dummy - needs to pass parameters
     /**
      * @Route("/api/gettotalprice", name="gettotalprice")
      */
     public function getTotalPriceAction(Request $request) {
         return $this->forward('AppBundle\Controller\MamInternal\GetTotalPriceController::getTotalPrice_v_0_Action');
     }
-    
-    // dummy - needs to give parameters
+
+    // dummy - needs to pass parameters
     /**
      * @Route("/api/postorder", name="postorder")
      */
