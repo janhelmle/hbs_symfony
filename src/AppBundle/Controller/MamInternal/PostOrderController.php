@@ -6,16 +6,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Serializer\Encoder\XmlEncoder;
-use Symfony\Component\Serializer\Encoder\JsonEncoder;
-use Symfony\Component\Serializer\Encoder\JsonDecode;
-use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
-use Symfony\Component\Serializer\Normalizer\PropertyNormalizer;
-use Symfony\Component\Serializer\Serializer;
-use JMS\Serializer\SerializerBuilder;
 use AppBundle\Entity\Cart;
 use AppBundle\Entity\Item;
-use AppBundle;
 
 class PostOrderController extends Controller {
 
@@ -32,16 +24,16 @@ class PostOrderController extends Controller {
             {
 	"checkInDate": "2016.01.10, 12:00",
 	"checkOutDate": "2016.01.16, 12:00",
-        
+
         "userFirstName": "Anton",
         "userLastName": "Anders",
         "userBirthDate": "11.01.1991",
         "userAddress": "Antonstrasse 11",
         "userPlz": "12345 Astadt",
         "userEmail": "a@a.com",
-        
+
         "alternateCheck": true,
-        
+
         "userFirstNameAlternate": "Bernd",
         "userLastNameAlternate": "Bartel",
         "userBirthDateAlternate": "22.02.1992",
