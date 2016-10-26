@@ -115,12 +115,12 @@ class CheckInOutDateTime {
                 $this->checkInDateTime = DateTime::createFromFormat('Y.m.d, H:i', $checkInDateTimeTrimmed);
                 if (DateTime::getLastErrors()["warning_count"] || DateTime::getLastErrors()["error_count"]) {
                     $this->checkInDateTime = null;
-                    throw new Exception("Can't parse CheckIn");
+                    throw new Exception("Can't parse CheckIn in Header. Example: 'checkInDate:2017.04.26, 12:00'");
                 }
                 $this->checkOutDateTime = DateTime::createFromFormat('Y.m.d, H:i', $checkOutDateTimeTrimmed);
                 if (DateTime::getLastErrors()["warning_count"] || DateTime::getLastErrors()["error_count"]) {
                     $this->checkOutDateTime = null;
-                    throw new Exception("Can't parse CheckOut");
+                    throw new Exception("Can't parse CheckOut in Header. Example: 'checkOutDate:2017.04.27, 12:00'");
                 }
             }
 
