@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Controller;
+namespace AppBundle\Controller\MamInternal;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -117,23 +117,23 @@ class PostOrderController extends Controller {
         }
 
         dump($c);
-        
+
         // $totalPrice = $em->getRepository('AppBundle:Cart')->calculateTotalPrice($c); // Zugriff über EntityRepository
         // $totalPriceJSON = json_encode($totalPrice, 320); // 320 : 0000000101000000 = 256 + 64 : JSON_UNESCAPED_SLASHES => 64 + JSON_UNESCAPED_UNICODE => 256
-        
+
         $destinationEmailAddress = $em->getRepository('AppBundle:Hotel')->getEmailAddress();
         $sourceEmailAddress = "test@mam.de";
         $eMailSubject = "Neue Reservierung";
-        
+
         $message = \Swift_Message::newInstance()
                 ->setSubject($eMailSubject)
                 ->setFrom($sourceEmailAddress)
                 ->setTo($destinationEmailAddress)
-                ->setBody('Body') 
+                ->setBody('Body')
         ;
-        
+
         $this->get('mailer')->send($message);
-        
+
         $resp = new Response('<body></body>');
         // $resp->headers->set('Content-Type', 'application/json ; charset=utf-8');
 

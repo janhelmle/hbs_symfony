@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Controller;
+namespace AppBundle\Controller\MamInternal;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -151,7 +151,7 @@ class GetPricesAndAvailabilitiesController extends Controller {
 
         $validator = $this->get('validator');
         $errors = $validator->validate($ciodt);
-        
+
         if (count($errors) > 0) {
             return (new Response((string) $errors))->setStatusCode(Response::HTTP_BAD_REQUEST); // ->headers->set('Content-Type', 'text/html ; charset=utf-8');
         }
@@ -215,7 +215,7 @@ class GetPricesAndAvailabilitiesController extends Controller {
         $checkOutDateTime = DateTime::createFromFormat('Y.m.d, H:i', $checkOutDate);
 
         if (
-                !$checkInDateTime || ! $checkOutDateTime
+                !$checkInDateTime || !$checkOutDateTime
         ) {
 
 
