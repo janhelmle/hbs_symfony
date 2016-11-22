@@ -9,6 +9,13 @@ use Symfony\Component\HttpFoundation\Request;
 class FrontController extends Controller {
 
     /**
+     * @Route("/api/appmenu", name="appmenu")
+     */
+    public function getAppMenuAction(Request $request) {
+        return $this->forward('AppBundle\Controller\AppMenuController::appMenuAction');
+    }
+
+    /**
      * @Route("/api/getinitialdata", name="getinitialdata")
      */
     public function getInitialDataAction(Request $request) {
